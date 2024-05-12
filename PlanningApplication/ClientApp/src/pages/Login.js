@@ -5,12 +5,15 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import Footer from '../components/Footer.js';
+import logo from "../components/logo.jpg";
 
 
 export const Login = () => {
@@ -29,7 +32,7 @@ export const Login = () => {
                 sm={4}
                 md={7}
                 sx={{
-                    backgroundImage: 'url(https://eventumgroup.lt/wp-content/uploads/2020/01/PerlasNetwork-014.jpg)',
+                    backgroundImage: 'url(https://img.bizbash.com/files/base/bizbash/bzb/image/2014/04/emmys_2012_nfp7c_1.png?auto=format%2Ccompress&q=70&w=880.jpg)',
                     backgroundRepeat: 'no-repeat',
                     backgroundColor: (t) =>
                         t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -47,11 +50,11 @@ export const Login = () => {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 80, height: 80 }}>
+                        <img src={logo}  alt="Logo" style={{ width: '100%', height: '100%' }} />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Welcome Back!
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                         <TextField
@@ -82,9 +85,16 @@ export const Login = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{
+                                mt: 3,
+                                mb: 2,
+                                backgroundColor: '#7F1425', // Maroon color
+                                '&:hover': {
+                                    backgroundColor: '#63101C' // Darker maroon on hover
+                                }
+                            }}
                         >
-                            Sign In
+                            Log in
                         </Button>
                         <Grid container>
                             <Grid item xs>
@@ -93,7 +103,7 @@ export const Login = () => {
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link to="/signup" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
@@ -102,6 +112,7 @@ export const Login = () => {
                     </Box>
                 </Box>
             </Grid>
+            <Footer />
         </Grid>
     )
 

@@ -1,6 +1,7 @@
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup"
+import { CreateEvent } from "./pages/CreateEvent"
 
 const AppRoutes = [
   {
@@ -15,6 +16,11 @@ const AppRoutes = [
   {
     path: '/signup',
     element: <Signup />
+
+  },
+  {
+    path: '/createEvent',
+    element: <CreateEvent />
 
   }
 ];
