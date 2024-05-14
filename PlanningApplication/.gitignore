@@ -235,3 +235,4 @@ _Pvt_Extensions
 sqlite.db-wal
 sqlite.db-shm
 sqlite.db-wal
+/sqlite.db
