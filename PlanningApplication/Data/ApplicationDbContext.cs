@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 
 namespace PlanningApplication.Data;
@@ -11,6 +13,8 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<Job> Jobs { get; set; }
     
     // Seed method
     public static void SeedData(ApplicationDbContext context)

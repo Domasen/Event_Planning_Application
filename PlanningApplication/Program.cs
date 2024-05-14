@@ -2,6 +2,8 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using PlanningApplication.Data;
+using PlanningApplication.EmployeeComponent.Repository;
+using PlanningApplication.EmployeeComponent.Services;
 using PlanningApplication.UsersComponent.Repository;
 using PlanningApplication.UsersComponent.Services;
 
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
 
 //swagger
 builder.Services.AddEndpointsApiExplorer();
