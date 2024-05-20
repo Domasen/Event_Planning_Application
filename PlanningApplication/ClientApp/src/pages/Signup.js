@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,14 +9,58 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from "../components/Footer";
 import logo from "../components/logo.jpg";
+import axios from 'axios';
 
 export const Signup = () => {
+    const navigate = useNavigate();
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [acceptConditions, setAcceptConditions] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+        if (!acceptConditions) {
+            setError("You must accept the terms and conditions");
+            return;
+        }
+
+        const empInfo = {
+            name: firstName,
+            surname: lastName,
+            email,
+            password
+        };
+
+        try {
+            const response = await axios.post('https://localhost:7264/User/register', empInfo, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                navigate('/login');
+            } else {
+                setError(response.data.message || 'Registration failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Registration failed', error);
+            setError('Registration failed. Please try again.');
+        }
     }
 
     return (
@@ -47,7 +91,7 @@ export const Signup = () => {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 80, height: 80 }}>
-                        <img src={logo}  alt="Logo" style={{ width: '100%', height: '100%' }} />
+                        <img src={logo} alt="Logo" style={{ width: '100%', height: '100%' }} />
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Create an Account
@@ -63,6 +107,8 @@ export const Signup = () => {
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -73,6 +119,8 @@ export const Signup = () => {
                                     label="Last Name"
                                     name="lastName"
                                     autoComplete="family-name"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -83,6 +131,8 @@ export const Signup = () => {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -94,6 +144,8 @@ export const Signup = () => {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -105,15 +157,29 @@ export const Signup = () => {
                                     type="password"
                                     id="confirm-password"
                                     autoComplete="new-password"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
-                                    control={<Checkbox value="acceptConditions" color="primary" />}
+                                    control={
+                                        <Checkbox
+                                            value="acceptConditions"
+                                            color="primary"
+                                            checked={acceptConditions}
+                                            onChange={(e) => setAcceptConditions(e.target.checked)}
+                                        />
+                                    }
                                     label="I accept Terms & Conditions"
                                 />
                             </Grid>
                         </Grid>
+                        {error && (
+                            <Typography color="error" sx={{ mt: 2 }}>
+                                {error}
+                            </Typography>
+                        )}
                         <Button
                             type="submit"
                             fullWidth
@@ -121,9 +187,9 @@ export const Signup = () => {
                             sx={{
                                 mt: 3,
                                 mb: 2,
-                                backgroundColor: '#7F1425', // Maroon color
+                                backgroundColor: '#7F1425',
                                 '&:hover': {
-                                    backgroundColor: '#63101C' // Darker maroon on hover
+                                    backgroundColor: '#63101C'
                                 }
                             }}
                         >
@@ -131,7 +197,7 @@ export const Signup = () => {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link to="/login" variant="body2"> 
+                                <Link to="/login" variant="body2">
                                     Already have an account? Log in
                                 </Link>
                             </Grid>
@@ -141,5 +207,5 @@ export const Signup = () => {
             </Grid>
             <Footer />
         </Grid>
-    )
+    );
 }
