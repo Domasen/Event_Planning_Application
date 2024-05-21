@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Chip, Avatar  } from '@mui/material';
 import Footer from '../components/Footer';
+import axios from "axios";
+import { UserContext } from '../context/UserContext.js'; // Import UserContext
+
 
 const categories = [
     { title: 'Music', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT5DGdAzPf4lu-oYWicLMXD4-C3z4Atwylzgdw_9UGw&s.jpg' },
@@ -68,6 +71,29 @@ const popularInterests = [
 ];
 
 export const Home = () => {
+
+    const { setUser } = useContext(UserContext); // Use UserContext
+
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get('/User/currentUser', {
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                });
+                if (response.status === 200) {
+                    setUser(response.data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch user', error);
+            }
+        };
+
+        fetchUser();
+    }, [setUser]);
+    
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
             {/* Header Section with Background Image */}
