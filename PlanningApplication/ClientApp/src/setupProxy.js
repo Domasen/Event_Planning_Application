@@ -5,7 +5,7 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
   env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:49440';
 
 const context =  [
-  "/user", "/swagger"
+  "/User/login", "/User/currentUser", "/User/logout", "/swagger"
 ];
 
 module.exports = function(app) {
@@ -14,7 +14,8 @@ module.exports = function(app) {
     target: target,
     secure: false,
     headers: {
-      Connection: 'Keep-Alive'
+      Connection: 'Keep-Alive',
+      //accept: '*/*'
     }
   });
 

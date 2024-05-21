@@ -1,27 +1,60 @@
-﻿import * as React from 'react';
+﻿import React, { useState, useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Footer from '../components/Footer.js';
 import logo from "../components/logo.jpg";
-
+import axios from 'axios';
+import { UserContext } from '../context/UserContext.js'; // Import UserContext
 
 export const Login = () => {
+    const navigate = useNavigate();
+    const { setUser } = useContext(UserContext); // Use UserContext
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
+    const [error, setError] = useState(null);
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    }
+        setError(null);
+
+        const loginInfo = {
+            email,
+            password,
+            rememberMe
+        };
+        try {
+            const response = await axios.post('/User/login', loginInfo, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                const cookies = response.headers['set-cookie'];
+                if (cookies) {
+                    document.cookie = cookies + ";path=/ domain=https://localhost:7264;";
+                }
+                setUser(response.data.user); // Set the user state
+                navigate('/'); // Navigate to the dashboard or home page upon successful login
+            } else {
+                setError(response.data.message || 'Login failed. Please try again.');
+            }
+        } catch (error) {
+            console.error('Login failed', error);
+            setError('Login failed. Please try again.');
+        }
+    };
 
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
@@ -51,7 +84,7 @@ export const Login = () => {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 80, height: 80 }}>
-                        <img src={logo}  alt="Logo" style={{ width: '100%', height: '100%' }} />
+                        <img src={logo} alt="Logo" style={{ width: '100%', height: '100%' }} />
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Welcome Back!
@@ -66,6 +99,8 @@ export const Login = () => {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <TextField
                             margin="normal"
@@ -76,11 +111,25 @@ export const Login = () => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
+                            control={
+                                <Checkbox
+                                    value="rememberMe"
+                                    color="primary"
+                                    checked={rememberMe}
+                                    onChange={(e) => setRememberMe(e.target.checked)}
+                                />
+                            }
                             label="Remember me"
                         />
+                        {error && (
+                            <Typography color="error" sx={{ mt: 2 }}>
+                                {error}
+                            </Typography>
+                        )}
                         <Button
                             type="submit"
                             fullWidth
@@ -98,7 +147,7 @@ export const Login = () => {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link to="#" variant="body2">
                                     Forgot password?
                                 </Link>
                             </Grid>
@@ -108,12 +157,10 @@ export const Login = () => {
                                 </Link>
                             </Grid>
                         </Grid>
-                    {/*    <Copyright sx={{ mt: 5 }} />*/}
                     </Box>
                 </Box>
             </Grid>
             <Footer />
         </Grid>
-    )
-
-}
+    );
+};

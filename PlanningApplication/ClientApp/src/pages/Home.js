@@ -1,6 +1,9 @@
-import React from 'react';
-import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Link, Chip, Paper } from '@mui/material';
+import React, {useContext, useEffect} from 'react';
+import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Chip, Avatar  } from '@mui/material';
 import Footer from '../components/Footer';
+import axios from "axios";
+import { UserContext } from '../context/UserContext.js'; // Import UserContext
+
 
 const categories = [
     { title: 'Music', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT5DGdAzPf4lu-oYWicLMXD4-C3z4Atwylzgdw_9UGw&s.jpg' },
@@ -36,6 +39,29 @@ const eventsMore = [
     { title: 'Naujasis Baltijos šokis', location: 'Vilnius', date: 'Šeštadienis, Balandžio 27', image: 'https://www.bilietai.lt/imageGenerator/eventDetails/682c062fa95ceac93bc3a618a5651a56.webp' },
 ];
 
+const organizers = [
+    { name: 'Vardenis Pavardenis', followers: '78.5k', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
+    { name: 'Vardenis Pavardenis', followers: '34.9k', image: 'https://randomuser.me/api/portraits/men/2.jpg' },
+    { name: 'Vardenis Pavardenis', followers: '63.9k', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
+    { name: 'Vardenis Pavardenis', followers: '98.9k', image: 'https://randomuser.me/api/portraits/men/4.jpg' }
+];
+
+const destinations = [
+    { title: 'Vilnius', image: 'https://cdn.elebase.io/173fe953-8a63-4a8a-8ca3-1bacb56d78a5/00e553cd-bc9d-4d33-8a33-56f799353694-72_gediminas-tower_www.vilnius-tourism.lt_laimonas-ciunys.jpg?q=75.jpg' },
+    { title: 'Kaunas', image: 'https://www.hanse.org/uploads/media/card/09/1199-Kaunas%20Castle%20%28A.%20Aleksandravi%C4%8Dius%29.jpg?v=1-0.jpg' },
+    { title: 'Klaipėda', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlImCwkWSDMvsjdu36jwekOXwFwko91ZF6YR3V97MqNQ&s.jpg' }
+];
+
+const testimonials = [
+    { name: 'Kamilė Samusiovaitė', text: 'Musų mylimas Vilniaus jaunimas skubėk registruotis į festivalį. Puikiai praleistas laikas ir daug renginių dalyvių!', rating: '4.5', image: 'https://randomuser.me/api/portraits/women/1.jpg' },
+    { name: 'Matas Samšonas', text: 'Ačiū renginio organizatoriams. Šventė buvo nuostabi!', rating: '4.8', image: 'https://randomuser.me/api/portraits/men/5.jpg' },
+    { name: 'Domas Nemanius', text: 'Puikus festivalis, labai linksma praleisti laiką. Renginys buvo puikiai organizuotas. Didelis ačiū organizatoriams!', rating: '4.7', image: 'https://randomuser.me/api/portraits/men/6.jpg' },
+    { name: 'Rokas Sirvydas', text: 'Dėkingas organizatoriams, viskas buvo puiku! Sekantį kartą bus dar geriau.', rating: '4.6', image: 'https://randomuser.me/api/portraits/men/7.jpg' }
+];
+const interests = [
+    'Badminton', 'Cricket', 'Music', 'Cooking', 'Travelling', 'Dancing', 'Art', 'Designing', 'Political Science', 'Party', 'Singing', 'EDM', 'Fashion', 'Athletics', 'Basketball', 'Sports', 'Gaming', 'Drama', 'Social Work', 'Business', 'Charity'
+];
+
 const trendingHashtags = [
     '#Music', '#Concert', '#Party', '#Gaming', '#Art', '#Food', '#Health', '#Education', '#Travel', '#Politics'
 ];
@@ -45,6 +71,29 @@ const popularInterests = [
 ];
 
 export const Home = () => {
+
+    const { setUser } = useContext(UserContext); // Use UserContext
+
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get('/User/currentUser', {
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                });
+                if (response.status === 200) {
+                    setUser(response.data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch user', error);
+            }
+        };
+
+        fetchUser();
+    }, [setUser]);
+    
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
             {/* Header Section with Background Image */}
@@ -89,9 +138,9 @@ export const Home = () => {
             </Box>
 
             {/* Browsing Section */}
-            <Box sx={{ mb: 5 }}>
-                <Typography variant="h4" gutterBottom>Browsing events in <Link href="#">Lithuania</Link></Typography>
-            </Box>
+            {/*<Box sx={{ mb: 5 }}>*/}
+            {/*    <Typography variant="h4" gutterBottom>Browsing events in <Link href="#">Lithuania</Link></Typography>*/}
+            {/*</Box>*/}
 
             {/* Events Section */}
             <Box sx={{ mb: 5 }}>
@@ -192,6 +241,114 @@ export const Home = () => {
                 </Box>
             </Box>
 
+            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
+
+                {/* Popular Organizers Section */}
+                <Box sx={{ mb: 5 }}>
+                    <Typography variant="h4" gutterBottom>Popular Organizers</Typography>
+                    <Grid container spacing={2}>
+                        {organizers.map((organizer) => (
+                            <Grid item xs={12} sm={6} md={3} key={organizer.name}>
+                                <Card>
+                                    <CardMedia
+                                        component="img"
+                                        height="140"
+                                        image={organizer.image}
+                                        alt={organizer.name}
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h6">{organizer.name}</Typography>
+                                        <Typography>{organizer.followers} Followers</Typography>
+                                        <Button
+                                            variant="contained"
+                                            sx={{
+                                                mt: 1,
+                                                backgroundColor: '#7F1425',
+                                                '&:hover': {
+                                                    backgroundColor: '#63101C'
+                                                }
+                                            }}
+                                        >
+                                            Follow
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+
+                {/* Top Destinations Section */}
+                <Box sx={{ mb: 5 }}>
+                    <Typography variant="h4" gutterBottom>Top Destinations in Lithuania</Typography>
+                    <Grid container spacing={2}>
+                        {destinations.map((destination) => (
+                            <Grid item xs={12} sm={6} md={4} key={destination.title}>
+                                <Card>
+                                    <CardMedia
+                                        component="img"
+                                        height="140"
+                                        image={destination.image}
+                                        alt={destination.title}
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h6">{destination.title}</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+
+                {/* Testimonials Section */}
+                <Box sx={{ mb: 5 }}>
+                    <Box sx={{ mb: 3 }}>
+                        <Typography variant="h4" gutterBottom>What people said...</Typography>
+                    </Box>
+                    <Grid container spacing={2}>
+                        {testimonials.map((testimonial) => (
+                            <Grid item xs={12} sm={6} md={3} key={testimonial.name}>
+                                <Card sx={{
+                                    backgroundColor: '#7F1425',
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    position: 'relative',
+                                    paddingTop: '50px',
+                                    height: '250px', // Set a fixed height for the cards
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'flex-start', // Align content at the start
+                                }}>
+                                    <Box sx={{
+                                        position: 'absolute',
+                                        top: '20px', // Adjust position to bring avatar down
+                                        left: '50%',
+                                        transform: 'translateX(-50%)'
+                                    }}>
+                                        <Avatar
+                                            src={testimonial.image}
+                                            alt={testimonial.name}
+                                            sx={{
+                                                width: 60,
+                                                height: 60,
+                                                border: '3px solid white'
+                                            }}
+                                        />
+                                    </Box>
+                                    <CardContent sx={{ marginTop: '40px' }}> {/* Adjusted marginTop for content */}
+                                        <Typography variant="h6" gutterBottom>{testimonial.name}</Typography>
+                                        <Typography variant="body2">{testimonial.rating} <span style={{ color: '#FFD700' }}>★</span></Typography>
+                                        <Typography variant="body2">{testimonial.text}</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+
+
+            </Box>
+            
             <Footer />
         </Box>
     );

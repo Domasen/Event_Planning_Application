@@ -14,10 +14,12 @@ const Footer = () => {
                 color: 'white',
                 p: 4,
                 display: 'flex',
+                bottom: 0,
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
                 position: 'relative', // Ensure it stays in flow
             }}
+        
         >
             <Box sx={{ minWidth: '200px', m: 2 }}>
                 <Typography variant="h6" gutterBottom>
