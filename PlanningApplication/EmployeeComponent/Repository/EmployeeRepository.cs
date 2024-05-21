@@ -17,33 +17,35 @@ namespace PlanningApplication.EmployeeComponent.Repository
         public async Task<Employee?> AddEmployee(Employee employee)
         {
             await _context.Employees.AddAsync(employee);
+            await _context.SaveChangesAsync();
             return employee; 
         }
 
         public Employee? DeleteEmployee(Employee employee)
         {
             _context.Employees.Remove(employee);
+            _context.SaveChanges();
             return employee;
         }
 
         public async Task<IEnumerable<Employee>> GetAllEmployments(Guid userId)
         {
             IEnumerable<Employee> employees = new List<Employee>();
-            employees = (await _context.Employees.ToListAsync()).Where(x => x.User.Id == userId);
+            employees = (await _context.Employees.Include(p => p.User).Include(p => p.Jobs).ToListAsync()).Where(x => x.User.Id == userId);
             return employees;
         }
 
         public async Task<IEnumerable<Employee>> GetAllEventEmployees(Guid eventId)
         {
             IEnumerable<Employee> employees = new List<Employee>();
-            employees = (await _context.Employees.ToListAsync()).Where(x => x.EventId == eventId);
+            employees = (await _context.Employees.Include(p => p.User).Include(p => p.Jobs).ToListAsync());
             return employees;
         }
 
         public async Task<Employee?> GetEmployee(Guid id)
         {
             IEnumerable<Employee> employees = new List<Employee>();
-            employees = await _context.Employees.ToListAsync();
+            employees = (await _context.Employees.Include(p => p.User).Include(p => p.Jobs).ToListAsync()).Where(x => x.Id == id);
             return employees.FirstOrDefault();
         }
 
