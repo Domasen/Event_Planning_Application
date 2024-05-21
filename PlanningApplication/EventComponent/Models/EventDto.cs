@@ -31,6 +31,6 @@ namespace PlanningApplication.EventComponent.Models
 
         public float Budget { get; set; }
 
-        public List<PaymentMethod> AllowedPaymentMethods { get; set; }
+        public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
     }
 }

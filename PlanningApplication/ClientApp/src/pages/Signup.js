@@ -45,7 +45,7 @@ export const Signup = () => {
         };
 
         try {
-            const response = await axios.post('https://localhost:7264/User/register', empInfo, {
+            const response = await axios.post('User/register', empInfo, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'

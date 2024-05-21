@@ -26,7 +26,7 @@ namespace PlanningApplication.EventComponent.Services
                 Description = newEvent.Description,
                 Hashtags = newEvent.Hashtags,
                 Budget = newEvent.Budget,
-                AllowedPaymentMethods = newEvent.AllowedPaymentMethods,
+                AllowedPaymentMethods = newEvent.AllowedPaymentMethods ?? new List<PaymentMethod>(),
             };
             return await _eventRepository.AddEvent(eventToAdd);
         }
