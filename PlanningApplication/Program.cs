@@ -4,13 +4,22 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using PlanningApplication.Data;
+using PlanningApplication.Interceptors;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
 using PlanningApplication.UsersComponent.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    // Register the LogActionFilter as a global filter
+    options.Filters.Add<LogActionFilter>();
+});
+
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -31,6 +40,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddTransient<IActionLogger, ActionLogger>();
 
 
 // Add CORS services
@@ -58,7 +68,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.SameSite = SameSiteMode.None; // Required for cross-origin
         options.LoginPath = "/User/Login";
     });    
-//.AddCookie(x => x.LoginPath = "/User/Login");
+
 
 builder.Services.AddHttpContextAccessor();
 
@@ -78,6 +88,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+//app.UseRequestLogging();
+
 
 app.UseCors("AllowAllOrigins");
 

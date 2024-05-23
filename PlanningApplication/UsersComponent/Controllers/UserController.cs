@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using PlanningApplication.Data;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Services;
+using PlanningApplication.Interceptors;
 
 
 namespace PlanningApplication.UsersComponent.Controllers;
@@ -13,6 +16,7 @@ namespace PlanningApplication.UsersComponent.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
+    
     private readonly ILogger<UserController> _logger;
     private readonly IUserServices _userServices;
     private readonly UserManager<User> _userManager;
@@ -54,11 +58,11 @@ public class UserController : ControllerBase
         var result = await _userServices.LoginUser(loginDto);
         if (result.Succeeded) return Ok(result);
         return Unauthorized("Invalid login attempt");
-        
-        
     }
+    
 
     [HttpPost("logout")]
+    [LogAction]
     public async Task<ActionResult> Logout()
     {
         await _userServices.LogoutUser();
