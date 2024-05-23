@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
+import axios from 'axios';
 
 export const CreateEvent = () => {
     // Employee registration states
@@ -68,8 +69,41 @@ export const CreateEvent = () => {
         }
     };
 
-    const handleEventSubmit = (e) => {
+    const handleEventSubmit = async (e) => {
         e.preventDefault();
+
+        const eventInfo = {
+            name: eventName,
+            type:eventType,
+            isPaid:true,
+            tiecketPrice: parseFloat(price).toFixed(2),
+            date:date,
+            location:location,
+            startTime:startTime,
+            endTime:endTime,
+            format:eventFormat,
+            description:description,
+            hashtags:hashtags
+        }
+
+        try {
+            const response = await axios.post('Event/createEvent', eventInfo, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                console.log("Success")  
+            } else {
+                console.error(response)  
+
+            }
+        } catch (error) {
+            console.error('Login failed', error);
+        }
+
         console.log('Event Created:', { eventName, eventType, pricedEvent, price, date, location, startTime, endTime, eventFormat, description, hashtags });
         // Reset form fields
         setEventName('');
@@ -317,7 +351,7 @@ export const CreateEvent = () => {
                     label="Price €"
                     type="number"
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(parseFloat(e.target.value).toFixed(2))}
                     fullWidth
                     margin="normal"
                     InputLabelProps={{ style: { color: 'white' } }}

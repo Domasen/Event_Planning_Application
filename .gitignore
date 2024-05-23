@@ -2,6 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/PlanningApplication/FileContentIndex/c2694392-f9e9-479b-8005-4cf6b9bd395b.vsidx
-/.vs/PlanningApplication/FileContentIndex/ba1e8a4d-9e70-4a5b-88f4-2918bdf4341f.vsidx
-/.vs/PlanningApplication/FileContentIndex
+/.vs
