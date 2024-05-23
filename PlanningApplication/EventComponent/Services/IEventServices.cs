@@ -8,6 +8,6 @@ namespace PlanningApplication.EventComponent.Services
         Task DeleteEvent(Guid eventId);
         Task<Event?> GetEvent(Guid eventId);
         Task<IEnumerable<Event>> GetEvents();
-        Task<Event?> UpdateEvent(Event eventToUpdate);
+        Task<(Event?, bool)> UpdateEvent(EventDto eventToUpdate);
     }
 }

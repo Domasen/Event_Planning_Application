@@ -34,5 +34,9 @@ namespace PlanningApplication.EventComponent.Models
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
 
+
+        [ConcurrencyCheck]
+        public Guid Version { get; set; }
+
     }
 }

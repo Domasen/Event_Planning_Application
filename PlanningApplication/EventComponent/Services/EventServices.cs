@@ -1,5 +1,7 @@
-﻿using PlanningApplication.EventComponent.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Repository;
+using System.Data;
 
 namespace PlanningApplication.EventComponent.Services
 {
@@ -46,9 +48,35 @@ namespace PlanningApplication.EventComponent.Services
             return await _eventRepository.GetEvent(eventId);
         }
 
-        public async Task<Event?> UpdateEvent(Event eventToUpdate)
+        public async Task<(Event?, bool)> UpdateEvent(EventDto eventToUpdate)
         {
-            return await _eventRepository.UpdateEvent(eventToUpdate);
+            var eventUpdate = new Models.Event
+            {
+                Id = eventToUpdate.Id,
+                Name = eventToUpdate.Name,
+                Type = eventToUpdate.Type,
+                IsPaid = eventToUpdate.IsPaid,
+                TicketPrice = eventToUpdate.TicketPrice,
+                Date = eventToUpdate.Date,
+                StartTime= eventToUpdate.StartTime,
+                EndTime = eventToUpdate.EndTime,
+                Location = eventToUpdate.Location,
+                Format = eventToUpdate.Format,
+                Description = eventToUpdate.Description,
+                Hashtags = eventToUpdate.Hashtags,
+                Budget = eventToUpdate.Budget,
+                AllowedPaymentMethods = eventToUpdate.AllowedPaymentMethods,
+                Version = eventToUpdate.Version
+            };
+            try
+            {
+                var updatedEvent = await _eventRepository.UpdateEvent(eventUpdate);
+                return (updatedEvent, true);
+            }
+            catch (DbUpdateConcurrencyException) {
+                var currentEvent = await _eventRepository.GetEvent(eventToUpdate.Id);
+                return (currentEvent, false);
+            }
         }
     }
 }
