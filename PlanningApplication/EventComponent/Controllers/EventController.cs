@@ -8,16 +8,16 @@ namespace PlanningApplication.EventComponent.Controllers;
 [Route("[controller]")]
 public class EventController : ControllerBase
 {
-    private readonly ILogger<UserController> _logger;
+    private readonly ILogger<EventController> _logger;
     private readonly IEventServices _eventServices;
 
-    public EventController(ILogger<UserController> logger, IEventServices eventServices)
+    public EventController(ILogger<EventController> logger, IEventServices eventServices)
     {
         _logger = logger;
         _eventServices = eventServices;
     }
 
-    [HttpGet("events")]
+    [HttpGet("getAllEvents")]
     public async Task<ActionResult<List<Event>>> GetEvents()
     {
         try
@@ -56,7 +56,7 @@ public class EventController : ControllerBase
         }
     }
 
-    [HttpGet("events/{id}")]
+    [HttpGet("getEvent/{id}")]
     public async Task<ActionResult<Event>> GetEventById(Guid id)
     {
         try
@@ -75,7 +75,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
         }
     }
-    [HttpDelete("events/{id}")]
+    [HttpDelete("deleteEvent/{id}")]
     public async Task<IActionResult> DeleteEvent(Guid id)
     {
         try
@@ -95,6 +95,19 @@ public class EventController : ControllerBase
         {
             _logger.LogError(ex, "Error deleting event.");
             return StatusCode(StatusCodes.Status500InternalServerError, "Error deleting event.");
+        }
+    }
+    [HttpPut("updateEvent/{id}")]
+    public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
+    {
+        var (updatedEvent, success) = await _eventServices.UpdateEvent(eventDto);
+        if (success)
+        {
+            return Ok(updatedEvent);
+        }
+        else
+        {
+            return Conflict(updatedEvent);
         }
     }
 }

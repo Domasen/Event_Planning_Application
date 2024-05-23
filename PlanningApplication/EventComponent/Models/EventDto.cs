@@ -7,6 +7,7 @@ namespace PlanningApplication.EventComponent.Models
 {
     public class EventDto
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public EventType Type { get; set; }
@@ -32,5 +33,7 @@ namespace PlanningApplication.EventComponent.Models
         public float Budget { get; set; }
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
+
+        public Guid Version {  get; set; }
     }
 }
