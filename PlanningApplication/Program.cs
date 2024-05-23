@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using PlanningApplication.Data;
+using PlanningApplication.EmployeeComponent.Repository;
+using PlanningApplication.EmployeeComponent.Services;
+using PlanningApplication.ExpenseComponent.Repository;
+using PlanningApplication.ExpenseComponent.Services;
+using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
 using PlanningApplication.UsersComponent.Services;
@@ -29,9 +34,18 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserServices, UserServices>();
-
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserServices, UserServices>();
+builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddTransient<IEmployeeService, EmployeeService>();
+builder.Services.AddTransient<IJobRepository, JobRepository>();
+builder.Services.AddTransient<IJobService, JobService>();
+builder.Services.AddTransient<IExpenseRepository, ExpenseRepository>();
+builder.Services.AddTransient<IExpenseService, ExpenseService>();
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 // Add CORS services
 builder.Services.AddCors(options =>

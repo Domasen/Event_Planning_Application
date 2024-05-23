@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
 export const CreateEvent = () => {
@@ -33,15 +34,38 @@ export const CreateEvent = () => {
     const [hoursPlanned, setHoursPlanned] = React.useState('');
     const [workList, setWorkList] = React.useState([]);
     
-    const handleEmployeeSubmit = (e) => {
+    const handleEmployeeSubmit = async (e) => {
         e.preventDefault();
         console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
+        const employeeData = {
+            name,
+            email,
+            position,
+            hourlyRate
+        };
+        try {
+            const response = await axios.post('/employee', employeeData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                // Reset form fields
+                setName('');
+                setEmail('');
+                setPosition('');
+                setHourlyRate('');
+                setEmployeeFormVisible(false); // Hide the form after submission
+            } else {
+                console.log(response.data.message || 'Employee addition failed. Please try again.');
+            } 
+        }
+        catch (error) {
+            console.error('Employee addition failed', error);
+            //setError('Employee addition failed. Please try again.');
+        }
     };
 
     const handleEventSubmit = (e) => {
@@ -69,13 +93,31 @@ export const CreateEvent = () => {
         setWorkFormVisible(!workFormVisible);
     };
     
-    const handleJobSubmit = (e) => {
+    const handleJobSubmit = async (e) => {
         e.preventDefault();
         const newWork = { jobName, assignedEmployee, hoursPlanned };
-        setWorkList([...workList, newWork]); 
-        setJobName('');
-        setAssignedEmployee('');
-        setHoursPlanned('');
+        try {
+            const response = await axios.post('/job/Create', newWork, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                // Reset form fields
+                setWorkList([...workList, newWork]); 
+                setJobName('');
+                setAssignedEmployee('');
+                setHoursPlanned('');
+            } else {
+                console.log(response.data.message || 'Job addition failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Job addition failed', error);
+            //setError('Employee addition failed. Please try again.');
+        }
     };
     
 

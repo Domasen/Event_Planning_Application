@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import Footer from '../components/Footer.js';
 
@@ -43,9 +44,27 @@ export const EventCosts = () => {
         setNewExpense({ ...newExpense, [name]: value });
     };
 
-    const handleAddExpense = () => {
-        setWorkList([...workList, newExpense]);
-        handleClose();
+    const handleAddExpense = async () => {
+        try {
+            const response = await axios.post('/expense/Create', newExpense, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                // Reset form fields
+                setWorkList([...workList, newExpense]);
+                handleClose();
+            } else {
+                console.log(response.data.message || 'Expense addition failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Expense addition failed', error);
+            //setError('Employee addition failed. Please try again.');
+        }
     };
 
     const calculateTotalCost = () => {

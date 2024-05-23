@@ -1,0 +1,99 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.EmployeeComponent.Services;
+using PlanningApplication.JobComponent.Models;
+using PlanningApplication.UsersComponent.Models;
+using PlanningApplication.UsersComponent.Services;
+
+namespace PlanningApplication.EmployeeComponent.Controllers;
+[ApiController]
+[Route("[controller]")]
+public class EmployeeController : ControllerBase
+{
+    private readonly ILogger<EmployeeController> _logger;
+    private readonly IEmployeeService _employeeService;
+    public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeServices)
+    {
+        _logger = logger;
+        _employeeService = employeeServices;
+    }
+
+    [HttpGet("MyEmployments")]
+    public async Task<ActionResult<List<Employee>>> GetAllEmployments(Guid userId)
+    {
+        try
+        {
+            return Ok(await _employeeService.GetAllEmployments(userId));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpGet("GetEventEmployees")]
+    public async Task<ActionResult<List<Employee>>> GetEventEmployees(Guid eventId)
+    {
+        try
+        {
+            return Ok(await _employeeService.GetAllEventEmployees(eventId));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpGet("GetById")]
+    public async Task<ActionResult<Employee>> GetById(Guid id)
+    {
+        try
+        {
+            return Ok(await _employeeService.GetEmployee(id));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpDelete("Delete")]
+    public async Task<ActionResult<Employee>> Delete([FromBody] Employee employee)
+    {
+        try
+        {
+            return Ok(await _employeeService.DeleteEmployee(employee));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpPut("Update")]
+    public async Task<ActionResult<Employee>> Update([FromBody] Employee employee)
+    {
+        try
+        {
+            return Ok(await _employeeService.UpdateEmployee(employee));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpPost("Create")]
+    public async Task<ActionResult<Employee>> AddEmployee(EmployeeDto employeeDto)
+    {
+        try
+        {
+            return Ok(await _employeeService.AddEmployee(employeeDto));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+}
