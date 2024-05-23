@@ -1,4 +1,5 @@
-﻿using PlanningApplication.EmployeeComponent.Models;
+﻿using PlanningApplication.Data;
+using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Repository;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
@@ -40,6 +41,11 @@ public class JobService : IJobService
     public async Task<IEnumerable<Job>> GetAll()
     {
         return await _jobRepository.GetAll();
+    }
+
+    public async Task<IEnumerable<Job>> GetByEvent(Event heldEvent)
+    {
+        return await _jobRepository.GetAllByEvent(heldEvent);
     }
 
     public async Task<Job?> GetById(Guid jobId)

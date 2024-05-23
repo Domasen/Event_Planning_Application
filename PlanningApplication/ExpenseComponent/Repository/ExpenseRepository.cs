@@ -53,19 +53,19 @@ namespace PlanningApplication.ExpenseComponent.Repository
         {
             return (await GetAll()).Where(x => x.Id == id).First();
         }
-
+        public async Task<IEnumerable<Expense>> GetByEvent(Event heldEvent)
+        {
+            return (await GetAll()).Where(x => x.PlannedEvent.Id == heldEvent.Id);
+        }
         public async Task<Expense?> Update(Expense expense)
         {
             var result = await GetById(expense.Id);
-            result = expense;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                return result;
-            }
+            result.HourlyRate = expense.HourlyRate;
+            result.HoursPlanned = expense.HoursPlanned;
+            result.assignedEmployees = expense.assignedEmployees;
+            result.Name = expense.Name;
+            result.CalculationStrategy = expense.CalculationStrategy;
+            await _context.SaveChangesAsync();
             return result;
         }
     }

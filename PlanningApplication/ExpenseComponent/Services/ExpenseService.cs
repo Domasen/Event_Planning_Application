@@ -3,6 +3,7 @@ using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.ExpenseComponent.Repository;
 using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.JobComponent.Models;
+using PlanningApplication.Data;
 
 namespace PlanningApplication.ExpenseComponent.Services
 {
@@ -45,6 +46,11 @@ namespace PlanningApplication.ExpenseComponent.Services
         public async Task<IEnumerable<Expense>> GetAll()
         {
             return await _expenseRepository.GetAll();
+        }
+
+        public async Task<IEnumerable<Expense>> GetByEvent(Event heldEvent)
+        {
+            return await _expenseRepository.GetByEvent(heldEvent);
         }
 
         public async Task<Expense?> GetById(Guid expense)

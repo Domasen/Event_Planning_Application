@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace PlanningApplication.EmployeeComponent.Models
 {

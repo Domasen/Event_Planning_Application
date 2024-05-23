@@ -1,4 +1,5 @@
-﻿using PlanningApplication.ExpenseComponent.Models;
+﻿using PlanningApplication.Data;
+using PlanningApplication.ExpenseComponent.Models;
 
 namespace PlanningApplication.ExpenseComponent.Services
 {
@@ -9,6 +10,7 @@ namespace PlanningApplication.ExpenseComponent.Services
         public Task<Expense?> GetById(Guid expense);
         public Task<IEnumerable<Expense>> GetAll();
         public Task<Expense?> Update(Expense expense);
-        public Task<decimal> CalculatePrice(); 
+        public Task<decimal> CalculatePrice();
+        public Task<IEnumerable<Expense>> GetByEvent(Event heldEvent);
     }
 }

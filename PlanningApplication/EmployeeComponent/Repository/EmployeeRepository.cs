@@ -57,16 +57,13 @@ namespace PlanningApplication.EmployeeComponent.Repository
         public async Task<Employee?> UpdateEmployee(Employee employee)
         {
             var result = await _context.Employees.SingleOrDefaultAsync(x => x.Id == employee.Id);
-            result = employee;
-            try
-            {
+            result.Id = employee.Id;
+                result.Email = employee.Email;
+                result.Jobs = employee.Jobs;
+                result.Position = employee.Position;
+                result.HourlyPay = employee.HourlyPay;
                 await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                return result;
-            }
-            return employee;
+            return result;
         }
     }
 }

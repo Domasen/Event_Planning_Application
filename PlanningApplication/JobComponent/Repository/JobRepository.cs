@@ -30,7 +30,12 @@ namespace PlanningApplication.JobComponent.Models
 
         public async Task<IEnumerable<Job>> GetAll()
         {
-            return await _context.Jobs.Include(x => x.assignedEmployees).ToListAsync();
+            return await _context.Jobs.Include(x => x.assignedEmployees).Include(x => x.plannedEvent).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Job>> GetAllByEvent(Event heldEvent)
+        {
+            return (await GetAll()).Where(x => x.plannedEvent.Id == heldEvent.Id);
         }
 
         public async Task<Job?> GetById(Guid id)
@@ -41,15 +46,10 @@ namespace PlanningApplication.JobComponent.Models
         public async Task<Job?> Update(Job job)
         {
             var result = await GetById(job.Id);
-            result = job;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                return result;
-            }
+            result.HoursPlanned = job.HoursPlanned;
+            result.assignedEmployees = job.assignedEmployees;
+            result.Name = job.Name;
+            await _context.SaveChangesAsync();
             return result;
         }
     }

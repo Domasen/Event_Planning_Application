@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Controllers;
 using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Services;
@@ -81,5 +82,18 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [HttpGet("GetByEvent")]
+    public async Task<ActionResult<Job>> GetByEvent(Event heldEvent)
+    {
+        try
+        {
 
+            return Ok(await _jobServices.GetByEvent(heldEvent));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
 }

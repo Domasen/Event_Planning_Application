@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Controllers;
 using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.ExpenseComponent.Services;
@@ -80,12 +81,25 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
-    [HttpPost("CalculatePrice")]
+    [HttpGet("CalculatePrice")]
     public async Task<ActionResult<decimal>> CalculatePrice()
     {
         try
         {
             return Ok(await _expenseService.CalculatePrice());
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpGet("GetByEvent")]
+    public async Task<ActionResult<decimal>> GetByEvent(Event heldEvent)
+    {
+        try
+        {
+            return Ok(await _expenseService.GetByEvent(heldEvent));
         }
         catch (Exception)
         {

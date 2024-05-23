@@ -1,4 +1,5 @@
-﻿using PlanningApplication.EmployeeComponent.Models;
+﻿using PlanningApplication.Data;
+using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 
 namespace PlanningApplication.JobComponent.Models;
@@ -9,5 +10,6 @@ public interface IJobService
     public Task<Job?> Delete(Job job);
     public Task<Job?> GetById(Guid job);
     public Task<IEnumerable<Job>> GetAll();
+    public Task<IEnumerable<Job>> GetByEvent(Event heldEvent); 
     public Task<Job?> Update(Job job);
 }

@@ -44,7 +44,7 @@ export const CreateEvent = () => {
             hourlyRate
         };
         try {
-            const response = await axios.post('/employee', employeeData, {
+            const response = await axios.post('/employee/Create', employeeData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
