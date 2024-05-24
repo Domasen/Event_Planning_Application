@@ -9,5 +9,5 @@ public interface IUserRepository
     Task<User?> GetCustomer(Guid userId);
     Task<IEnumerable<User>> GetUsers();
     Task<User?> UpdateUser(User user);
-    
+
 }

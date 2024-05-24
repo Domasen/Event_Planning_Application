@@ -17,7 +17,15 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+//builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    // Register the LogActionFilter as a global filter
+    options.Filters.Add<LogActionFilter>();
+});
+
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -34,8 +42,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.SignIn.RequireConfirmedEmail = false;
     options.User.RequireUniqueEmail = true;
 }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
-
-
+builder.Services.AddTransient<IActionLogger, ActionLogger>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 builder.Services.AddTransient<IEventRepository, EventRepository>();
@@ -89,7 +96,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.SameSite = SameSiteMode.None; // Required for cross-origin
         options.LoginPath = "/User/Login";
     });    
-//.AddCookie(x => x.LoginPath = "/User/Login");
+
 
 builder.Services.AddHttpContextAccessor();
 
@@ -115,6 +122,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+//app.UseRequestLogging();
+
 
 app.UseCors("AllowAllOrigins");
 
