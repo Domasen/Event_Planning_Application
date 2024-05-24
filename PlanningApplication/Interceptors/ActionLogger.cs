@@ -6,13 +6,15 @@ public class ActionLogger : IActionLogger
     private readonly IConfiguration _configuration;
     private readonly bool _isLoggingEnabled;
     private readonly bool _logToDatabase;
-
+    private readonly string _filePath;
     public ActionLogger(ILogger<ActionLogger> logger, IConfiguration configuration)
     {
         _logger = logger;
         _configuration = configuration;
         _isLoggingEnabled = _configuration.GetValue<bool>("Logging:ActionLogging:Enabled");
-        _logToDatabase = _configuration.GetValue<bool>("Logging:ActionLogging:LogToDatabase");
+        _logToDatabase = _configuration.GetValue<bool>("Logging:ActionLogging:LogToFile");
+        _filePath = _configuration.GetValue<string>("Logging:ActionLogging:FilePath");
+        //_filePath = @"C:\Users\Domas\Desktop\EventPlanner\PlanningApplication\log.txt";
     }
 
 
@@ -28,7 +30,7 @@ public class ActionLogger : IActionLogger
 
         if (_logToDatabase)
         {
-            // Implement database logging here
+            File.AppendAllText(_filePath, $"User: {username}, Roles: {roles}, Class: {className}, Method: {methodName}, Timestamp: {timestamp}\n");
         }
     }
 

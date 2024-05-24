@@ -6,12 +6,6 @@ namespace PlanningApplication.Interceptors;
 
 public class LogActionFilter : IAsyncActionFilter
 {
-    // private readonly IActionLogger _logger;
-    // public LogActionFilter(ActionLogger logger)
-    // {
-    //     _logger = logger;
-    // }
-
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         var descriptor = context.ActionDescriptor as ControllerActionDescriptor;

@@ -52,6 +52,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
+    [LogAction]
     public async Task<ActionResult> Login(LoginDto loginDto)
     {
 
