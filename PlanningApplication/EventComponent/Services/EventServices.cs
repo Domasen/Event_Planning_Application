@@ -18,7 +18,6 @@ namespace PlanningApplication.EventComponent.Services
             {
                 Name = newEvent.Name,
                 Type = newEvent.Type,
-                IsPaid = newEvent.IsPaid,
                 TicketPrice = newEvent.TicketPrice,
                 Date = newEvent.Date,
                 StartTime = newEvent.StartTime,
@@ -28,6 +27,7 @@ namespace PlanningApplication.EventComponent.Services
                 Description = newEvent.Description,
                 Hashtags = newEvent.Hashtags,
                 Budget = newEvent.Budget,
+                Categories = newEvent.Categories ?? new List<EventCategory>(),
                 AllowedPaymentMethods = newEvent.AllowedPaymentMethods ?? new List<PaymentMethod>(),
             };
             return await _eventRepository.AddEvent(eventToAdd);
@@ -55,7 +55,6 @@ namespace PlanningApplication.EventComponent.Services
                 Id = eventToUpdate.Id,
                 Name = eventToUpdate.Name,
                 Type = eventToUpdate.Type,
-                IsPaid = eventToUpdate.IsPaid,
                 TicketPrice = eventToUpdate.TicketPrice,
                 Date = eventToUpdate.Date,
                 StartTime= eventToUpdate.StartTime,
@@ -65,6 +64,7 @@ namespace PlanningApplication.EventComponent.Services
                 Description = eventToUpdate.Description,
                 Hashtags = eventToUpdate.Hashtags,
                 Budget = eventToUpdate.Budget,
+                Categories = eventToUpdate.Categories,
                 AllowedPaymentMethods = eventToUpdate.AllowedPaymentMethods,
                 Version = eventToUpdate.Version
             };

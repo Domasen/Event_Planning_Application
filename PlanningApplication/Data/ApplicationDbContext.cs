@@ -52,6 +52,19 @@ public class ApplicationDbContext : IdentityDbContext<User>
         modelBuilder.Entity<Event>().Property(e => e.AllowedPaymentMethods)
             .HasConversion(converter).Metadata.SetValueComparer(comparer);
 
+        var categoryConverter = new ValueConverter<List<EventCategory>, string>(
+                v => string.Join(',', v),
+                v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(Enum.Parse<EventCategory>).ToList());
+
+        var categoryComparer = new ValueComparer<List<EventCategory>>(
+            (c1, c2) => c1.SequenceEqual(c2),
+            c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+            c => c.ToList()
+        );
+
+        modelBuilder.Entity<Event>().Property(e => e.Categories)
+            .HasConversion(categoryConverter).Metadata.SetValueComparer(categoryComparer);
+
         base.OnModelCreating(modelBuilder);
     }
 

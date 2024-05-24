@@ -4,7 +4,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
-import Footer from '../components/Footer.js'; // Ensure the correct path is used
+import EventTypeSelect from "../components/EventTypesSelect.js"
+import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
 
 export const CreateEvent = () => {
     // Event registration states
@@ -19,26 +20,160 @@ export const CreateEvent = () => {
     const [eventFormat, setEventFormat] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [hashtags, setHashtags] = React.useState('');
+    const [categories, setCategories] = React.useState([])
+
+    const handleEventSubmit = (e) => {
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
 
     const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
+
+    const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
+
+    const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
+
+    const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
+
+    const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
+    // Work registration states
+    const [workFormVisible, setWorkFormVisible] = React.useState(false);
+    const [jobName, setJobName] = React.useState('');
+    const [assignedEmployee, setAssignedEmployee] = React.useState('');
+    const [hoursPlanned, setHoursPlanned] = React.useState('');
+    const [workList, setWorkList] = React.useState([]);
+    
+    const handleEmployeeSubmit = (e) => {
+        e.preventDefault();
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        // Reset form fields
+        setName('');
+        setEmail('');
+        setPosition('');
+        setHourlyRate('');
+        setEmployeeFormVisible(false); // Hide the form after submission
+    };
+
+    const handleEventSubmit = async (e) => {
+=========
+    const handleEventSubmit = (e) => {
+>>>>>>>>> Temporary merge branch 2
         e.preventDefault();
 
         const eventInfo = {
             name: eventName,
             type:eventType,
-            isPaid:true,
-            tiecketPrice: parseFloat(price).toFixed(2),
+            budget:budget,
+            ticketPrice: price,
             date:date,
             location:location,
             startTime:startTime,
             endTime:endTime,
             format:eventFormat,
-            description:description,
+            description: description,
+            categories: categories.map(category => category.name),
             hashtags:hashtags
         }
 
         try {
-            const response = await axios.post('Event/createEvent', eventInfo, {
+            const response = axios.post('Event/createEvent', eventInfo, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
@@ -55,11 +190,11 @@ export const CreateEvent = () => {
             console.error('Login failed', error);
         }
 
-        console.log('Event Created:', { eventName, eventType, pricedEvent, price, date, location, startTime, endTime, eventFormat, description, hashtags });
+        console.log('Event Created:', { eventName, eventType, budget, price, date, location, startTime, endTime, eventFormat, description, hashtags });
         // Reset form fields
         setEventName('');
         setEventType('');
-        setPricedEvent('');
+        setBudget('');
         setPrice('');
         setDate('');
         setLocation('');
@@ -68,6 +203,7 @@ export const CreateEvent = () => {
         setEventFormat('');
         setDescription('');
         setHashtags('');
+        setCategories([]);
     };
 
     return (
@@ -120,25 +256,14 @@ export const CreateEvent = () => {
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
                 />
+                <EventTypeSelect eventType={eventType} setEventType={setEventType} />
+                <EventCategoriesMultiSelect categories={categories} setCategories={setCategories} />
                 <TextField
-                    required
-                    id="eventType"
-                    label="Event Type"
-                    value={eventType}
-                    onChange={(e) => setEventType(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
-                    InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
-                        sx: { '& fieldset': { borderColor: 'white' } }
-                    }}
-                />
-                <TextField
-                    id="pricedEvent"
-                    label="Priced Event"
-                    value={pricedEvent}
-                    onChange={(e) => setPricedEvent(e.target.value)}
+                    id="budget"
+                    label="Budget"
+                    value={budget}
+                    type="number"
+                    onChange={(e) => setBudget(e.target.value)}
                     fullWidth
                     margin="normal"
                     InputLabelProps={{ style: { color: 'white' } }}
@@ -152,7 +277,7 @@ export const CreateEvent = () => {
                     label="Price €"
                     type="number"
                     value={price}
-                    onChange={(e) => setPrice(parseFloat(e.target.value).toFixed(2))}
+                    onChange={(e) => setPrice(e.target.value)}
                     fullWidth
                     margin="normal"
                     InputLabelProps={{ style: { color: 'white' } }}

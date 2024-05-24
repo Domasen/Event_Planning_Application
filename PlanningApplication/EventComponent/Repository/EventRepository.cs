@@ -13,7 +13,7 @@ namespace PlanningApplication.EventComponent.Repository
         }
         public async Task<Event?> AddEvent(Event newEvent)
         {
-            newEvent.Version = new Guid();
+            newEvent.Version = Guid.NewGuid();
             _context.Events.Add(newEvent);
             await _context.SaveChangesAsync();
             var databseEvent = await _context.Events.FindAsync(newEvent.Id);
