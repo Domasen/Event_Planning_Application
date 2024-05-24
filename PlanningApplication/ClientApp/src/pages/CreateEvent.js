@@ -6,13 +6,6 @@ import Typography from '@mui/material/Typography';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
 export const CreateEvent = () => {
-    // Employee registration states
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [position, setPosition] = React.useState('');
-    const [hourlyRate, setHourlyRate] = React.useState('');
-    const [employeeFormVisible, setEmployeeFormVisible] = React.useState(false);
-
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
@@ -25,24 +18,6 @@ export const CreateEvent = () => {
     const [eventFormat, setEventFormat] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [hashtags, setHashtags] = React.useState('');
-
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
@@ -61,24 +36,6 @@ export const CreateEvent = () => {
         setHashtags('');
     };
 
-    const toggleEmployeeFormVisibility = () => {
-        setEmployeeFormVisible(!employeeFormVisible);
-    };
-
-    const toggleWorkFormVisibility = () => {
-        setWorkFormVisible(!workFormVisible);
-    };
-    
-    const handleJobSubmit = (e) => {
-        e.preventDefault();
-        const newWork = { jobName, assignedEmployee, hoursPlanned };
-        setWorkList([...workList, newWork]); 
-        setJobName('');
-        setAssignedEmployee('');
-        setHoursPlanned('');
-    };
-    
-
     return (
         <Box
             sx={{
@@ -92,120 +49,6 @@ export const CreateEvent = () => {
                 position: 'relative',
             }}
         >
-            <Button
-                variant="contained"
-                onClick={toggleEmployeeFormVisibility}
-                sx={{
-                    backgroundColor: '#7F1425',
-                    '&:hover': {
-                        backgroundColor: '#63101C'
-                    },
-                    mb: 2
-                }}
-            >
-                Register Employee
-            </Button>
-
-            {employeeFormVisible && (
-                <Box
-                    component="form"
-                    sx={{
-                        background: 'linear-gradient(135deg, #4B0611 30%, #8B565E 90%)',
-                        color: 'white',
-                        p: 4,
-                        borderRadius: 2,
-                        width: '80%', // Užtikrinti, kad forma užimtų 80% pločio
-                        marginTop: 3,
-                        boxShadow: '2px 2px 12px rgba(0,0,0,0.4)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        alignSelf: 'center', // Horizontaliai centruoti formą
-                        marginBottom: '40px', // Pridėti vietos apačioje
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    onSubmit={handleEmployeeSubmit}
-                >
-                    <Typography variant="h4" gutterBottom>
-                        Employee Registration
-                    </Typography>
-                    <TextField
-                        required
-                        id="name"
-                        label="Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <TextField
-                        required
-                        id="email"
-                        label="Email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <TextField
-                        required
-                        id="position"
-                        label="Position"
-                        value={position}
-                        onChange={(e) => setPosition(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <TextField
-                        required
-                        id="hourly_rate"
-                        label="Hourly Rate"
-                        type="number"
-                        value={hourlyRate}
-                        onChange={(e) => setHourlyRate(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <Button
-                        variant="contained"
-                        sx={{
-                            mt: 2,
-                            backgroundColor: '#7F1425',
-                            '&:hover': {
-                                backgroundColor: '#63101C'
-                            }
-                        }}
-                        type="submit"
-                    >
-                        Register
-                    </Button>
-                </Box>
-            )}
-           
-            
-            
             <Box
                 component="form"
                 sx={{
@@ -400,140 +243,6 @@ export const CreateEvent = () => {
                     Save & Continue
                 </Button>
             </Box>
-            <Button
-                variant="contained"
-                onClick={toggleWorkFormVisibility}
-                sx={{
-                    backgroundColor: '#7F1425',
-                    '&:hover': {
-                        backgroundColor: '#63101C'
-                    },
-                    mb: 2
-                }}
-            >
-                Add Work
-            </Button>
-            {workFormVisible && (
-                <Box
-                    component="form"
-                    sx={{
-                        background: 'linear-gradient(135deg, #4B0611 30%, #8B565E 90%)',
-                        color: 'white',
-                        p: 4,
-                        borderRadius: 2,
-                        width: '80%', // Užtikrinti, kad forma užimtų 80% pločio
-                        marginTop: 3,
-                        boxShadow: '2px 2px 12px rgba(0,0,0,0.4)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        alignSelf: 'center', // Horizontaliai centruoti formą
-                        marginBottom: '40px', // Pridėti vietos apačioje
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    onSubmit={handleJobSubmit}
-                >
-                    <Typography variant="h4" gutterBottom>
-                        Add work
-                    </Typography>
-                    <TextField
-                        required
-                        id="jobName"
-                        label="Work"
-                        value={jobName}
-                        onChange={(e) => setJobName(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <TextField
-                        required
-                        id="assignedEmployee"
-                        label="Responsible employee"
-                        value={assignedEmployee}
-                        onChange={(e) => setAssignedEmployee(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <TextField
-                        required
-                        id="hoursPlanned"
-                        label="Number of hours planned"
-                        type="number"
-                        value={hoursPlanned}
-                        onChange={(e) => setHoursPlanned(e.target.value)}
-                        fullWidth
-                        margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
-                        InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
-                        }}
-                    />
-                    <Button
-                        variant="contained"
-                        sx={{
-                            mt: 2,
-                            backgroundColor: '#7F1425',
-                            '&:hover': {
-                                backgroundColor: '#63101C'
-                            }
-                        }}
-                        type="submit"
-                    >
-                        Add Work
-                    </Button>
-                </Box>
-            )}
-
-            {/* Added Work List */}
-            <Box
-                sx={{
-                    background: 'linear-gradient(135deg, #4B0611 30%, #8B565E 90%)',
-                    color: 'white',
-                    p: 4,
-                    borderRadius: 4,
-                    width: '80%',
-                    marginTop: 3,
-                    overflow: 'auto',
-                    margin: '0 auto', 
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    marginBottom: '40px',
-                }}
-            >
-                <Typography variant="h4" gutterBottom>
-                    Added Work List
-                </Typography>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                    <thead>
-                    <tr>
-                        <th style={{ padding: '8px', borderBottom: '1px solid #ccc', textAlign: 'left' }}>Job Name</th>
-                        <th style={{ padding: '8px', borderBottom: '1px solid #ccc', textAlign: 'left' }}>Assigned Employee</th>
-                        <th style={{ padding: '8px', borderBottom: '1px solid #ccc', textAlign: 'left' }}>Hours Planned</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {workList.map((work, index) => (
-                        <tr key={index}>
-                            <td style={{ padding: '8px', borderBottom: '1px solid #ccc' }}>{work.jobName}</td>
-                            <td style={{ padding: '8px', borderBottom: '1px solid #ccc' }}>{work.assignedEmployee}</td>
-                            <td style={{ padding: '8px', borderBottom: '1px solid #ccc' }}>{work.hoursPlanned}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </Box>
-            <Footer /> 
         </Box>
     );
 };
