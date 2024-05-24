@@ -358,7 +358,6 @@ export const Home = () => {
 
             </Box>
             
-            <Footer />
         </Box>
     );
 };
