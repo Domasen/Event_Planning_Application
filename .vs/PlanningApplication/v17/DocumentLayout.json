@@ -3,16 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\repository\\expenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\repository\\expenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\models\\customexpensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\models\\customexpensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\repository\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\repository\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\services\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\services\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\models\\jobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\models\\jobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\repository\\jobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\repository\\jobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\repository\\ijobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\repository\\ijobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\controllers\\expensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\controllers\\expensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\data\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\data\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\clientapp\\src\\pages\\eventcosts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\pages\\eventcosts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\clientapp\\src\\pages\\createevent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\pages\\createevent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\services\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\services\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\employeecomponent\\services\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,22 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\employeecomponent\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\employeecomponent\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\services\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\services\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\repository\\expenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\repository\\expenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\models\\expense.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\repository\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\repository\\iexpenserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\employeecomponent\\repository\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,24 +99,12 @@
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\setupproxy.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\clientapp\\src\\pages\\eventcosts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\pages\\eventcosts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\clientapp\\src\\pages\\createevent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\pages\\createevent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240523065142_JobTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PlanningApplication\\Migrations\\20240523065142_JobTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\services\\ijobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -87,28 +115,8 @@
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\services\\iexpenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\services\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\services\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\repository\\ijobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\repository\\ijobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\repository\\jobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\repository\\jobrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\expensecomponent\\models\\customexpensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\expensecomponent\\models\\customexpensedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\employeecomponent\\models\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\employeecomponent\\models\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\jobcomponent\\models\\jobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\jobcomponent\\models\\jobdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240523045327_JobTest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -195,10 +203,6 @@
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\clientapp\\src\\pages\\home.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|c:\\users\\matas\\source\\repos\\event_planning_application\\planningapplication\\planningapplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{288DC392-C222-49F8-A348-234490B936CA}|PlanningApplication\\PlanningApplication.csproj|solutionrelative:planningapplication\\planningapplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -230,7 +234,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 13,
           "Children": [
             {
               "$type": "Bookmark",
@@ -254,72 +258,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EmployeeService.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "DocumentIndex": 9,
+              "Title": "Job.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\Job.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Models\\Job.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\Job.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Models\\Job.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:15:04.523Z",
+              "WhenOpened": "2024-05-21T15:15:20.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACUAAABDAAAA",
+              "DocumentIndex": 5,
+              "Title": "JobService.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Services\\JobService.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Services\\JobService.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Services\\JobService.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Services\\JobService.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAABsAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:14:41.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ExpenseController.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
-              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAAAFcAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T06:45:11.058Z",
+              "WhenOpened": "2024-05-21T19:50:24.212Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ExpenseService.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
-              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAABUAAAAMAAAA",
+              "Title": "JobDto.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\JobDto.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Models\\JobDto.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\JobDto.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Models\\JobDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T06:30:06.803Z",
+              "WhenOpened": "2024-05-21T19:48:08.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IJobRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:48:55.426Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ExpenseRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
-              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAuwDAAAAAIAAAA",
+              "Title": "JobRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABcAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T06:10:03.989Z",
+              "WhenOpened": "2024-05-21T19:48:32.263Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "IExpenseRepository.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Repository\\IExpenseRepository.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Repository\\IExpenseRepository.cs",
@@ -332,7 +336,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExpenseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
+              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Repository\\ExpenseRepository.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAQwB4AAABpAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T06:10:03.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Expense.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
+              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAAAB8AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T05:34:54.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\.gitignore",
+              "RelativeDocumentMoniker": "PlanningApplication\\.gitignore",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\.gitignore",
+              "RelativeToolTip": "PlanningApplication\\.gitignore",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAxwCoAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-21T14:34:34.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JobController.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
+              "RelativeToolTip": "PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T19:46:44.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CustomExpenseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
+              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T05:56:23.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Program.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Program.cs",
@@ -345,97 +414,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IEmployeeService.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:15:12.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFUAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:13:47.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Job.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\Job.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Models\\Job.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\Job.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Models\\Job.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:15:20.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:14:53.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Expense.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
-              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Models\\Expense.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAA6wCMAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:34:54.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
-              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAVAAAA",
+              "Title": "ExpenseController.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
+              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Controllers\\ExpenseController.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAAAFcAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T15:14:18.19Z",
+              "WhenOpened": "2024-05-23T06:45:11.058Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "setupProxy.js",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\setupProxy.js",
-              "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\setupProxy.js",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\setupProxy.js",
-              "RelativeToolTip": "PlanningApplication\\ClientApp\\src\\setupProxy.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-05-16T18:46:33.661Z",
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Data\\Event.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\Data\\Event.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Data\\Event.cs",
+              "RelativeToolTip": "PlanningApplication\\Data\\Event.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T09:06:27.023Z",
               "EditorCaption": ""
             },
             {
@@ -446,7 +446,7 @@
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\pages\\EventCosts.js",
               "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\pages\\EventCosts.js",
               "RelativeToolTip": "PlanningApplication\\ClientApp\\src\\pages\\EventCosts.js",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADAAAAA3AAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAAADAAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-05-23T05:27:28.747Z",
               "EditorCaption": ""
@@ -467,6 +467,114 @@
             {
               "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "ExpenseService.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
+              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Services\\ExpenseService.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAABUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T06:30:06.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Services\\IEmployeeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:15:12.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Services\\EmployeeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:15:04.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFUAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:13:47.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Repository\\EmployeeRepository.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACUAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:14:41.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Repository\\IEmployeeRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:14:53.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
+              "RelativeToolTip": "PlanningApplication\\EmployeeComponent\\Models\\Employee.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T15:14:18.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "setupProxy.js",
+              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\setupProxy.js",
+              "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\setupProxy.js",
+              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\setupProxy.js",
+              "RelativeToolTip": "PlanningApplication\\ClientApp\\src\\setupProxy.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-16T18:46:33.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "20240523065142_JobTest.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240523065142_JobTest.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Migrations\\20240523065142_JobTest.cs",
@@ -479,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Data\\ApplicationDbContext.cs",
@@ -492,20 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "JobController.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Controllers\\JobController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:46:44.912Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 26,
               "Title": "IJobService.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Services\\IJobService.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Services\\IJobService.cs",
@@ -518,7 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 27,
               "Title": "IExpenseService.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Services\\IExpenseService.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Services\\IExpenseService.cs",
@@ -531,59 +626,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "JobService.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Services\\JobService.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Services\\JobService.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Services\\JobService.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Services\\JobService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAABwAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:50:24.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "JobRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Repository\\JobRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:48:32.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IJobRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Repository\\IJobRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:48:55.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "CustomExpenseDto.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
-              "RelativeToolTip": "PlanningApplication\\ExpenseComponent\\Models\\CustomExpenseDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T05:56:23.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "EmployeeDto.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\EmployeeComponent\\Models\\EmployeeDto.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\EmployeeComponent\\Models\\EmployeeDto.cs",
@@ -596,20 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "JobDto.cs",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\JobDto.cs",
-              "RelativeDocumentMoniker": "PlanningApplication\\JobComponent\\Models\\JobDto.cs",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\JobComponent\\Models\\JobDto.cs",
-              "RelativeToolTip": "PlanningApplication\\JobComponent\\Models\\JobDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T19:48:08.848Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "20240523045327_JobTest.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240523045327_JobTest.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Migrations\\20240523045327_JobTest.cs",
@@ -622,7 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "20240523043401_JobTest.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240523043401_JobTest.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Migrations\\20240523043401_JobTest.cs",
@@ -635,7 +665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "Login.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\pages\\Login.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\pages\\Login.js",
@@ -648,7 +678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Repository\\IUserRepository.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Repository\\IUserRepository.cs",
@@ -661,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Repository\\UserRepository.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Repository\\UserRepository.cs",
@@ -674,7 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Controllers\\UserController.cs",
@@ -687,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\.env",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\.env",
@@ -700,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "IUserServices.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Services\\IUserServices.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Services\\IUserServices.cs",
@@ -713,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "UserServices.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Services\\UserServices.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Services\\UserServices.cs",
@@ -726,7 +756,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\UsersComponent\\Models\\User.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\UsersComponent\\Models\\User.cs",
@@ -739,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "AppRoutes.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\AppRoutes.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\AppRoutes.js",
@@ -752,7 +782,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "serviceWorkerRegistration.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\serviceWorkerRegistration.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\serviceWorkerRegistration.js",
@@ -765,7 +795,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "service-worker.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\service-worker.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\service-worker.js",
@@ -778,7 +808,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "reportWebVitals.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\reportWebVitals.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\reportWebVitals.js",
@@ -791,7 +821,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "index.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\index.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\index.js",
@@ -804,7 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "20240521150403_Initial.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240521150403_Initial.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Migrations\\20240521150403_Initial.cs",
@@ -815,7 +845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "20240521150320_TestAA.cs",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Migrations\\20240521150320_TestAA.cs",
               "RelativeDocumentMoniker": "PlanningApplication\\Migrations\\20240521150320_TestAA.cs",
@@ -826,20 +856,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\.gitignore",
-              "RelativeDocumentMoniker": "PlanningApplication\\.gitignore",
-              "ToolTip": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\.gitignore",
-              "RelativeToolTip": "PlanningApplication\\.gitignore",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-21T14:34:34.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "Home.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\pages\\Home.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\pages\\Home.js",
@@ -852,7 +869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "Footer.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\components\\Footer.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\components\\Footer.js",
@@ -865,7 +882,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "PlanningApplication.csproj",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\PlanningApplication.csproj",
               "RelativeDocumentMoniker": "PlanningApplication\\PlanningApplication.csproj",
@@ -878,7 +895,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\App.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\App.js",
@@ -891,7 +908,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "custom.css",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\custom.css",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\custom.css",
@@ -904,7 +921,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "PlanningApplication\\Properties\\launchSettings.json",
@@ -917,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\.gitignore",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\.gitignore",
@@ -930,7 +947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "NavMenu.css",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\components\\NavMenu.css",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\components\\NavMenu.css",
@@ -943,7 +960,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "NavMenu.js",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\ClientApp\\src\\components\\NavMenu.js",
               "RelativeDocumentMoniker": "PlanningApplication\\ClientApp\\src\\components\\NavMenu.js",
@@ -956,7 +973,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Matas\\source\\repos\\Event_Planning_Application\\PlanningApplication\\appsettings.json",
               "RelativeDocumentMoniker": "PlanningApplication\\appsettings.json",
