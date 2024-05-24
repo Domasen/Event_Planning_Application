@@ -4,6 +4,7 @@ import { Signup } from "./pages/Signup"
 import { CreateEvent } from "./pages/CreateEvent"
 import { EventCosts } from "./pages/EventCosts"
 import { Category } from "./pages/Category";
+import {SearchResults } from "./pages/SearchResults"
 
 const AppRoutes = [
     {
@@ -37,6 +38,10 @@ const AppRoutes = [
     {
         path: 'category',
         element: <Category />
+    }, 
+    {
+        path: 'searchResults',
+        element: <SearchResults />
     }
 ];
 
