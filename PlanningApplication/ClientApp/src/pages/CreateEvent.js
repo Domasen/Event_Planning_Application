@@ -4,12 +4,16 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
+import axios from 'axios';
+import EventTypeSelect from "../components/EventTypesSelect.js"
+import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
+
 
 export const CreateEvent = () => {
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
-    const [pricedEvent, setPricedEvent] = React.useState('');
+    const [budget, setBudget] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [date, setDate] = React.useState('');
     const [location, setLocation] = React.useState('');
@@ -18,14 +22,49 @@ export const CreateEvent = () => {
     const [eventFormat, setEventFormat] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [hashtags, setHashtags] = React.useState('');
+    const [categories, setCategories] = React.useState([])
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
-        console.log('Event Created:', { eventName, eventType, pricedEvent, price, date, location, startTime, endTime, eventFormat, description, hashtags });
+
+        const eventInfo = {
+            name: eventName,
+            type:eventType,
+            budget:budget,
+            ticketPrice: price,
+            date:date,
+            location:location,
+            startTime:startTime,
+            endTime:endTime,
+            format:eventFormat,
+            description: description,
+            categories: categories.map(category => category.name),
+            hashtags:hashtags
+        }
+
+        try {
+            const response = axios.post('Event/createEvent', eventInfo, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response.status === 200) {
+                console.log("Success")  
+            } else {
+                console.error(response)  
+
+            }
+        } catch (error) {
+            console.error('Login failed', error);
+        }
+
+        console.log('Event Created:', { eventName, eventType, budget, price, date, location, startTime, endTime, eventFormat, description, hashtags });
         // Reset form fields
         setEventName('');
         setEventType('');
-        setPricedEvent('');
+        setBudget('');
         setPrice('');
         setDate('');
         setLocation('');
@@ -34,6 +73,7 @@ export const CreateEvent = () => {
         setEventFormat('');
         setDescription('');
         setHashtags('');
+        setCategories([]);
     };
 
     return (
@@ -86,25 +126,14 @@ export const CreateEvent = () => {
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
                 />
+                <EventTypeSelect eventType={eventType} setEventType={setEventType} />
+                <EventCategoriesMultiSelect categories={categories} setCategories={setCategories} />
                 <TextField
-                    required
-                    id="eventType"
-                    label="Event Type"
-                    value={eventType}
-                    onChange={(e) => setEventType(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
-                    InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
-                        sx: { '& fieldset': { borderColor: 'white' } }
-                    }}
-                />
-                <TextField
-                    id="pricedEvent"
-                    label="Priced Event"
-                    value={pricedEvent}
-                    onChange={(e) => setPricedEvent(e.target.value)}
+                    id="budget"
+                    label="Budget"
+                    value={budget}
+                    type="number"
+                    onChange={(e) => setBudget(e.target.value)}
                     fullWidth
                     margin="normal"
                     InputLabelProps={{ style: { color: 'white' } }}
