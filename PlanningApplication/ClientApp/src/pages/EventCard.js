@@ -1,8 +1,16 @@
 ﻿import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, Button } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 import { MoreVert } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom'; // Pakeitėme useHistory į useNavigate
 
 const EventCard = ({ event }) => {
+    const navigate = useNavigate(); // Sukurkite navigate funkciją
+
+    const handleUpdateClick = () => {
+        // Nukreipkite vartotoją į EventDetail puslapį su renginio ID
+        navigate(`/event/${event.id}`);
+    };
+
     return (
         <Card sx={{ display: 'flex', mb: 2, alignItems: 'center', p: 2 }}>
             <CardMedia
@@ -32,8 +40,9 @@ const EventCard = ({ event }) => {
                 variant="contained"
                 color="primary"
                 sx={{ backgroundColor: '#7F1425', '&:hover': { backgroundColor: '#63101C' } }}
+                onClick={handleUpdateClick} // Pridėkite paspaudimo tvarkyklę
             >
-                Invite
+                UPDATE
             </Button>
             <MoreVert />
         </Card>

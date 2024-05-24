@@ -1,17 +1,13 @@
-﻿import React from 'react';
-import { useContext, useState, useCallback, useEffect } from 'react';
+﻿// EventContext.js
+import React, { useContext, useState, useCallback } from 'react';
+import { useFetch } from '../hooks/useFetch.js';
 import axios from 'axios';
-import {useFetch } from '../hooks/useFetch.js';
 
 const EventContext = React.createContext();
 
 const EventProvider = ({ children }) => {
- /*   const [categoryEvents, setCategoryEvents] = useState([]);*/
-    /*const [events, setEvents] = useState([]);*/
     const [searchTerm, setSearchTerm] = useState('a');
-
     const { data: events, refetch: fetchEvents } = useFetch('Event/getAllEvents');
-
     const { data: categoryEvents, refetch: fetchEventByCategory, setUrl } = useFetch('Event/getEventsByCategory');
 
     const fetchEventsByCategory = (id) => {
@@ -19,12 +15,20 @@ const EventProvider = ({ children }) => {
         fetchEventByCategory();
     }
 
+    const updateEvent = async (updatedEvent) => {
+        try {
+            await axios.put(`Event/updateEvent/${updatedEvent.id}`, updatedEvent);
+            fetchEvents();
+        } catch (error) {
+            console.error('Failed to update event', error);
+        }
+    };
 
     return (
-        <EventContext.Provider value={{ categoryEvents, fetchEventsByCategory, setSearchTerm }}>
+        <EventContext.Provider value={{ events, categoryEvents, fetchEventsByCategory, setSearchTerm, updateEvent }}>
             {children}
         </EventContext.Provider>
-    )
+    );
 }
 
 export const useEventContext = () => {
