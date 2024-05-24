@@ -20,17 +20,13 @@ const eventData = {
     totalBudget: 5000,
 };
 
-const initialWorkList = [
-    { jobName: 'Setup Stage', assignedEmployee: 'John Doe', hourlyRate: 15, hoursWorked: 5 },
-    { jobName: 'Sound Check', assignedEmployee: 'Jane Smith', hourlyRate: 20, hoursWorked: 3 },
-    { jobName: 'Lighting Setup', assignedEmployee: 'Alex Johnson', hourlyRate: 18, hoursWorked: 4 },
-];
 
 export const EventCosts = () => {
-    const [workList, setWorkList] = useState(initialWorkList);
+    const [workList, setWorkList] = useState("");
     const [open, setOpen] = useState(false);
     const [newExpense, setNewExpense] = useState({ jobName: '', assignedEmployee: '', hourlyRate: '', hoursWorked: '' });
-
+    axios.get('Expense/GetByEvent?eventId=606812f4-1973-4c11-9a1d-605b3bb2d120').then((getResponse) => setWorkList(getResponse.data))
+    console.log(workList)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -67,15 +63,7 @@ export const EventCosts = () => {
         }
     };
 
-    const calculateTotalCost = () => {
-        let totalCost = 0;
-        workList.forEach((work) => {
-            totalCost += work.hourlyRate * work.hoursWorked;
-        });
-        return totalCost;
-    };
-
-    const remainingBudget = eventData.totalBudget - calculateTotalCost();
+    const remainingBudget = eventData.totalBudget;
 
     return (
         <Box
@@ -128,7 +116,7 @@ export const EventCosts = () => {
             </Box>
             <Box sx={{ width: '80%', textAlign: 'center', mb: 3 }}>
                 <Typography variant="h6" gutterBottom>
-                    Total Cost: ${calculateTotalCost()}
+                    Total Cost: ${axios.get("Expense/CalculatePrice?eventId=606812f4-1973-4c11-9a1d-605b3bb2d120").data}
                 </Typography>
                 <Button variant="contained" onClick={handleOpen} sx={{ backgroundColor: '#7F1425', color: 'white', mt: 2 }}>
                     Add Custom Expense

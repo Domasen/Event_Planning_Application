@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.EventComponent.Models;
 
 namespace PlanningApplication.JobComponent.Models
 {
@@ -10,6 +11,6 @@ namespace PlanningApplication.JobComponent.Models
         Task<Job?> Update(Job job);
         Task<Job?> Delete(Job job);
         Task<Job?> Create(Job job);
-        Task<IEnumerable<Job>> GetAllByEvent(Event heldEvent);
+        Task<IEnumerable<Job>> GetAllByEvent(Guid eventId);
     }
 }

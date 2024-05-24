@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
-import axios from 'axios';
 
 export const CreateEvent = () => {
     // Employee registration states

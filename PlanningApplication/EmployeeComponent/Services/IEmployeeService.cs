@@ -11,4 +11,5 @@ public interface IEmployeeService
     public Task<IEnumerable<Employee>> GetAllEmployments(Guid userId);
     public Task<IEnumerable<Employee>> GetAllEventEmployees(Guid eventId);
     public Task<Employee?> UpdateEmployee(Employee employee);
+    public Task<IEnumerable<Employee>> GetAll();
 }

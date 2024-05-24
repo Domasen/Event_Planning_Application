@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.EventComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 
 namespace PlanningApplication.JobComponent.Models
@@ -33,9 +34,9 @@ namespace PlanningApplication.JobComponent.Models
             return await _context.Jobs.Include(x => x.assignedEmployees).Include(x => x.plannedEvent).ToListAsync();
         }
 
-        public async Task<IEnumerable<Job>> GetAllByEvent(Event heldEvent)
+        public async Task<IEnumerable<Job>> GetAllByEvent(Guid eventId)
         {
-            return (await GetAll()).Where(x => x.plannedEvent.Id == heldEvent.Id);
+            return (await GetAll()).Where(x => x.plannedEvent.Id == eventId);
         }
 
         public async Task<Job?> GetById(Guid id)

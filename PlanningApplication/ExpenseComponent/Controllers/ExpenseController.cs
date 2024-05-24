@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Controllers;
+using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.ExpenseComponent.Services;
 namespace PlanningApplication.ExpenseComponent.Controllers;
@@ -82,11 +83,11 @@ public class ExpenseController : ControllerBase
         }
     }
     [HttpGet("CalculatePrice")]
-    public async Task<ActionResult<decimal>> CalculatePrice()
+    public async Task<ActionResult<decimal>> CalculatePrice(Guid eventId)
     {
         try
         {
-            return Ok(await _expenseService.CalculatePrice());
+            return Ok(await _expenseService.CalculatePrice(eventId));
         }
         catch (Exception)
         {
@@ -95,11 +96,11 @@ public class ExpenseController : ControllerBase
         }
     }
     [HttpGet("GetByEvent")]
-    public async Task<ActionResult<decimal>> GetByEvent(Event heldEvent)
+    public async Task<ActionResult<List<Expense>>> GetByEvent(Guid eventId)
     {
         try
         {
-            return Ok(await _expenseService.GetByEvent(heldEvent));
+            return Ok(await _expenseService.GetByEvent(eventId));
         }
         catch (Exception)
         {

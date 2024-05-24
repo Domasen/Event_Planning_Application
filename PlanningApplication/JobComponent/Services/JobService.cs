@@ -1,9 +1,12 @@
 ﻿using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Repository;
+using PlanningApplication.EventComponent.Models;
+using PlanningApplication.EventComponent.Repository;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
 using System.Runtime.InteropServices;
+using System.Text.Json.Serialization.Metadata;
 
 namespace PlanningApplication.JobComponent.Models;
 
@@ -11,11 +14,13 @@ public class JobService : IJobService
 {
     private readonly IJobRepository _jobRepository;
     private readonly IEmployeeRepository _employeeRepository;
+    private readonly IEventRepository _eventRepository;
 
-    public JobService(IJobRepository jobRepository, IEmployeeRepository employeeRepository)
+    public JobService(IJobRepository jobRepository, IEmployeeRepository employeeRepository, IEventRepository eventRepository)
     {
         _jobRepository = jobRepository;
         _employeeRepository = employeeRepository;
+        _eventRepository = eventRepository;
     }
 
     public async Task<Job?> Create(JobDto job)
@@ -26,7 +31,7 @@ public class JobService : IJobService
             HoursPlanned = int.Parse(job.HoursPlanned),
             assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == job.AssignedEmployee).ToList(),
             Name = job.JobName,
-            plannedEvent = job.plannedEvent
+            plannedEvent = await _eventRepository.GetEvent(job.plannedEvent)
 
         };
         Job? jobObject = await _jobRepository.Create(jobModel);
@@ -43,9 +48,9 @@ public class JobService : IJobService
         return await _jobRepository.GetAll();
     }
 
-    public async Task<IEnumerable<Job>> GetByEvent(Event heldEvent)
+    public async Task<IEnumerable<Job>> GetByEvent(Guid eventId)
     {
-        return await _jobRepository.GetAllByEvent(heldEvent);
+        return await _jobRepository.GetAllByEvent(eventId);
     }
 
     public async Task<Job?> GetById(Guid jobId)

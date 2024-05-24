@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.EventComponent.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlanningApplication.ExpenseComponent.Models

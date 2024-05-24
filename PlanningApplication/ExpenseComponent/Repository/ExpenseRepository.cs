@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanningApplication.Data;
+using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
 
 namespace PlanningApplication.ExpenseComponent.Repository
@@ -53,9 +54,9 @@ namespace PlanningApplication.ExpenseComponent.Repository
         {
             return (await GetAll()).Where(x => x.Id == id).First();
         }
-        public async Task<IEnumerable<Expense>> GetByEvent(Event heldEvent)
+        public async Task<IEnumerable<Expense>> GetByEvent(Guid eventId)
         {
-            return (await GetAll()).Where(x => x.PlannedEvent.Id == heldEvent.Id);
+            return (await GetAll()).Where(x => x.PlannedEvent.Id == eventId);
         }
         public async Task<Expense?> Update(Expense expense)
         {

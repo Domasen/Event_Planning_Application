@@ -3,6 +3,7 @@ using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Controllers;
 using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Services;
+using PlanningApplication.EventComponent.Models;
 using PlanningApplication.JobComponent.Models;
 
 namespace PlanningApplication.JobComponent.Controllers;
@@ -83,12 +84,12 @@ public class JobController : ControllerBase
         }
     }
     [HttpGet("GetByEvent")]
-    public async Task<ActionResult<Job>> GetByEvent(Event heldEvent)
+    public async Task<ActionResult<Job>> GetByEvent(Guid eventId)
     {
         try
         {
 
-            return Ok(await _jobServices.GetByEvent(heldEvent));
+            return Ok(await _jobServices.GetByEvent(eventId));
         }
         catch (Exception)
         {

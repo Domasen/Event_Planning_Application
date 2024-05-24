@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.EventComponent.Models;
 
 namespace PlanningApplication.JobComponent.Models
 {

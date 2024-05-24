@@ -96,4 +96,17 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [HttpGet("GetAll")]
+    public async Task<ActionResult<Employee>> GetAll()
+    {
+        try
+        {
+            return Ok(await _employeeService.GetAll());
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
 }

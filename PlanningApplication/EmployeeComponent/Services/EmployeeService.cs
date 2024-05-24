@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Repository;
+using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
@@ -26,7 +27,8 @@ public class EmployeeService : IEmployeeService
             User = user,
             Jobs = new List<Job>(),
             Position = employee.Position,
-            Email = employee.Email
+            Email = employee.Email,
+            AssignedExpenses = new List<Expense>()
         };
         Employee? employeeObject = await _employeeRepository.AddEmployee(employeeModel);
         return employeeObject;
@@ -49,6 +51,10 @@ public class EmployeeService : IEmployeeService
     public async Task<IEnumerable<Employee>> GetAllEventEmployees(Guid eventId)
     {
         return await _employeeRepository.GetAllEventEmployees(eventId);
+    }
+    public async Task<IEnumerable<Employee>> GetAll()
+    {
+        return await _employeeRepository.GetAll();
     }
 
     public async Task<Employee?> UpdateEmployee(Employee employee)
