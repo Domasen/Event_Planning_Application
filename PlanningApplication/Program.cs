@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using PlanningApplication.Data;
 using PlanningApplication.EventComponent.Repository;
 using PlanningApplication.EventComponent.Services;
+using PlanningApplication.Interceptors;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Repository;
 using PlanningApplication.UsersComponent.Services;

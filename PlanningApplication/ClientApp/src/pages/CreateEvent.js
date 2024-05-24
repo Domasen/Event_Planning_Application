@@ -43,7 +43,7 @@ export const CreateEvent = () => {
         }
 
         try {
-            const response = await axios.post('Event/createEvent', eventInfo, {
+            const response = axios.post('Event/createEvent', eventInfo, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
