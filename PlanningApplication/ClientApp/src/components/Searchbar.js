@@ -2,6 +2,7 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import {useEventContext} from '../context/EventContext.js';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -47,16 +48,35 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export const Searchbar = () => {
+    const { setSearchTerm } = useEventContext();
+    const searchValue = React.useRef('');
+
+    React.useEffect(() => {
+        searchValue.current.focus();
+    }, []);
+
+    const searchEvent = (e) => {
+        setSearchTerm(e.current.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
 
     return (
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-            />
-        </Search>
+        <form onSubmit={handleSubmit}>
+            <Search>
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    ref={searchValue}
+                    onChange={searchEvent}
+                />
+            </Search>
+        </form>
+       
     )
 }
