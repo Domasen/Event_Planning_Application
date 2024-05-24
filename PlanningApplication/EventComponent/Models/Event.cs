@@ -12,8 +12,6 @@ namespace PlanningApplication.EventComponent.Models
         
         public EventType Type { get; set; } = EventType.None;
 
-        public bool IsPaid { get; set; } = false;
-
         public float TicketPrice { get; set; } = 0;
         [Required]
         public  DateTime Date { get; set; }
@@ -31,6 +29,8 @@ namespace PlanningApplication.EventComponent.Models
         public string Hashtags { get; set; } = string.Empty;
 
         public float Budget { get; set; } = 0;
+
+        public List<EventCategory> Categories { get; set; } = new List<EventCategory>();
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
 

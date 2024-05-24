@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Services;
-using PlanningApplication.UsersComponent.Controllers;
 
 namespace PlanningApplication.EventComponent.Controllers;
 [ApiController]
