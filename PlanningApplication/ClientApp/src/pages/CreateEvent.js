@@ -91,7 +91,7 @@ export const CreateEvent = () => {
                 p: 3,
                 position: 'relative',
             }}
-        >
+        > 
             <Button
                 variant="contained"
                 onClick={toggleEmployeeFormVisibility}
@@ -111,7 +111,7 @@ export const CreateEvent = () => {
                     component="form"
                     sx={{
                         background: 'linear-gradient(135deg, #4B0611 30%, #8B565E 90%)',
-                        color: 'white',
+                        /*color: 'white',*/
                         p: 4,
                         borderRadius: 2,
                         width: '80%', // Užtikrinti, kad forma užimtų 80% pločio
@@ -127,39 +127,58 @@ export const CreateEvent = () => {
                     autoComplete="off"
                     onSubmit={handleEmployeeSubmit}
                 >
-                    <Typography variant="h4" gutterBottom>
+                    <Typography variant="h4" sx= {{color: 'white'} } gutterBottom s>
                         Employee Registration
                     </Typography>
+
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
                         required
                         id="name"
                         label="Name"
                         value={name}
+                        variant="filled"
                         onChange={(e) => setName(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
-                            sx: { '& fieldset': { borderColor: 'white' } }
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+},
+                            sx: { '& fieldset': { borderColor: 'white', padding: '2px 2px', height: '100px' } }
+                        }}
+                            sx={{
+                                backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px',
                         }}
                     />
                     <TextField
+                        variant="filled"
                         required
                         id="email"
                         label="Email"
                         type="email"
                         value={email}
+                        variant="filled"
                         onChange={(e) => setEmail(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px' },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                    />
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                        }}
+                        />
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
+                        variant="filled"
                         required
                         id="position"
                         label="Position"
@@ -167,13 +186,20 @@ export const CreateEvent = () => {
                         onChange={(e) => setPosition(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
+                        }}
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
                         }}
                     />
                     <TextField
+                        variant="filled"
                         required
                         id="hourly_rate"
                         label="Hourly Rate"
@@ -182,12 +208,19 @@ export const CreateEvent = () => {
                         onChange={(e) => setHourlyRate(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                    />
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                        }}
+                        />
+                    </Box>
                     <Button
                         variant="contained"
                         sx={{
@@ -195,7 +228,8 @@ export const CreateEvent = () => {
                             backgroundColor: '#7F1425',
                             '&:hover': {
                                 backgroundColor: '#63101C'
-                            }
+                            },
+                            marginTop: '30px'
                         }}
                         type="submit"
                     >
@@ -229,7 +263,9 @@ export const CreateEvent = () => {
                 <Typography variant="h4" gutterBottom>
                     Create an Event
                 </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <TextField
+                    variant="filled"
                     required
                     id="eventName"
                     label="Event Name"
@@ -237,13 +273,20 @@ export const CreateEvent = () => {
                     onChange={(e) => setEventName(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
+                    }}
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop:'30px'
                     }}
                 />
                 <TextField
+                    variant="filled"
                     required
                     id="eventType"
                     label="Event Type"
@@ -251,26 +294,42 @@ export const CreateEvent = () => {
                     onChange={(e) => setEventType(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
-                />
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                    }}
+                    />
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <TextField
+                    variant="filled" variant="filled"
                     id="pricedEvent"
                     label="Priced Event"
                     value={pricedEvent}
                     onChange={(e) => setPricedEvent(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
+                    }}
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
                     }}
                 />
                 <TextField
+                    variant="filled"
                     id="price"
                     label="Price €"
                     type="number"
@@ -278,13 +337,22 @@ export const CreateEvent = () => {
                     onChange={(e) => setPrice(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
-                />
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                    }}
+                    />
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <TextField
+                    variant="filled"
                     id="date"
                     label="Date"
                     type="date"
@@ -292,73 +360,103 @@ export const CreateEvent = () => {
                     onChange={(e) => setDate(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{shrink: true,  style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
-                    InputLabelProps={{
-                        shrink: true, // Keeps the label visible when the field is focused
-                        style: { color: 'white' }
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
                     }}
                 />
                 <TextField
+                    variant="filled"
                     id="location"
                     label="Location"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
-                />
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                    }}
+                    />
+                </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
+                        variant="filled"
                         id="startTime"
                         label="Start Time"
                         type="time"
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                        sx={{ width: '48%' }}
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                        }}
                     />
                     <TextField
+                        variant="filled"
                         id="endTime"
                         label="End Time"
                         type="time"
                         value={endTime}
                         onChange={(e) => setEndTime(e.target.value)}
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                        sx={{ width: '48%' }}
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                        }}
                     />
                 </Box>
                 <TextField
+                    variant="filled"
                     id="eventFormat"
                     label="Event Format"
                     value={eventFormat}
                     onChange={(e) => setEventFormat(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
+                    }}
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', marginTop: '30px'
                     }}
                 />
                 <TextField
+                    variant="filled"
                     id="description"
                     label="Description"
                     value={description}
@@ -367,23 +465,36 @@ export const CreateEvent = () => {
                     rows={4}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
+                    }}
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', marginTop: '30px'
                     }}
                 />
                 <TextField
+                    variant="filled"
                     id="hashtags"
                     label="Hashtags"
                     value={hashtags}
                     onChange={(e) => setHashtags(e.target.value)}
                     fullWidth
                     margin="normal"
-                    InputLabelProps={{ style: { color: 'white' } }}
+                    InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                     InputProps={{
-                        style: { color: 'white', borderRadius: '4px' },
+                        disableUnderline: true,
+                        style: {
+                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                        },
                         sx: { '& fieldset': { borderColor: 'white' } }
+                    }}
+                    sx={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', marginTop: '30px'
                     }}
                 />
                 <Button
@@ -393,12 +504,13 @@ export const CreateEvent = () => {
                         backgroundColor: '#7F1425',
                         '&:hover': {
                             backgroundColor: '#63101C'
-                        }
+                        },
+                        marginTop: '30px'
                     }}
                     type="submit"
                 >
                     Save & Continue
-                </Button>
+                    </Button>
             </Box>
             <Button
                 variant="contained"
@@ -437,7 +549,9 @@ export const CreateEvent = () => {
                     <Typography variant="h4" gutterBottom>
                         Add work
                     </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
+                        variant="filled"
                         required
                         id="jobName"
                         label="Work"
@@ -445,13 +559,20 @@ export const CreateEvent = () => {
                         onChange={(e) => setJobName(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
+                        }}
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
                         }}
                     />
                     <TextField
+                        variant="filled"
                         required
                         id="assignedEmployee"
                         label="Responsible employee"
@@ -459,13 +580,22 @@ export const CreateEvent = () => {
                         onChange={(e) => setAssignedEmployee(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                    />
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px' 
+                        }}
+                        />
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
+                        variant="filled"
                         required
                         id="hoursPlanned"
                         label="Number of hours planned"
@@ -474,12 +604,19 @@ export const CreateEvent = () => {
                         onChange={(e) => setHoursPlanned(e.target.value)}
                         fullWidth
                         margin="normal"
-                        InputLabelProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{ style: { color: ' rgb(64,64,64)' } }}
                         InputProps={{
-                            style: { color: 'white', borderRadius: '4px' },
+                            disableUnderline: true,
+                            style: {
+                                color: 'rgb(64,64,64)', borderRadius: '20px'
+                            },
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
-                    />
+                        sx={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                        }}
+                        />
+                    </Box>
                     <Button
                         variant="contained"
                         sx={{
@@ -487,7 +624,8 @@ export const CreateEvent = () => {
                             backgroundColor: '#7F1425',
                             '&:hover': {
                                 backgroundColor: '#63101C'
-                            }
+                            },
+                            marginTop: '30px'
                         }}
                         type="submit"
                     >

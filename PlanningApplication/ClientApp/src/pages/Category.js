@@ -2,7 +2,7 @@
 import { Container, Grid, Box, Typography, Card, CardMedia, CardContent, Button } from '@mui/material';
 import { FilterSidebar } from '../components/FilterSidebar';
 import { useParams } from 'react-router-dom';
-import { useEventContext } from '../context/EventContext';
+import {useFetch } from '../hooks/useFetch';
 
 const categoryEvents = [
     { title: 'ADVENTUR 2024', location: 'Vilnius', date: '2024-01-24', image: 'https://www.litexpo.lt/wp-content/uploads/2023/05/2023-06-13-ADVENTUR_2146x1240-EN.png' },
@@ -17,12 +17,8 @@ const categoryEvents = [
 
 
 export const Category = () => {
-    const { id } = useParams();
-    //const { categoryEvents, fetchEventsByCategory } = useEventContext();
-
-    //useEffect(() => {
-    //    fetchEventsByCategory(id);
-    //}, [id, fetchEventsByCategory]);
+    //const { id } = useParams();
+    //const { data: categoryEvents, refetch } = useFetch('', id);
 
     return (
         <Container>

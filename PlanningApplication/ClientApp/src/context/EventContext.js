@@ -12,16 +12,11 @@ const EventProvider = ({ children }) => {
 
     const { data: events, refetch: fetchEvents } = useFetch('Event/getAllEvents');
 
-    const { data: categoryEvents, refetch: fetchEventByCategory, setUrl } = useFetch('Event/getEventsByCategory');
-
-    const fetchEventsByCategory = (id) => {
-        setUrl(`Event/getEventsByCategory/${id}`);
-        fetchEventByCategory();
-    }
+   /* const { data: categoryEvents, refetch: fetchEventsByCategory, setCategoryUrl } = useFetch('Event/getEventsByCategory');*/
 
 
     return (
-        <EventContext.Provider value={{ categoryEvents, fetchEventsByCategory, setSearchTerm }}>
+        <EventContext.Provider value={{setSearchTerm }}>
             {children}
         </EventContext.Provider>
     )

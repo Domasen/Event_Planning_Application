@@ -6,6 +6,7 @@ import { EventCosts } from "./pages/EventCosts"
 import { Category } from "./pages/Category";
 import {SearchResults } from "./pages/SearchResults"
 import Profile from './pages/Profile';
+import { Event } from './pages/Event';
 
 const AppRoutes = [
     {
@@ -36,19 +37,23 @@ const AppRoutes = [
     //    element: <Category />
     //},
     {
-        path: 'category',
+        path: '/category',
         element: <Category />
     }, 
     {
-        path: 'searchResults',
+        path: '/searchResults',
         element: <SearchResults />
-    }
-  },
-  {
-    path: '/profile',
-    element: <Profile/>
+    },
+    {
+        path: '/event',
+        element: <Event/>
+    },
+    {
+        path: '/profile',
+        element: <Profile/>
 
-  }
+    },
+  
 ];
 
 export default AppRoutes;

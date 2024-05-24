@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import axios from "axios";
 import { UserContext } from '../context/UserContext.js'; // Import UserContext
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 /// category turi tureti id
@@ -75,6 +76,7 @@ const popularInterests = [
 export const Home = () => {
 
     const { setUser } = useContext(UserContext); // Use UserContext
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -95,6 +97,12 @@ export const Home = () => {
 
         fetchUser();
     }, [setUser]);
+
+    const handleBookNow = (e) => {
+        e.preventDefault();
+        navigate('/event');
+        
+    }
     
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
@@ -169,6 +177,7 @@ export const Home = () => {
                                     <Typography>{event.location}</Typography>
                                     <Typography>{event.date}</Typography>
                                     <Button
+                                        onClick={handleBookNow}
                                         type="submit"
                                         fullWidth
                                         variant="contained"
