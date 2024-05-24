@@ -5,6 +5,8 @@ import { CreateEvent } from "./pages/CreateEvent"
 import { EventCosts } from "./pages/EventCosts"
 import { Category } from "./pages/Category";
 import {SearchResults } from "./pages/SearchResults"
+import {RegisterEmployee } from "./pages/RegisterEmployee"
+import {WorkList} from "./pages/WorkList"
 import Profile from './pages/Profile';
 
 const AppRoutes = [
@@ -42,13 +44,22 @@ const AppRoutes = [
     {
         path: 'searchResults',
         element: <SearchResults />
-    }
-  },
-  {
-    path: '/profile',
-    element: <Profile/>
+    },
+    {
+        path: '/profile',
+        element: <Profile/>
+    
+    },
+    {
+        path: '/registerEmployee',
+        element: <RegisterEmployee/>
 
-  }
+    },
+    {
+        path: '/workList',
+        element: <WorkList/>
+
+    },
 ];
 
 export default AppRoutes;
