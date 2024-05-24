@@ -8,6 +8,9 @@ import {SearchResults } from "./pages/SearchResults"
 import {RegisterEmployee } from "./pages/RegisterEmployee"
 import {WorkList} from "./pages/WorkList"
 import Profile from './pages/Profile';
+import EventList from './components/EventList';
+import EventDetail from './components/EventDetail';
+
 
 const AppRoutes = [
     {
@@ -60,6 +63,15 @@ const AppRoutes = [
         element: <WorkList/>
 
     },
+    {
+        path: '/',
+        element: <EventList />
+    },
+    {
+        path: '/event/:id',
+        element: <EventDetail />
+    }
+
 ];
 
 export default AppRoutes;
