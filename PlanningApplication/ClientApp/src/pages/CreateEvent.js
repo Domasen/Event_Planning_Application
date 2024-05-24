@@ -20,7 +20,7 @@ export const CreateEvent = () => {
     const [description, setDescription] = React.useState('');
     const [hashtags, setHashtags] = React.useState('');
 
-    const handleEventSubmit = (e) => {
+    const handleEventSubmit = async (e) => {
         e.preventDefault();
 
         const eventInfo = {
