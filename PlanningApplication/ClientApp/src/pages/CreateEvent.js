@@ -533,7 +533,6 @@ export const CreateEvent = () => {
                     </tbody>
                 </table>
             </Box>
-            <Footer /> 
         </Box>
     );
 };

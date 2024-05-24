@@ -173,9 +173,6 @@ export const EventCosts = () => {
                     </Button>
                 </Box>
             </Modal>
-            <Box sx={{ width: '100%' }}>
-                <Footer />
-            </Box>
         </Box>
     );
 };

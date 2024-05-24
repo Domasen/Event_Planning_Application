@@ -14,6 +14,7 @@ const App = () => {
                         const { element, ...rest } = route;
                         return <Route key={index} {...rest} element={element} />;
                     })}
+                    
                 </Routes>
             </Layout>
         </UserProvider>
