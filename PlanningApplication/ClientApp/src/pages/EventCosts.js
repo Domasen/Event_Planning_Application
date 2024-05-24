@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -22,11 +22,22 @@ const eventData = {
 
 
 export const EventCosts = () => {
-    const [workList, setWorkList] = useState("");
+    const [workList, setWorkList] = useState([]);
     const [open, setOpen] = useState(false);
     const [newExpense, setNewExpense] = useState({ jobName: '', assignedEmployee: '', hourlyRate: '', hoursWorked: '' });
-    axios.get('Expense/GetByEvent?eventId=606812f4-1973-4c11-9a1d-605b3bb2d120').then((getResponse) => setWorkList(getResponse.data))
-    console.log(workList)
+    useEffect(() => {
+        // Function to fetch employees
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get('/Expense/GetAll');
+                setWorkList(response.data);
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        };
+
+        fetchEvents(); // Call the fetch function
+    }, []); 
     const handleOpen = () => {
         setOpen(true);
     };

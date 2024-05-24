@@ -10,6 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios'
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
 export const RegisterEmployee = () => {
@@ -20,15 +21,36 @@ export const RegisterEmployee = () => {
     const [hourlyRate, setHourlyRate] = React.useState('');
     const [employees, setEmployees] = React.useState([]);
 
-    const handleEmployeeSubmit = (e) => {
+    const handleEmployeeSubmit = async (e) => {
         e.preventDefault();
-        const newEmployee = { name, email, position, hourlyRate };
-        setEmployees([...employees, newEmployee]);
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
+        console.log('Employee Registered:', { name, email, position, hourlyRate });
+        const employeeData = {
+            name,
+            email,
+            position,
+            hourlyRate
+        };
+        try {
+            const response = await axios.post('/employee/Create', employeeData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+            if (response.status === 200) {
+                // Reset form fields
+                setName('');
+                setEmail('');
+                setPosition('');
+                setHourlyRate('');
+            } else {
+                console.log(response.data.message || 'Employee addition failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Employee addition failed', error);
+            //setError('Employee addition failed. Please try again.');
+        }
     };
 
     return (

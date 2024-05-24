@@ -14,20 +14,44 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useEffect } from 'react';
+import axios from 'axios';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
 export const WorkList = () => {
     // Predefined employee and event states
-    const [employees, setEmployees] = React.useState([
-        { name: 'John Doe' },
-        { name: 'Jane Smith' },
-    ]);
+    const [employees, setEmployees] = React.useState(
+        []
+    );
+    useEffect(() => {
+        // Function to fetch employees
+        const fetchEmployees = async () => {
+            try {
+                const response = await axios.get('employee/GetAll');
+                setEmployees(response.data);
+            } catch (error) {
+                console.error('Error fetching employees:', error);
+            }
+        };
 
+        fetchEmployees(); // Call the fetch function
+    }, []); 
     const [eventList, setEventList] = React.useState([
-        { eventName: 'Event 1' },
-        { eventName: 'Event 2' },
+        []
     ]);
+    useEffect(() => {
+        // Function to fetch employees
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get('Event/getAllEvents');
+                setEventList(response.data);
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        };
 
+        fetchEvents(); // Call the fetch function
+    }, []); 
     // Work registration states
     const [jobName, setJobName] = React.useState('');
     const [assignedEmployee, setAssignedEmployee] = React.useState('');
@@ -35,16 +59,33 @@ export const WorkList = () => {
     const [workList, setWorkList] = React.useState([]);
     const [currentEvent, setCurrentEvent] = React.useState('');
 
-    const handleJobSubmit = (e) => {
+    const handleJobSubmit = async (e) => {
         e.preventDefault();
-        const newWork = { jobName, assignedEmployee, hoursPlanned, currentEvent };
-        setWorkList([...workList, newWork]);
-        setJobName('');
-        setAssignedEmployee('');
-        setHoursPlanned('');
-        setCurrentEvent('');
+        const newWork = { jobName, assignedEmployee, hoursPlanned };
+        try {
+            const response = await axios.post('/job/Create', newWork, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': '*/*'
+                }
+            });
+            if (response.status === 200) {
+                // Reset form fields
+                setWorkList([...workList, newWork]);
+                setJobName('');
+                setAssignedEmployee('');
+                setHoursPlanned('');
+                setCurrentEvent('');
+            } else {
+                console.log(response.data.message || 'Job addition failed. Please try again.');
+            }
+        }
+        catch (error) {
+            console.error('Job addition failed', error);
+            //setError('Employee addition failed. Please try again.');
+        }
     };
-
+    
     return (
         <Box
             sx={{
@@ -110,8 +151,8 @@ export const WorkList = () => {
                         }}
                     >
                         {employees.map((employee, index) => (
-                            <MenuItem key={index} value={employee.name}>
-                                {employee.name}
+                            <MenuItem key={employee.id} value={employee.user.name}>
+                                {employee.user.name}
                             </MenuItem>
                         ))}
                     </Select>
