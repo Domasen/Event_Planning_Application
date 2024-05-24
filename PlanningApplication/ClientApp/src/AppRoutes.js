@@ -3,6 +3,7 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup"
 import { CreateEvent } from "./pages/CreateEvent"
 import { EventCosts } from "./pages/EventCosts"
+import Profile from './pages/Profile';
 
 const AppRoutes = [
   {
@@ -27,6 +28,11 @@ const AppRoutes = [
   {
     path: '/eventCosts',
     element: <EventCosts />
+
+  },
+  {
+    path: '/profile',
+    element: <Profile/>
 
   }
 ];
