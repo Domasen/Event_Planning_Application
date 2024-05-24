@@ -3,8 +3,10 @@ import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Chip, Avat
 import Footer from '../components/Footer';
 import axios from "axios";
 import { UserContext } from '../context/UserContext.js'; // Import UserContext
+import { Link } from "react-router-dom";
 
 
+/// category turi tureti id
 const categories = [
     { title: 'Music', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT5DGdAzPf4lu-oYWicLMXD4-C3z4Atwylzgdw_9UGw&s.jpg' },
     { title: 'Business', image: 'https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630.jpg' },
@@ -121,17 +123,24 @@ export const Home = () => {
                 <Grid container spacing={2}>
                     {categories.map((category) => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={category.title}>
-                            <Card>
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={category.image}
-                                    alt={category.title}
-                                />
-                                <CardContent>
-                                    <Typography variant="h6">{category.title}</Typography>
-                                </CardContent>
-                            </Card>
+                            {/*<Link to={`/category/${category.id}`}>*/}
+                            <Card component={Link} to='/category' sx={{
+                                textDecoration: 'none',
+                                color: 'inherit',
+                                '&:hover': {
+                                    textDecoration: 'none',
+                                    color: 'inherit'
+                                } }}>
+                                    <CardMedia
+                                        component="img"
+                                        height="140"
+                                        image={category.image}
+                                        alt={category.title}
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h6">{category.title}</Typography>
+                                    </CardContent>
+                                </Card>
                         </Grid>
                     ))}
                 </Grid>
@@ -349,7 +358,6 @@ export const Home = () => {
 
             </Box>
             
-            <Footer />
         </Box>
     );
 };

@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
-import Footer from '../components/Footer.js';
+import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
 // Hardcoded data
 const eventData = {
@@ -75,6 +75,7 @@ export const EventCosts = () => {
                 minHeight: '100vh',
                 width: '100%',
                 backgroundColor: '#f5f5f5',
+                p: 3,
             }}
         >
             <Box sx={{ width: '80%', textAlign: 'center', mt: 3 }}>
@@ -109,16 +110,16 @@ export const EventCosts = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Box sx={{ width: '80%', display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
-                <Typography variant="h6" gutterBottom>
+            <Box sx={{ width: '80%', display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+                <Typography variant="h6" gutterBottom sx={{ color: '#7F1425' }}>
                     Remaining Budget: ${remainingBudget >= 0 ? remainingBudget : 0}
                 </Typography>
-            </Box>
-            <Box sx={{ width: '80%', textAlign: 'center', mb: 3 }}>
                 <Typography variant="h6" gutterBottom>
                     Total Cost: ${axios.get("Expense/CalculatePrice?eventId=606812f4-1973-4c11-9a1d-605b3bb2d120").data}
                 </Typography>
-                <Button variant="contained" onClick={handleOpen} sx={{ backgroundColor: '#7F1425', color: 'white', mt: 2 }}>
+            </Box>
+            <Box sx={{ width: '80%', textAlign: 'center', mb: 3 }}>
+                <Button variant="contained" onClick={handleOpen} sx={{ backgroundColor: '#7F1425', color: 'white' }}>
                     Add Custom Expense
                 </Button>
             </Box>
@@ -138,6 +139,7 @@ export const EventCosts = () => {
                         bgcolor: 'background.paper',
                         boxShadow: 24,
                         p: 4,
+                        borderRadius: 2,
                     }}
                 >
                     <Typography id="modal-modal-title" variant="h6" component="h2" gutterBottom>
@@ -180,9 +182,6 @@ export const EventCosts = () => {
                     </Button>
                 </Box>
             </Modal>
-            <Box sx={{ width: '100%' }}>
-                <Footer />
-            </Box>
         </Box>
     );
 };

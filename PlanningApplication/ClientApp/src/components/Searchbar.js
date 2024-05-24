@@ -2,6 +2,8 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { useEventContext } from '../context/EventContext.js';
+import { useNavigate } from 'react-router-dom';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -47,16 +49,39 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export const Searchbar = () => {
+    const { setSearchTerm } = useEventContext();
+    const searchValue = React.useRef('');
+    const navigate = useNavigate();
+
+    React.useEffect(() => {
+        searchValue.current.focus();
+    }, []);
+
+    const searchEvent = (e) => {
+        setSearchTerm(e.current.value);
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            navigate('/searchResults');
+         
+        }
+    }
 
     return (
-        <Search>
-            <SearchIconWrapper>
-                <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-            />
-        </Search>
+            <Search>
+                <SearchIconWrapper>
+                    <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ 'aria-label': 'search' }}
+                    ref={searchValue}
+                    onChange={searchEvent}
+                    onKeyDown={handleKeyDown}
+                />
+            </Search>
+       
     )
 }

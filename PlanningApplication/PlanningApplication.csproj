@@ -39,7 +39,6 @@
 
     <ItemGroup>
       <Folder Include="ClientApp\src\assets\" />
-      <Folder Include="ClientApp\src\hooks\" />
       <Folder Include="ClientApp\src\utils\" />
     </ItemGroup>
 
