@@ -14,12 +14,12 @@ export const Event = () => {
 
  
     return (
-        <Container maxWidth="md" style={{ paddingTop: '20px' }}>
+        <Container maxWidth="md" style={{ paddingTop: '20px'}}>
             <Paper elevation={3} style={{ padding: '20px', marginBottom: '20px' }}>
                 <CardMedia
                     component="img"
                     alt="Concert Image"
-                    height="400"
+                    height="350"
                     image={event.image }
                     title="Concert Image"
                 />
@@ -29,7 +29,7 @@ export const Event = () => {
                     </Typography>
                 </CardContent>
 
-                <Grid container spacing={2} style={{ marginTop: '20px' }}>
+                <Grid container spacing={2} style={{ marginTop: '20px', marginLeft: '0px' }}>
                     <Grid item xs={12} sm={6}>
                         <Typography variant="h6" component="h2">
                             <EventIcon /> Date & Time
@@ -40,20 +40,21 @@ export const Event = () => {
                         <Typography variant="h6" component="h2">
                             <LocationOnIcon /> Location
                         </Typography>
-                        <Typography variant="body1">
+                        <Typography variant="body1" style={{marginLeft:'5px'} }>
                             {event.location} <br />
                             Kernavės g. 84, Vilnius, 08216
                         </Typography>
                     </Grid>
                 </Grid>
-
-                <Typography variant="h6" component="h2" style={{ marginTop: '20px' }} gutterBottom>
-                    About the Event
-                </Typography>
-                <Typography variant="body1">
-                    Liepongoiačios vasaros elenga vienas žinomiausių ir talentingiausių Lietuvos atlikėjų Vaidas Baumila savo gerbėjams ruošia
-                    tikrą dovaną – grandiozinį koncertą, kuriame netrūks nei jo geriausių hitų, tiek ir kitų pamėgtų dainų.
-                </Typography>
+                <div style={{ marginLeft: '15px' }}>
+                    <Typography variant="h6" component="h2" style={{ marginTop: '20px' }} gutterBottom>
+                        About the Event
+                    </Typography>
+                    <Typography variant="body1">
+                        Liepongoiačios vasaros elenga vienas žinomiausių ir talentingiausių Lietuvos atlikėjų Vaidas Baumila savo gerbėjams ruošia
+                        tikrą dovaną – grandiozinį koncertą, kuriame netrūks nei jo geriausių hitų, tiek ir kitų pamėgtų dainų.
+                    </Typography>
+                </div>
 
                 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                     <Button

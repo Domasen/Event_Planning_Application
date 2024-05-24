@@ -147,10 +147,14 @@ export const CreateEvent = () => {
                             style: {
                                 color: 'rgb(64,64,64)', borderRadius: '20px'
 },
-                            sx: { '& fieldset': { borderColor: 'white', padding: '2px 2px', height: '100px' } }
+                            sx: {
+                                '& fieldset': {
+                                    borderColor: 'white', padding: '2px 2px', height: '100px',                              }
+                            }
                         }}
                             sx={{
                                 backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px',
+                              
                         }}
                     />
                     <TextField
@@ -277,7 +281,7 @@ export const CreateEvent = () => {
                     InputProps={{
                         disableUnderline: true,
                         style: {
-                            color: 'rgb(64,64,64)', borderRadius: '20px'
+                            color: 'rgb(64,64,64)', borderRadius: '20px',
                         },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
@@ -568,9 +572,11 @@ export const CreateEvent = () => {
                             sx: { '& fieldset': { borderColor: 'white' } }
                         }}
                         sx={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px'
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '100%', marginTop: '30px'
                         }}
-                    />
+                        />
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
                         variant="filled"
                         required
@@ -592,8 +598,6 @@ export const CreateEvent = () => {
                             backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: '20px', width: '48%', marginTop: '30px' 
                         }}
                         />
-                    </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                     <TextField
                         variant="filled"
                         required
