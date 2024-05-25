@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PlanningApplication.UsersComponent.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlanningApplication.EventComponent.Models
 {
@@ -34,6 +36,8 @@ namespace PlanningApplication.EventComponent.Models
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
 
+        public string UserId { get; set; }
+        public User User { get; set; }
 
         [ConcurrencyCheck]
         public Guid Version { get; set; }

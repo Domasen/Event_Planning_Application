@@ -1,4 +1,6 @@
-﻿namespace PlanningApplication.UsersComponent.Models;
+﻿using PlanningApplication.EventComponent.Models;
+
+namespace PlanningApplication.UsersComponent.Models;
 
 public class UserDto
 {
@@ -6,4 +8,5 @@ public class UserDto
     public string Email { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
+
 }

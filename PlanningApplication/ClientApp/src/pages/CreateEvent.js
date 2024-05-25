@@ -7,9 +7,11 @@ import Footer from '../components/Footer.js'; // Ensure the correct path is used
 import axios from 'axios';
 import EventTypeSelect from "../components/EventTypesSelect.js"
 import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
+import { UserContext } from '../context/UserContext.js';
 
 
 export const CreateEvent = () => {
+    const { user } = React.useContext(UserContext); 
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
@@ -26,7 +28,9 @@ export const CreateEvent = () => {
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
-
+        if (!user || !user.id) {
+            throw new Error("User object is not defined, is null or has no id.");
+        }
         const eventInfo = {
             name: eventName,
             type:eventType,
@@ -39,7 +43,8 @@ export const CreateEvent = () => {
             format:eventFormat,
             description: description,
             categories: categories.map(category => category.name),
-            hashtags:hashtags
+            hashtags: hashtags,
+            userId: user.id
         }
 
         try {

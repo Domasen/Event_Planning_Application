@@ -1,30 +1,29 @@
-﻿
-import { useState, useCallback, useEffect } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-export const useFetch = (initialUrl, options = {
-        headers: {
-            'Content-Type': 'text/plain',
-        },
-    }) => {
+export const useFetch = (initialUrl) => {
     const [url, setUrl] = useState(initialUrl);
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const fetchData = useCallback(async () => {
+        if (!url) return; // Avoid fetching if the URL is not set
+        setLoading(true);
         try {
-            const response = await axios.get(url, options);
-            if (response.status === 200) {
-                setData(response.data);
-            }
-        }catch (error) {
-                console.error('Failed to fetch data', error); 
+            const response = await axios.get(url);
+            setData(response.data);
+            setError(null);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
         }
-            
-    }, [url, options]);
+    }, [url]);
 
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
-    return { data, refetch: fetchData, setUrl };
+    return { data, loading, error, refetch: fetchData, setUrl };
 };
