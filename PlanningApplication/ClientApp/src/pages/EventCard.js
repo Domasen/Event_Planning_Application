@@ -13,12 +13,12 @@ const EventCard = ({ event }) => {
 
     return (
         <Card sx={{ display: 'flex', mb: 2, alignItems: 'center', p: 2 }}>
-            {/*<CardMedia*/}
-            {/*    component="img"*/}
-            {/*    sx={{ width: 160, height: 120, borderRadius: 2 }}*/}
-            {/*    image={event.image}*/}
-            {/*    alt={event.title}*/}
-            {/*/>*/}
+            <CardMedia
+                component="img"
+                sx={{ width: 160, height: 120, borderRadius: 2 }}
+                image={`data:image/jpeg;base64,${event.photo}`}
+                alt={event.title}
+            />
             <CardContent sx={{ flex: '1 0 auto' }}>
                 <Typography component="h5" variant="h5">
                     {event.title}

@@ -35,12 +35,14 @@ namespace PlanningApplication.EventComponent.Models
         public List<EventCategory> Categories { get; set; } = new List<EventCategory>();
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
-
+        
+        public byte[]? Photo { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
 
         [ConcurrencyCheck]
         public Guid Version { get; set; }
+        
 
     }
 }

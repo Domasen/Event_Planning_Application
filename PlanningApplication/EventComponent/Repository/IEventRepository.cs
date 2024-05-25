@@ -5,6 +5,8 @@ namespace PlanningApplication.EventComponent.Repository
 {
     public interface IEventRepository
     {
+        Task<Event?> UploadEventPhoto(Guid Id, byte[] image);
+
         Task<Event?> AddEvent(Event newEvent);
         Task DeleteEvent(Guid eventId);
         Task<Event?> GetEvent(Guid eventId);
