@@ -10,5 +10,6 @@ namespace PlanningApplication.EventComponent.Repository
         Task<Event?> GetEvent(Guid eventId);
         Task<IEnumerable<Event>> GetEvents();
         Task<Event?> UpdateEvent(Event eventToUpdate);
+        Task<IEnumerable<Event>> GetUserEvents(string userId);
     }
 }

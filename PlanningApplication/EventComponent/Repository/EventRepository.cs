@@ -41,10 +41,15 @@ namespace PlanningApplication.EventComponent.Repository
             return await _context.Events.ToListAsync();
         }
 
+        public async Task<IEnumerable<Event>> GetUserEvents(string userId)
+        {
+            return await _context.Events.Where<Event>((x)=> x.UserId == userId).ToListAsync();
+        }
+
         public async Task<Event?> UpdateEvent(Event eventToUpdate)
         {
             _context.Events.Update(eventToUpdate);
-            eventToUpdate.Version = new Guid();
+            eventToUpdate.Version =Guid.NewGuid();
             await _context.SaveChangesAsync(); 
             return await _context.Events.FindAsync(eventToUpdate.Id);
         }

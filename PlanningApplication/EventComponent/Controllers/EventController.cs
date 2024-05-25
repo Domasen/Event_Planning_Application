@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Services;
+using PlanningApplication.UsersComponent.Models;
+using System.Security.Claims;
 
 namespace PlanningApplication.EventComponent.Controllers;
 [ApiController]
@@ -9,19 +12,39 @@ public class EventController : ControllerBase
 {
     private readonly ILogger<EventController> _logger;
     private readonly IEventServices _eventServices;
+    private readonly SignInManager<User> _signInManager;
 
-    public EventController(ILogger<EventController> logger, IEventServices eventServices)
+
+    public EventController(ILogger<EventController> logger, IEventServices eventServices, SignInManager<User> signInManager)
     {
         _logger = logger;
         _eventServices = eventServices;
+        _signInManager = signInManager;
     }
 
     [HttpGet("getAllEvents")]
-    public async Task<ActionResult<List<Event>>> GetEvents()
+    public async Task<ActionResult<List<EventDto>>> GetEvents()
     {
         try
         {
-            return Ok(await _eventServices.GetEvents());
+            var eventDto = await _eventServices.GetEvents();
+            return Ok(eventDto);
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+        }
+    }
+
+    [HttpGet("getAllUserEvents")]
+    public async Task<ActionResult<List<EventDto>>> GetAllUserEvents()
+    {
+        var user = _signInManager.Context.User;
+        var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        try
+        {
+            var eventDto = await _eventServices.GetUserEvents(userId);
+            return Ok(eventDto);
         }
         catch (Exception)
         {
@@ -30,7 +53,7 @@ public class EventController : ControllerBase
     }
 
     [HttpPost("createEvent")]
-    public async Task<ActionResult<Event>> AddEvent([FromBody] EventDto eventDto)
+    public async Task<ActionResult<EventDto>> AddEvent([FromBody] EventDto eventDto)
     {
         if (eventDto == null)
         {
@@ -56,7 +79,7 @@ public class EventController : ControllerBase
     }
 
     [HttpGet("getEvent/{id}")]
-    public async Task<ActionResult<Event>> GetEventById(Guid id)
+    public async Task<ActionResult<EventDto>> GetEventById(Guid id)
     {
         try
         {
