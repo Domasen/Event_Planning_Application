@@ -4,6 +4,7 @@ namespace PlanningApplication.EventComponent.Services
 {
     public interface IEventServices
     {
+        Task<EventDto?> UploadEventPhoto(Guid Id, byte[] image);
         Task<EventDto?> AddEvent(EventDto newEvent);
         Task DeleteEvent(Guid eventId);
         Task<EventDto?> GetEvent(Guid eventId);

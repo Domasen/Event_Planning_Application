@@ -12,6 +12,22 @@ namespace PlanningApplication.EventComponent.Repository
         public EventRepository(ApplicationDbContext context) {
             _context = context;
         }
+
+        public async Task<Event?> UploadEventPhoto(Guid Id, byte[] image)
+        {
+            var eventToAddPhoto = await _context.Events.FindAsync(Id);
+            if (eventToAddPhoto == null)
+            {
+                throw new KeyNotFoundException("Event not found.");
+            }
+
+            eventToAddPhoto.Photo = image;
+            
+            await _context.SaveChangesAsync();
+             
+            return await _context.Events.FindAsync(Id);
+        }
+
         public async Task<Event?> AddEvent(Event newEvent)
         {
             newEvent.Version = Guid.NewGuid();

@@ -12,6 +12,12 @@ namespace PlanningApplication.EventComponent.Services
         { 
             _eventRepository  = eventRepository; 
         }
+
+        public async Task<EventDto?> UploadEventPhoto(Guid Id, byte[] image)
+        {
+            return convertEventToDTO(await _eventRepository.UploadEventPhoto(Id, image));
+        }
+
         public async Task<EventDto?> AddEvent(EventDto newEvent)
         {
             var eventToAdd = new Event
@@ -30,6 +36,7 @@ namespace PlanningApplication.EventComponent.Services
                 Categories = newEvent.Categories ?? new List<EventCategory>(),
                 AllowedPaymentMethods = newEvent.AllowedPaymentMethods ?? new List<PaymentMethod>(),
                 UserId=newEvent.UserId,
+                Photo = newEvent.Photo,
             };
             var createdEvent = await _eventRepository.AddEvent(eventToAdd);
             return convertEventToDTO(createdEvent);
@@ -134,7 +141,8 @@ namespace PlanningApplication.EventComponent.Services
                 Categories = eventToConvert.Categories,
                 AllowedPaymentMethods = eventToConvert.AllowedPaymentMethods,
                 UserId = eventToConvert.UserId,
-                Version = eventToConvert.Version
+                Version = eventToConvert.Version,
+                Photo = eventToConvert.Photo
             };
         }
 

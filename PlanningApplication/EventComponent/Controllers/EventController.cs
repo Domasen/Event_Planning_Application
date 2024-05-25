@@ -183,5 +183,53 @@ public class EventController : ControllerBase
            minBudget, maxBudget, categories, paymentMethods, currentUserId, minTicketPrice, maxTicketPrice, description, hashtags);
         return Ok(results);
     }
+    
+    
+    [HttpPost("uploadEventPhoto/{id}")]
+    public async Task<IActionResult> UploadEventPhoto(Guid id, IFormFile photo)
+    {
+        if (photo == null || photo.Length == 0)
+        {
+            return BadRequest("Photo is null or empty.");
+        }
+
+        try
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await photo.CopyToAsync(memoryStream);
+                var photoBytes = memoryStream.ToArray();
+
+                var Event = await _eventServices.UploadEventPhoto(id, photoBytes);
+
+                return Ok(Event);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error uploading photo.");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading photo.");
+        }
+    }
+
+    [HttpGet("getEventPhoto/{id}")]
+    public async Task<IActionResult> GetEventPhoto(Guid id)
+    {
+        try
+        {
+            var eventItem = await _eventServices.GetEvent(id);
+            if (eventItem == null || eventItem.Photo == null)
+            {
+                return NotFound("Event photo not found.");
+            }
+
+            return File(eventItem.Photo, "image/jpeg");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving photo.");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving photo.");
+        }
+    }
 }
 
