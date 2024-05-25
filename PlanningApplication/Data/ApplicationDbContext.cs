@@ -16,7 +16,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
 
     public DbSet<User> Users { get; set; }
     public DbSet<Event> Events { get; set; }
-    
+
     // Seed method
     public static void SeedData(ApplicationDbContext context)
     {

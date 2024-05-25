@@ -37,6 +37,7 @@ namespace PlanningApplication.EventComponent.Models
 
         [ConcurrencyCheck]
         public Guid Version { get; set; }
+        
 
     }
 }
