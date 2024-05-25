@@ -14,6 +14,7 @@ const EventDetail = () => {
     const [location, setLocation] = useState('');
     const [price, setPrice] = useState('');
     const [event, setEvent] = useState(null);
+    const [photo, setPhoto] = useState(null);
 
     // Fetch event data from context using useEffect
     useEffect(() => {
@@ -25,6 +26,7 @@ const EventDetail = () => {
             setDate(foundEvent.date);
             setLocation(foundEvent.location);
             setPrice(foundEvent.ticketPrice);
+            setPhoto(foundEvent.photo);
         }
     }, [events, id]);
 
@@ -44,7 +46,7 @@ const EventDetail = () => {
             <CardMedia
                 component="img"
                 height="200"
-                image={event.image}
+                image={`data:image/jpeg;base64,${event.photo}`}
                 alt={title}
             />
             <CardContent>
