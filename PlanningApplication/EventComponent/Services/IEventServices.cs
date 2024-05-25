@@ -11,5 +11,10 @@ namespace PlanningApplication.EventComponent.Services
         Task<(EventDto?, bool)> UpdateEvent(EventDto eventToUpdate);
         Task<IEnumerable<EventDto>> GetUserEvents(string userId);
 
+        Task<IEnumerable<EventDto>> SearchEventsAsync(string? name, EventType? type, DateTime? startDate, DateTime? endDate,
+        TimeSpan? startTime, TimeSpan? endTime, string? location, float? minBudget, float? maxBudget,
+        string? categories, string? paymentMethods, string? userId, float? minTicketPrice, float? maxTicketPrice,
+        string? description, string? hashtags);
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Services;
 using PlanningApplication.UsersComponent.Models;
@@ -131,6 +132,56 @@ public class EventController : ControllerBase
         {
             return Conflict(updatedEvent);
         }
+    }
+
+    [HttpGet("search")]
+    public async Task<ActionResult<List<EventDto>>> Search(
+        [FromQuery] string? name,
+        [FromQuery] EventType? type,
+        [FromQuery] DateTime? startDate,
+        [FromQuery] DateTime? endDate,
+        [FromQuery] TimeSpan? startTime,
+        [FromQuery] TimeSpan? endTime,
+        [FromQuery] string? location,
+        [FromQuery] float? minBudget,
+        [FromQuery] float? maxBudget,
+        [FromQuery] string? categories,
+        [FromQuery] string? paymentMethods,
+        [FromQuery] string? userId,
+        [FromQuery] float? minTicketPrice,
+        [FromQuery] float? maxTicketPrice,
+        [FromQuery] string? description,
+        [FromQuery] string? hashtags)
+    {
+        var results = await _eventServices.SearchEventsAsync(name, type, startDate, endDate, startTime, endTime, location,
+           minBudget, maxBudget, categories, paymentMethods, userId, minTicketPrice, maxTicketPrice, description, hashtags);
+        return Ok(results);
+    }
+
+    [HttpGet("searchByCurrentUser")]
+    public async Task<ActionResult<List<EventDto>>> SearchByCurrentUser(
+        [FromQuery] string name,
+        [FromQuery] EventType? type,
+        [FromQuery] DateTime? startDate,
+        [FromQuery] DateTime? endDate,
+        [FromQuery] TimeSpan? startTime,
+        [FromQuery] TimeSpan? endTime,
+        [FromQuery] string location,
+        [FromQuery] float? minBudget,
+        [FromQuery] float? maxBudget,
+        [FromQuery] string categories,
+        [FromQuery] string paymentMethods,
+        [FromQuery] float? minTicketPrice,
+        [FromQuery] float? maxTicketPrice,
+        [FromQuery] string description,
+        [FromQuery] string hashtags)
+    {
+
+        var user = _signInManager.Context.User;
+        var currentUserId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        var results = await _eventServices.SearchEventsAsync(name, type, startDate, endDate, startTime, endTime, location,
+           minBudget, maxBudget, categories, paymentMethods, currentUserId, minTicketPrice, maxTicketPrice, description, hashtags);
+        return Ok(results);
     }
 }
 

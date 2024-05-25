@@ -100,7 +100,20 @@ namespace PlanningApplication.EventComponent.Services
             return eventDtoList;
         }
 
-
+        public async Task<IEnumerable<EventDto>> SearchEventsAsync(string? name, EventType? type, DateTime? startDate, DateTime? endDate,
+        TimeSpan? startTime, TimeSpan? endTime, string? location, float? minBudget, float? maxBudget,
+        string? categories, string? paymentMethods, string? userId, float? minTicketPrice, float? maxTicketPrice,
+        string? description, string? hashtags)
+        {
+            var searchResult = await _eventRepository.SearchEventsAsync(name, type, startDate, endDate, startTime, endTime, location,
+                minBudget, maxBudget, categories, paymentMethods, userId, minTicketPrice, maxTicketPrice, description, hashtags);
+            var searchDtoResults = new List<EventDto>();
+            foreach(var e in searchResult)
+            {
+                searchDtoResults.Add(convertEventToDTO(e));
+            }
+            return searchDtoResults;
+        }
 
         private EventDto convertEventToDTO(Event eventToConvert)
         {
