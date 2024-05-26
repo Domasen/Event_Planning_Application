@@ -68,8 +68,13 @@ public class UserServices : IUserServices
         return await _userRepository.GetUsers();
     }
 
-    public Task<User?> UpdateUser(User user)
+    public async Task<User?> UpdateUser(UserDto user)
     {
-        throw new NotImplementedException();
+        return await _userRepository.UpdateUser(user);
+    }
+    
+    public async Task<User?> UploadUserPhoto(Guid Id, byte[] image)
+    {
+        return await _userRepository.UploadUserPhoto(Id, image);
     }
 }

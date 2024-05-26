@@ -5,9 +5,11 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
   env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:49440';
 
 const context =  [
-    "/User/login", "/User/register", "/User/currentUser", "/User/logout", "/swagger", "/Event/createEvent",
+    "/User/login", "/User/register", "/User/currentUser", "/User/logout", "/User/user", "/User/uploadUserPhoto", "/swagger", "/Event/createEvent",
     "/EventType/getEventTypes", "/EventCategory/getEventCategories", "/Event/getAllUserEvents", "/Event/getAllEvents", '/Event/updateEvent', '/Event/search',
-    "/Event/uploadEventPhoto", '/Event/optimisticSearch'
+    "/Event/uploadEventPhoto", "/Employee/Create", "/job", "/Expense/GetByEvent", "/Expense/CalculatePrice",
+    "/Employee/GetAll", "/Job/GetAll", "/Job/Create", "/Expense/GetAll", "/Event/getEvent", "/Expense/Create", "/Expense/UpdateCalculation",
+    '/Event/optimisticSearch'
 ];
 
 module.exports = function(app) {

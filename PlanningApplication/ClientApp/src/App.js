@@ -5,6 +5,7 @@ import {Layout} from './containers/Layout';
 import { EventProvider } from './context/EventContext';
 import EventDetail from './components/EventDetail';
 import { UserProvider } from './context/UserContext.js'; // Import UserProvider
+import EventCosts from './components/EventCosts'
 import './custom.css';
 
 const App = () => {
@@ -18,7 +19,6 @@ const App = () => {
                             const { element, ...rest } = route;
                             return <Route key={index} {...rest} element={element} />;
                         })}
-                      
                     </Routes>
                 </Layout>
             </EventProvider>

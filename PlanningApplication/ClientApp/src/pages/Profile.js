@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, {useContext, useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,7 +16,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from '../components/Footer';
 import MyBookings from './MyBookings';
 import MyEvents from './MyEvents';
-import CalendarComponent from './CalendarComponent'; // Import the CalendarComponent
+import CalendarComponent from './CalendarComponent';
+import {UserContext} from "../context/UserContext";
+import axios from "axios";
+import {Await} from "react-router-dom"; // Import the CalendarComponent
 
 const lightTheme = createTheme({
     palette: {
@@ -37,21 +40,30 @@ const darkTheme = createTheme({
 });
 
 const Profile = () => {
+
+    
+    
+    const { user, setUser } = useContext(UserContext);
+    
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
-        name: 'Kamile Samusiovaite',
-        dateOfBirth: '2002-02-12',
-        email: 'kamilesamusiovaite@gmail.com',
-        contactNumber: '860569***',
-        description: 'Esu Kamile, laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupusi daugiau nei 3 metų darbo patirtį šioje srityje. Pati mėgstu dalyvauti įvairiuose renginiuose.',
+        name: user.name,
+       // dateOfBirth: user.dateOfBirth,
+        email: user.email,
+        contactNumber: user.phone,
+        description: 'Laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupęs daugiau nei 3 metų darbo patirtį šioje srityje. Mėgstu dalyvauti įvairiuose renginiuose.',
         profilePicture: 'https://via.placeholder.com/120', // Placeholder for profile picture
     });
+    const [date, setDate] = useState(user.dateOfBirth == null ? null : user.dateOfBirth.split("T")[0]);
     const [tabValue, setTabValue] = useState(0); // Set default tab to "About me"
     const [settings, setSettings] = useState({
         eventNotifications: true,
         offersNotifications: false,
         darkMode: false,
     });
+
+    const [photo, setPhoto] = React.useState(user.photo);
+    const [uploadPhoto, setUploadPhoto] = React.useState(null);
 
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
@@ -69,25 +81,81 @@ const Profile = () => {
         setIsEditing(true);
     };
 
-    const handleSaveClick = () => {
-        setIsEditing(false);
-        // Add your save logic here
-    };
+    const handleSaveClick = async () => {
+        const body = {
+            id: user.id,
+            email: formData.email,
+            name: formData.name,
+            surname: user.surname,
+            phone: formData.contactNumber,
+            dateOfBirth: date
+                
+        }
 
+        try {
+          var response = await axios.put(`User/user`, body);
+          
+          if(response.status === 200){
+              console.log("Success")
+          }else{
+              console.error(response)
+          }
+        } catch (error) {
+            console.error('Failed to update event', error);
+        }
+        setIsEditing(false);
+    };
+    
+    
+    
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (upload) => {
-                setFormData((prevFormData) => ({
-                    ...prevFormData,
-                    profilePicture: upload.target.result,
-                }));
-            };
-            reader.readAsDataURL(file);
-        }
+        setUploadPhoto(file);
+        console.log(photo);
+        
+        
     };
+    
+    const uploadImage = async () => {
+        if(uploadPhoto != null){
+            try{
+                const formData = new FormData();
+                formData.append("photo", uploadPhoto)
+                const response1 = await axios.post('User/uploadUserPhoto/'+user.id, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': '*/*'
+                    }
+                });
+                console.log(response1.status);
+                if (response1.status === 200) {
+                    console.log("Success");
+                    try {
+                        const response = await axios.get('/User/currentUser', {
+                            headers: {
+                                'Content-Type': 'text/plain',
+                            },
+                        });
+                        if (response.status === 200) {
+                            setUser(response.data);
+                            setPhoto(response.data.photo);
+                        }
+                    } catch (error) {
+                        console.error('Failed to fetch user', error);
+                    }
+                }
+            }catch (error){
+                console.error('image failed', error);
+            }
+        }
+    }
+    
+    useEffect(() =>{
+        uploadImage();
+    }, [uploadPhoto])
 
+    
+    
     const handleSettingChange = (e) => {
         const { name, checked } = e.target;
         setSettings((prevSettings) => ({
@@ -106,7 +174,7 @@ const Profile = () => {
                             <Grid item xs={12} sm="auto" display="flex" flexDirection="column" alignItems="center">
                                 <Avatar
                                     sx={{ width: 120, height: 120, mb: 2 }}
-                                    src={formData.profilePicture}
+                                    src={`data:image/jpeg;base64,${photo}`}
                                     alt="Profile Picture"
                                 />
                                 {isEditing && (
@@ -144,9 +212,11 @@ const Profile = () => {
                                         <TextField
                                             fullWidth
                                             name="dateOfBirth"
+                                            type="date"
                                             label="Date of Birth"
-                                            value={formData.dateOfBirth}
-                                            onChange={handleChange}
+                                            value={date}
+                                            onChange={(e)=>setDate(e.target.value)}
+                                            margin="normal"
                                             sx={{ mb: 2 }}
                                         />
                                         <TextField
@@ -172,7 +242,7 @@ const Profile = () => {
                                             {formData.name}
                                         </Typography>
                                         <Typography variant="body1">
-                                            Date of Birth: {formData.dateOfBirth}
+                                            Date of Birth: {date}
                                         </Typography>
                                         <Typography variant="body1">
                                             Email: {formData.email}

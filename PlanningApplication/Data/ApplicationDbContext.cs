@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlanningApplication.EventComponent.Models;
+using PlanningApplication.EmployeeComponent.Models;
+using PlanningApplication.ExpenseComponent.Models;
+using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 
 namespace PlanningApplication.Data;
@@ -16,20 +19,23 @@ public class ApplicationDbContext : IdentityDbContext<User>
 
     public DbSet<User> Users { get; set; }
     public DbSet<Event> Events { get; set; }
-
+    
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<Job> Jobs { get; set; }
+    public DbSet<Expense> Expenses { get; set; }
     // Seed method
-    public static void SeedData(ApplicationDbContext context)
-    {
-        if (!context.Users.Any())  // Checking if the database is empty
-        {
-            context.Users.AddRange(
-                new User { Id = Guid.NewGuid(), Name = "John", Surname = "Doe" },
-                new User { Id = Guid.NewGuid(), Name = "Jane", Surname = "Smith" }
-            );
-
-            context.SaveChanges();  // Saves the seeded data into the database
-        }
-    }
+    // public static void SeedData(ApplicationDbContext context)
+    // {
+    //     if (!context.Users.Any())  // Checking if the database is empty
+    //     {
+    //         context.Users.AddRange(
+    //             new User { Id = Guid.NewGuid(), Name = "John", Surname = "Doe" },
+    //             new User { Id = Guid.NewGuid(), Name = "Jane", Surname = "Smith" }
+    //         );
+    //
+    //         context.SaveChanges();  // Saves the seeded data into the database
+    //     }
+    // }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

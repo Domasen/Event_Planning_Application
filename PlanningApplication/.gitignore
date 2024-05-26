@@ -26,8 +26,8 @@ Obj/
 
 # Visual Studio 2015 cache/options directory
 .vs/
+.vs/PlanningApplication/FileContentIndex
 /wwwroot/dist/
-
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -40,7 +40,7 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
-
+*.vsidx
 *_i.c
 *_p.c
 *_i.h

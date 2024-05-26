@@ -2,7 +2,7 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup"
 import { CreateEvent } from "./pages/CreateEvent"
-import { EventCosts } from "./pages/EventCosts"
+import  EventCosts  from "./components/EventCosts"
 import { Category } from "./pages/Category";
 import {SearchResults } from "./pages/SearchResults"
 import {RegisterEmployee } from "./pages/RegisterEmployee"
@@ -66,6 +66,10 @@ const AppRoutes = [
     {
         path: '/event/:id',
         element: <EventDetail />
+    },
+    {
+        path: "/eventCosts/:id",
+        element: < EventCosts />
     }
 
 ];
