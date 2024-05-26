@@ -1,4 +1,4 @@
-﻿import React, {useContext, useState} from 'react';
+﻿import React, {useContext, useEffect, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +18,8 @@ import MyBookings from './MyBookings';
 import MyEvents from './MyEvents';
 import CalendarComponent from './CalendarComponent';
 import {UserContext} from "../context/UserContext";
-import axios from "axios"; // Import the CalendarComponent
+import axios from "axios";
+import {Await} from "react-router-dom"; // Import the CalendarComponent
 
 const lightTheme = createTheme({
     palette: {
@@ -39,6 +40,9 @@ const darkTheme = createTheme({
 });
 
 const Profile = () => {
+
+    
+    
     const { user, setUser } = useContext(UserContext);
     
     const [isEditing, setIsEditing] = useState(false);
@@ -57,6 +61,9 @@ const Profile = () => {
         offersNotifications: false,
         darkMode: false,
     });
+
+    const [photo, setPhoto] = React.useState(user.photo);
+    const [uploadPhoto, setUploadPhoto] = React.useState(null);
 
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
@@ -98,21 +105,57 @@ const Profile = () => {
         }
         setIsEditing(false);
     };
-
+    
+    
+    
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (upload) => {
-                setFormData((prevFormData) => ({
-                    ...prevFormData,
-                    profilePicture: upload.target.result,
-                }));
-            };
-            reader.readAsDataURL(file);
-        }
+        setUploadPhoto(file);
+        console.log(photo);
+        
+        
     };
+    
+    const uploadImage = async () => {
+        if(uploadPhoto != null){
+            try{
+                const formData = new FormData();
+                formData.append("photo", uploadPhoto)
+                const response1 = await axios.post('User/uploadUserPhoto/'+user.id, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': '*/*'
+                    }
+                });
+                console.log(response1.status);
+                if (response1.status === 200) {
+                    console.log("Success");
+                    try {
+                        const response = await axios.get('/User/currentUser', {
+                            headers: {
+                                'Content-Type': 'text/plain',
+                            },
+                        });
+                        if (response.status === 200) {
+                            setUser(response.data);
+                            setPhoto(response.data.photo);
+                        }
+                    } catch (error) {
+                        console.error('Failed to fetch user', error);
+                    }
+                }
+            }catch (error){
+                console.error('image failed', error);
+            }
+        }
+    }
+    
+    useEffect(() =>{
+        uploadImage();
+    }, [uploadPhoto])
 
+    
+    
     const handleSettingChange = (e) => {
         const { name, checked } = e.target;
         setSettings((prevSettings) => ({
@@ -131,7 +174,7 @@ const Profile = () => {
                             <Grid item xs={12} sm="auto" display="flex" flexDirection="column" alignItems="center">
                                 <Avatar
                                     sx={{ width: 120, height: 120, mb: 2 }}
-                                    src={formData.profilePicture}
+                                    src={`data:image/jpeg;base64,${photo}`}
                                     alt="Profile Picture"
                                 />
                                 {isEditing && (

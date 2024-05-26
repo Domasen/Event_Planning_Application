@@ -9,5 +9,6 @@ public interface IUserRepository
     Task<User?> GetCustomer(Guid userId);
     Task<IEnumerable<User>> GetUsers();
     Task<User?> UpdateUser(UserDto user);
+    public Task<User?> UploadUserPhoto(Guid Id, byte[] image);
 
 }

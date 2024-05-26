@@ -72,4 +72,9 @@ public class UserServices : IUserServices
     {
         return await _userRepository.UpdateUser(user);
     }
+    
+    public async Task<User?> UploadUserPhoto(Guid Id, byte[] image)
+    {
+        return await _userRepository.UploadUserPhoto(Id, image);
+    }
 }

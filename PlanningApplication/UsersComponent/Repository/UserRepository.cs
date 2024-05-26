@@ -52,4 +52,19 @@ public class UserRepository : IUserRepository
 
         return userToUpdate;
     }
+    
+    public async Task<User?> UploadUserPhoto(Guid Id, byte[] image)
+    {
+        var userToAddPhoto = await _context.Users.FindAsync(Id.ToString());
+        if (userToAddPhoto == null)
+        {
+            throw new KeyNotFoundException("Event not found.");
+        }
+
+        userToAddPhoto.Photo = image;
+            
+        await _context.SaveChangesAsync();
+             
+        return await _context.Users.FindAsync(Id.ToString());
+    }
 }
