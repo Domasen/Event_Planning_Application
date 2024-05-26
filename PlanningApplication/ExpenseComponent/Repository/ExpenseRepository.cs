@@ -2,6 +2,7 @@
 using PlanningApplication.Data;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
+using PlanningApplication.ExpenseComponent.Models.Strategies;
 using static PlanningApplication.ExpenseComponent.Models.Expense;
 
 namespace PlanningApplication.ExpenseComponent.Repository
@@ -28,7 +29,7 @@ namespace PlanningApplication.ExpenseComponent.Repository
             return expense;
         }
 
-        public async Task<IEnumerable<Expense>> GetAll()
+        public async Task<IEnumerable<Expense>> GetAll(Strategy strategy)
         {
             var CustomExpenses = await _context.Expenses.Include(x => x.assignedEmployees).Include(x => x.assignedEmployees.User).Include(x => x.PlannedEvent).ToListAsync();
             var FromJobs = new List<Expense>();
@@ -43,7 +44,7 @@ namespace PlanningApplication.ExpenseComponent.Repository
                     HourlyRate = totalHourly != null ? (decimal)totalHourly : 0,
                     HoursPlanned = job.HoursPlanned,
                     PlannedEvent = job.plannedEvent,
-                    CalculationStrategy = new FlatStrategy()
+                    UsedStrategy = strategy
                 };
                 FromJobs.Add(expense);
             }
@@ -53,11 +54,11 @@ namespace PlanningApplication.ExpenseComponent.Repository
 
         public async Task<Expense?> GetById(Guid id)
         {
-            return (await GetAll()).Where(x => x.Id == id).First();
+            return (await GetAll(Strategy.FlatStrategy)).Where(x => x.Id == id).First();
         }
-        public async Task<IEnumerable<Expense>> GetByEvent(Guid eventId)
+        public async Task<IEnumerable<Expense>> GetByEvent(Guid eventId, Strategy strategy)
         {
-            return (await GetAll()).Where(x => x.PlannedEvent.Id == eventId);
+            return (await GetAll(strategy)).Where(x => x.PlannedEvent.Id == eventId);
         }
         public async Task<Expense?> Update(Expense expense)
         {
@@ -66,7 +67,16 @@ namespace PlanningApplication.ExpenseComponent.Repository
             result.HoursPlanned = expense.HoursPlanned;
             result.assignedEmployees = expense.assignedEmployees;
             result.Name = expense.Name;
-            result.CalculationStrategy = expense.CalculationStrategy;
+            await _context.SaveChangesAsync();
+            return result;
+        }
+        public async Task<IEnumerable<Expense>> UpdateCalculation(Guid eventId, Strategy strategy)
+        {
+            var result = await GetByEvent(eventId, strategy);
+            foreach (var expense in result)
+            {
+                expense.UsedStrategy = strategy;
+            }
             await _context.SaveChangesAsync();
             return result;
         }

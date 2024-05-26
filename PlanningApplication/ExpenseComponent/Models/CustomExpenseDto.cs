@@ -1,5 +1,6 @@
 ﻿using PlanningApplication.Data;
 using PlanningApplication.EventComponent.Models;
+using PlanningApplication.ExpenseComponent.Models.Strategies;
 
 namespace PlanningApplication.ExpenseComponent.Models
 {
@@ -10,5 +11,6 @@ namespace PlanningApplication.ExpenseComponent.Models
         public string HourlyRate { get; set; }
         public string HoursWorked { get; set; }
         public Guid PlannedEvent { get; set; }
+        public Strategy Strategy { get; set; }
     }
 }

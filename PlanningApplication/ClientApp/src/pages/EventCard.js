@@ -10,6 +10,10 @@ const EventCard = ({ event }) => {
         // Nukreipkite vartotoją į EventDetail puslapį su renginio ID
         navigate(`/event/${event.id}`);
     };
+    const handleCostClick = () => {
+        // Nukreipkite vartotoją į EventDetail puslapį su renginio ID
+        navigate(`/eventCosts/${event.id}`);
+    };
 
     return (
         <Card sx={{ display: 'flex', mb: 2, alignItems: 'center', p: 2 }}>
@@ -43,6 +47,14 @@ const EventCard = ({ event }) => {
                 onClick={handleUpdateClick} // Pridėkite paspaudimo tvarkyklę
             >
                 UPDATE
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                sx={{ backgroundColor: '#7F1425', '&:hover': { backgroundColor: '#63101C' } }}
+                onClick={handleCostClick} // Pridėkite paspaudimo tvarkyklę
+            >
+                COSTS
             </Button>
             <MoreVert />
         </Card>

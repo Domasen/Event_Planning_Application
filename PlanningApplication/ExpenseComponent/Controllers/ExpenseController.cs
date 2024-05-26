@@ -3,6 +3,7 @@ using PlanningApplication.Data;
 using PlanningApplication.EmployeeComponent.Controllers;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
+using PlanningApplication.ExpenseComponent.Models.Strategies;
 using PlanningApplication.ExpenseComponent.Services;
 namespace PlanningApplication.ExpenseComponent.Controllers;
 [ApiController]
@@ -17,11 +18,11 @@ public class ExpenseController : ControllerBase
         _expenseService = expenseService;
     }
     [HttpGet("GetAll")]
-    public async Task<ActionResult<List<Expense>>> GetAll()
+    public async Task<ActionResult<List<Expense>>> GetAll(Strategy strategy)
     {
         try
         {
-            return Ok(await _expenseService.GetAll());
+            return Ok(await _expenseService.GetAll(strategy));
         }
         catch (Exception)
         {
@@ -83,11 +84,11 @@ public class ExpenseController : ControllerBase
         }
     }
     [HttpGet("CalculatePrice")]
-    public async Task<ActionResult<decimal>> CalculatePrice(Guid eventId)
+    public async Task<ActionResult<decimal>> CalculatePrice(Guid eventId, Strategy strategy)
     {
         try
         {
-            return Ok(await _expenseService.CalculatePrice(eventId));
+            return Ok(await _expenseService.CalculatePrice(eventId, strategy));
         }
         catch (Exception)
         {
@@ -96,11 +97,24 @@ public class ExpenseController : ControllerBase
         }
     }
     [HttpGet("GetByEvent")]
-    public async Task<ActionResult<List<Expense>>> GetByEvent(Guid eventId)
+    public async Task<ActionResult<List<Expense>>> GetByEvent(Guid eventId, Strategy strategy)
     {
         try
         {
-            return Ok(await _expenseService.GetByEvent(eventId));
+            return Ok(await _expenseService.GetByEvent(eventId, strategy));
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database");
+        }
+    }
+    [HttpPut("UpdateCalculation")]
+    public async Task<ActionResult<List<Expense>>> UpdateCalculation (Guid eventId, Strategy strategy)
+    {
+        try
+        {
+            return Ok(await _expenseService.UpdateCalculation(eventId, strategy));
         }
         catch (Exception)
         {

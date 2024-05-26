@@ -6,6 +6,7 @@ using PlanningApplication.JobComponent.Models;
 using PlanningApplication.Data;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Repository;
+using PlanningApplication.ExpenseComponent.Models.Strategies;
 
 namespace PlanningApplication.ExpenseComponent.Services
 {
@@ -22,9 +23,9 @@ namespace PlanningApplication.ExpenseComponent.Services
             _eventRepository = eventRepository;
         }
 
-        public async Task<decimal> CalculatePrice(Guid eventId)
+        public async Task<decimal> CalculatePrice(Guid eventId, Strategy strategy)
         {
-            var allExpenses = await _expenseRepository.GetByEvent(eventId);
+            var allExpenses = await _expenseRepository.GetByEvent(eventId, strategy);
             return allExpenses.Sum(x => x.totalCost);
         }
 
@@ -37,7 +38,8 @@ namespace PlanningApplication.ExpenseComponent.Services
                 HourlyRate = int.Parse(expense.HourlyRate),
                 Name = expense.JobName,
                 assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == expense.AssignedEmployee).First(),
-                PlannedEvent = await _eventRepository.GetEvent(expense.PlannedEvent)
+                PlannedEvent = await _eventRepository.GetEvent(expense.PlannedEvent),
+                UsedStrategy = expense.Strategy
             };
             Expense? expenseObject = await _expenseRepository.Create(expenseModel);
             return expenseObject;
@@ -48,14 +50,14 @@ namespace PlanningApplication.ExpenseComponent.Services
             return _expenseRepository.Delete(expense);
         }
 
-        public async Task<IEnumerable<Expense>> GetAll()
+        public async Task<IEnumerable<Expense>> GetAll(Strategy strategy)
         {
-            return await _expenseRepository.GetAll();
+            return await _expenseRepository.GetAll(strategy);
         }
 
-        public async Task<IEnumerable<Expense>> GetByEvent(Guid eventId)
+        public async Task<IEnumerable<Expense>> GetByEvent(Guid eventId, Strategy strategy)
         {
-            return await _expenseRepository.GetByEvent(eventId);
+            return await _expenseRepository.GetByEvent(eventId, strategy);
         }
 
         public async Task<Expense?> GetById(Guid expense)
@@ -66,6 +68,10 @@ namespace PlanningApplication.ExpenseComponent.Services
         public async Task<Expense?> Update(Expense expense)
         {
             return await _expenseRepository.Update(expense);
+        }
+        public async Task<IEnumerable<Expense>> UpdateCalculation(Guid eventId, Strategy strategy)
+        {
+            return await _expenseRepository.UpdateCalculation(eventId, strategy);
         }
     }
 }
