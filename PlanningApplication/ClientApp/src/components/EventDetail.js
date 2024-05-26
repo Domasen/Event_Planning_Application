@@ -1,12 +1,12 @@
 ﻿import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, TextField, Button, Box } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, TextField, Button, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { EventContext } from '../context/EventContext';
-
+import axios from 'axios';
 
 const EventDetail = () => {
     const { id } = useParams();
-    const { events, updateEvent } = useContext(EventContext);
+    const { events, fetchEvents } = useContext(EventContext);
 
     // Define state variables
     const [title, setTitle] = useState('');
@@ -16,6 +16,7 @@ const EventDetail = () => {
     const [price, setPrice] = useState('');
     const [event, setEvent] = useState(null);
     const [photo, setPhoto] = useState(null);
+    const [openDialog, setOpenDialog] = useState(false);
 
     // Fetch event data from context using useEffect
     useEffect(() => {
@@ -33,7 +34,78 @@ const EventDetail = () => {
 
     // Handle save event
     const handleSave = () => {
-        updateEvent({ ...event, name:title, startTime:time, date:date, location:location, ticketPrice:price });
+        const updateEvent = async (updatedEvent) => {
+            try {
+                const response = await axios.put(`Event/updateEvent/${updatedEvent.id}`, updatedEvent);
+                if (response.status === 200) {
+                    fetchEvents();
+                } else {
+                    console.error("Failed." + response);
+                }
+            } catch (error) {
+                if (error.response && error.response.status === 409) {
+                    setOpenDialog(true);
+                } else {
+                    console.error('Failed to update event', error);
+                }
+            }
+        };
+
+        updateEvent({
+            ...event,
+            id: event.id,
+            name: title,
+            startTime: time,
+            date: date,
+            location: location,
+            ticketPrice: price,
+            photo: photo
+        });
+    };
+
+    const handleDialogClose = () => {
+        setOpenDialog(false);
+    };
+
+    const handleOverwrite = async () => {
+        try {
+            const response = await axios.put(`Event/updateEvent/${event.id}`, {
+                ...event,
+                id: event.id,
+                name: title,
+                startTime: time,
+                date: date,
+                location: location,
+                ticketPrice: price,
+                photo: photo,
+                forceUpdate: true // Assuming your backend handles a force update parameter
+            });
+            if (response.status === 200) {
+                fetchEvents();
+                setOpenDialog(false);
+            }
+        } catch (error) {
+            console.error('Failed to overwrite event', error);
+        }
+    };
+
+    const handlePullLatest = async () => {
+        try {
+            const response = await axios.get(`Event/getEvent/${event.id}`);
+            if (response.status === 200) {
+                const updatedEvent = response.data;
+                setEvent(updatedEvent);
+                setTitle(updatedEvent.name);
+                setTime(updatedEvent.startTime);
+                setDate(updatedEvent.date);
+                setLocation(updatedEvent.location);
+                setPrice(updatedEvent.ticketPrice);
+                setPhoto(updatedEvent.photo);
+                setOpenDialog(false);
+            }
+        } catch (error) {
+            console.error('Failed to pull latest event data', error);
+        }
     };
 
     // If event is not found, display message
@@ -114,6 +186,29 @@ const EventDetail = () => {
                     </Button>
                 </Box>
             </CardContent>
+
+            {/* Conflict Dialog */}
+            <Dialog
+                open={openDialog}
+                onClose={handleDialogClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{"Conflict Detected"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        A conflict was detected while updating the event. Would you like to overwrite the existing data or pull the latest data and retry editing?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleOverwrite} color="primary">
+                        Overwrite
+                    </Button>
+                    <Button onClick={handlePullLatest} color="primary" autoFocus>
+                        Pull Latest
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Card>
     );
 };

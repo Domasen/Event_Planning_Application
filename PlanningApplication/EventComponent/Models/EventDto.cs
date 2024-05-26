@@ -39,5 +39,7 @@ namespace PlanningApplication.EventComponent.Models
         public byte[]? Photo { get; set; }
 
         public Guid Version {  get; set; }
+
+        public bool ForceUpdate { get; set; } = false;
     }
 }

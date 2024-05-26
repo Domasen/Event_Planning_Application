@@ -1,9 +1,8 @@
-﻿// EventContext.js
-import React, { useContext, useState, useCallback } from 'react';
+﻿import React, { createContext, useState, useContext } from 'react';
 import { useFetch } from '../hooks/useFetch.js';
 import axios from 'axios';
 
-const EventContext = React.createContext();
+const EventContext = createContext();
 
 const EventProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +13,7 @@ const EventProvider = ({ children }) => {
         const query = new URLSearchParams(params).toString();
         setUrl(`Event/search?categories=${query}`);
         fetchEventByCategory();
-    }
+    };
 
     const updateEvent = async (updatedEvent) => {
         try {
@@ -26,14 +25,14 @@ const EventProvider = ({ children }) => {
     };
 
     return (
-        <EventContext.Provider value={{ events, categoryEvents, fetchEventsByCategory, setSearchTerm, updateEvent }}>
+        <EventContext.Provider value={{ events, categoryEvents, fetchEventsByCategory, setSearchTerm, fetchEvents, updateEvent }}>
             {children}
         </EventContext.Provider>
     );
-}
+};
 
 export const useEventContext = () => {
     return useContext(EventContext);
-}
+};
 
 export { EventContext, EventProvider };

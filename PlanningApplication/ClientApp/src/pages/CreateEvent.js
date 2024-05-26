@@ -3,14 +3,20 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import axios from 'axios';
 import EventTypeSelect from "../components/EventTypesSelect.js"
 import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
 import { UserContext } from '../context/UserContext.js';
-import {Await} from "react-router-dom";
 
 export const CreateEvent = () => {
-    const { user } = React.useContext(UserContext); 
+    const { user } = React.useContext(UserContext);
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
@@ -26,20 +32,26 @@ export const CreateEvent = () => {
     const [categories, setCategories] = React.useState([])
     const [photo, setPhoto] = React.useState(null)
 
+    // Dialog state
+    const [open, setOpen] = React.useState(false);
+    const [dialogTitle, setDialogTitle] = React.useState('');
+    const [dialogContent, setDialogContent] = React.useState('');
+
+    const handleDialogClose = () => {
+        setOpen(false);
+    };
 
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
         setPhoto(file);
     };
-    
-    
+
     const handleEventSubmit = async (e) => {
         e.preventDefault();
         if (!user || !user.id) {
             throw new Error("User object is not defined, is null or has no id.");
         }
-        
-        
+
         const eventInfo = {
             name: eventName,
             type: eventType,
@@ -65,33 +77,34 @@ export const CreateEvent = () => {
             });
 
             if (response.status === 201) {
-                console.log("Success")
-                
-                
-            } else {
-                console.error(response)  
+                setDialogTitle("Success");
+                setDialogContent("Event created successfully.");
+                setOpen(true);
 
-            }
+                const formData = new FormData();
+                formData.append("photo", photo);
+                const response1 = await axios.post('Event/uploadEventPhoto/' + response.data.id, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': '*/*'
+                    }
+                });
 
-            const formData = new FormData();
-            formData.append("photo", photo)
-            const response1 = await axios.post('Event/uploadEventPhoto/'+response.data.id, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Accept': '*/*'
+                if (response1.status === 200) {
+                    setDialogContent("Event and photo uploaded successfully.");
+                } else {
+                    setDialogContent("Event created, but failed to upload photo.");
                 }
-            });
-
-            if (response1.status === 200) {
-                console.log("Success")
-
-
             } else {
-                console.error(response)
-
+                setDialogTitle("Error");
+                setDialogContent("Failed to create event.");
+                setOpen(true);
             }
         } catch (error) {
-            console.error('image failed', error);
+            setDialogTitle("Error");
+            setDialogContent("Failed to create event.");
+            setOpen(true);
+            console.error('Failed to create event', error);
         }
 
         console.log('Event Created:', { eventName, eventType, budget, price, date, location, startTime, endTime, eventFormat, description, hashtags });
@@ -110,6 +123,7 @@ export const CreateEvent = () => {
         setCategories([]);
         setPhoto(null);
     };
+
     return (
         <Box
             sx={{
@@ -313,6 +327,25 @@ export const CreateEvent = () => {
                     Save & Continue
                 </Button>
             </Box>
+
+            <Dialog
+                open={open}
+                onClose={handleDialogClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        {dialogContent}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleDialogClose} color="primary" autoFocus>
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Box>
     );
 };
