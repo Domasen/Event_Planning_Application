@@ -246,7 +246,6 @@ const EventCosts = () => {
                     </Button>
                 </Box>
             </Modal>
-            <Footer />
         </Box>
     );
 };

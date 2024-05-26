@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardContent, CardMedia, Typography, TextField, Button, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, TextField, Button, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Snackbar, Alert } from '@mui/material';
 import { EventContext } from '../context/EventContext';
 import axios from 'axios';
 
@@ -17,6 +17,8 @@ const EventDetail = () => {
     const [event, setEvent] = useState(null);
     const [photo, setPhoto] = useState(null);
     const [openDialog, setOpenDialog] = useState(false);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
 
     // Fetch event data from context using useEffect
     useEffect(() => {
@@ -39,6 +41,8 @@ const EventDetail = () => {
                 const response = await axios.put(`Event/updateEvent/${updatedEvent.id}`, updatedEvent);
                 if (response.status === 200) {
                     fetchEvents();
+                    setSnackbarMessage("Event updated successfully.");
+                    setSnackbarOpen(true);
                 } else {
                     console.error("Failed." + response);
                 }
@@ -82,6 +86,8 @@ const EventDetail = () => {
             });
             if (response.status === 200) {
                 fetchEvents();
+                setSnackbarMessage("Event updated successfully.");
+                setSnackbarOpen(true);
                 setOpenDialog(false);
             }
         } catch (error) {
@@ -106,6 +112,13 @@ const EventDetail = () => {
         } catch (error) {
             console.error('Failed to pull latest event data', error);
         }
+    };
+
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackbarOpen(false);
     };
 
     // If event is not found, display message
@@ -209,6 +222,17 @@ const EventDetail = () => {
                     </Button>
                 </DialogActions>
             </Dialog>
+
+            {/* Snackbar for success message */}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+            >
+                <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </Card>
     );
 };
