@@ -66,10 +66,58 @@ namespace PlanningApplication.EventComponent.Repository
         public async Task<Event?> UpdateEvent(Event eventToUpdate)
         {
             _context.Events.Update(eventToUpdate);
-            eventToUpdate.Version =Guid.NewGuid();
-            await _context.SaveChangesAsync(); 
+            eventToUpdate.Version = Guid.NewGuid();
+            await _context.SaveChangesAsync();
             return await _context.Events.FindAsync(eventToUpdate.Id);
         }
+
+
+        public async Task<Event?> ForceUpdateEvent(Event eventToUpdate)
+        {
+            // Detach any local tracked entity to avoid issues
+            var local = _context.Set<Event>()
+                .Local
+                .FirstOrDefault(entry => entry.Id.Equals(eventToUpdate.Id));
+
+            if (local != null)
+            {
+                _context.Entry(local).State = EntityState.Detached;
+            }
+
+            // Retrieve the current values from the database
+            var currentValues = await _context.Events
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == eventToUpdate.Id);
+
+            if (currentValues == null)
+            {
+                throw new KeyNotFoundException("Event not found.");
+            }
+
+            // Attach the entity to the context
+            _context.Events.Attach(eventToUpdate);
+
+            // Set the original value of the Version property to the current value in the database
+            _context.Entry(eventToUpdate).Property(e => e.Version).OriginalValue = currentValues.Version;
+
+            // Set a new Version value for the update
+            eventToUpdate.Version = Guid.NewGuid();
+
+            // Mark all properties as modified except the Id
+            foreach (var property in _context.Entry(eventToUpdate).Properties)
+            {
+                if (property.Metadata.Name != nameof(eventToUpdate.Id))
+                {
+                    property.IsModified = true;
+                }
+            }
+
+            // Save changes
+            await _context.SaveChangesAsync();
+            return eventToUpdate;
+
+        }
+
 
         public async Task<IEnumerable<Event>> SearchEventsAsync(string? name, EventType? type, DateTime? startDate, DateTime? endDate,
         TimeSpan? startTime, TimeSpan? endTime, string? location, float? minBudget, float? maxBudget,

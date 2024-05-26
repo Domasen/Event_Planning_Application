@@ -68,14 +68,14 @@ namespace PlanningApplication.EventComponent.Services
 
         public async Task<(EventDto?, bool)> UpdateEvent(EventDto eventToUpdate)
         {
-            var eventUpdate = new Models.Event
+            var eventUpdate = new Event
             {
                 Id = eventToUpdate.Id,
                 Name = eventToUpdate.Name,
                 Type = eventToUpdate.Type,
                 TicketPrice = eventToUpdate.TicketPrice,
                 Date = eventToUpdate.Date,
-                StartTime= eventToUpdate.StartTime,
+                StartTime = eventToUpdate.StartTime,
                 EndTime = eventToUpdate.EndTime,
                 Location = eventToUpdate.Location,
                 Format = eventToUpdate.Format,
@@ -85,18 +85,31 @@ namespace PlanningApplication.EventComponent.Services
                 Categories = eventToUpdate.Categories,
                 AllowedPaymentMethods = eventToUpdate.AllowedPaymentMethods,
                 UserId = eventToUpdate.UserId,
-                Version = eventToUpdate.Version
+                Photo = eventToUpdate.Photo,
+                Version = eventToUpdate.Version,
             };
+
             try
             {
-                var updatedEvent = await _eventRepository.UpdateEvent(eventUpdate);
+                Event? updatedEvent;
+                if (eventToUpdate.ForceUpdate)
+                {
+                    updatedEvent = await _eventRepository.ForceUpdateEvent(eventUpdate);
+                }
+                else
+                {
+                    updatedEvent = await _eventRepository.UpdateEvent(eventUpdate);
+                }
+
                 return (convertEventToDTO(updatedEvent), true);
             }
-            catch (DbUpdateConcurrencyException) {
+            catch (DbUpdateConcurrencyException)
+            {
                 var currentEvent = await _eventRepository.GetEvent(eventToUpdate.Id);
                 return (convertEventToDTO(currentEvent), false);
             }
         }
+
 
         public async Task<IEnumerable<EventDto>> GetUserEvents(string userId)
         {

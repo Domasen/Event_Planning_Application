@@ -51,7 +51,7 @@ const EventCard = ({ event }) => {
             <Button
                 variant="contained"
                 color="primary"
-                sx={{ backgroundColor: '#7F1425', '&:hover': { backgroundColor: '#63101C' } }}
+                sx={{ backgroundColor: '#7F1425', '&:hover': { backgroundColor: '#63101C' }, marginLeft:'10px' }}
                 onClick={handleCostClick} // Pridėkite paspaudimo tvarkyklę
             >
                 COSTS
