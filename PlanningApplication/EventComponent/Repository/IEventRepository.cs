@@ -17,5 +17,7 @@ namespace PlanningApplication.EventComponent.Repository
         TimeSpan? startTime, TimeSpan? endTime, string? location, float? minBudget, float? maxBudget,
         string? categories, string? paymentMethods, string userId, float? minTicketPrice, float? maxTicketPrice,
         string? description, string? hashtags);
+
+        Task<IEnumerable<Event>> OptimisticSearchAsync(string searchValue);
     }
 }

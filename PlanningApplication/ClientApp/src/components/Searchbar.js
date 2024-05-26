@@ -1,10 +1,8 @@
-﻿import * as React from 'react';
+﻿import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useEventContext } from '../context/EventContext.js';
 import { useNavigate } from 'react-router-dom';
-
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -47,41 +45,33 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-
 export const Searchbar = () => {
-    const { setSearchTerm } = useEventContext();
-    const searchValue = React.useRef('');
+    const [searchValue, setSearchValue] = useState('');
     const navigate = useNavigate();
 
-    React.useEffect(() => {
-        searchValue.current.focus();
-    }, []);
-
     const searchEvent = (e) => {
-        setSearchTerm(e.current.value);
-    }
+        setSearchValue(e.target.value);
+    };
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            navigate('/searchResults');
-         
+            navigate(`/searchResults?searchValue=${encodeURIComponent(searchValue)}`);
         }
-    }
+    };
 
     return (
-            <Search>
-                <SearchIconWrapper>
-                    <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                    ref={searchValue}
-                    onChange={searchEvent}
-                    onKeyDown={handleKeyDown}
-                />
-            </Search>
-       
-    )
-}
+        <Search>
+            <SearchIconWrapper>
+                <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchValue}
+                onChange={searchEvent}
+                onKeyDown={handleKeyDown}
+            />
+        </Search>
+    );
+};

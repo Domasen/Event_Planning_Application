@@ -6,13 +6,13 @@ import axios from 'axios';
 const EventContext = React.createContext();
 
 const EventProvider = ({ children }) => {
-    const [searchTerm, setSearchTerm] = useState('a');
+    const [searchTerm, setSearchTerm] = useState('');
     const { data: events, refetch: fetchEvents } = useFetch('Event/getAllEvents');
     const { data: categoryEvents, refetch: fetchEventByCategory, setUrl } = useFetch('Event/search');
 
     const fetchEventsByCategory = (params) => {
         const query = new URLSearchParams(params).toString();
-        setUrl(`Event/search?${query}`);
+        setUrl(`Event/search?categories=${query}`);
         fetchEventByCategory();
     }
 

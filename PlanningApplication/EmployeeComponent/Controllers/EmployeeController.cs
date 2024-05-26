@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Services;
+using PlanningApplication.Interceptors;
 using PlanningApplication.JobComponent.Models;
 using PlanningApplication.UsersComponent.Models;
 using PlanningApplication.UsersComponent.Services;
@@ -17,7 +18,7 @@ public class EmployeeController : ControllerBase
         _logger = logger;
         _employeeService = employeeServices;
     }
-
+    [LogAction]
     [HttpGet("MyEmployments")]
     public async Task<ActionResult<List<Employee>>> GetAllEmployments(Guid userId)
     {
@@ -31,6 +32,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetEventEmployees")]
     public async Task<ActionResult<List<Employee>>> GetEventEmployees(Guid eventId)
     {
@@ -44,6 +46,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetById")]
     public async Task<ActionResult<Employee>> GetById(Guid id)
     {
@@ -57,6 +60,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpDelete("Delete")]
     public async Task<ActionResult<Employee>> Delete([FromBody] Employee employee)
     {
@@ -70,6 +74,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPut("Update")]
     public async Task<ActionResult<Employee>> Update([FromBody] Employee employee)
     {
@@ -83,6 +88,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPost("Create")]
     public async Task<ActionResult<Employee>> AddEmployee(EmployeeDto employeeDto)
     {
@@ -96,6 +102,7 @@ public class EmployeeController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetAll")]
     public async Task<ActionResult<Employee>> GetAll()
     {

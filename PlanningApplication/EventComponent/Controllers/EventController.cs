@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Services;
+using PlanningApplication.Interceptors;
 using PlanningApplication.UsersComponent.Models;
 using System.Security.Claims;
 
@@ -22,7 +23,7 @@ public class EventController : ControllerBase
         _eventServices = eventServices;
         _signInManager = signInManager;
     }
-
+    [LogAction]
     [HttpGet("getAllEvents")]
     public async Task<ActionResult<List<EventDto>>> GetEvents()
     {
@@ -36,7 +37,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
         }
     }
-
+    [LogAction]
     [HttpGet("getAllUserEvents")]
     public async Task<ActionResult<List<EventDto>>> GetAllUserEvents()
     {
@@ -52,7 +53,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
         }
     }
-
+    [LogAction]
     [HttpPost("createEvent")]
     public async Task<ActionResult<EventDto>> AddEvent([FromBody] EventDto eventDto)
     {
@@ -78,7 +79,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error creating new event.");
         }
     }
-
+    [LogAction]
     [HttpGet("getEvent/{id}")]
     public async Task<ActionResult<EventDto>> GetEventById(Guid id)
     {
@@ -98,6 +99,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpDelete("deleteEvent/{id}")]
     public async Task<IActionResult> DeleteEvent(Guid id)
     {
@@ -120,6 +122,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error deleting event.");
         }
     }
+    [LogAction]
     [HttpPut("updateEvent/{id}")]
     public async Task<IActionResult> UpdateEvent([FromBody] EventDto eventDto)
     {
@@ -133,7 +136,7 @@ public class EventController : ControllerBase
             return Conflict(updatedEvent);
         }
     }
-
+    [LogAction]
     [HttpGet("search")]
     public async Task<ActionResult<List<EventDto>>> Search(
         [FromQuery] string? name,
@@ -157,7 +160,7 @@ public class EventController : ControllerBase
            minBudget, maxBudget, categories, paymentMethods, userId, minTicketPrice, maxTicketPrice, description, hashtags);
         return Ok(results);
     }
-
+    [LogAction]
     [HttpGet("searchByCurrentUser")]
     public async Task<ActionResult<List<EventDto>>> SearchByCurrentUser(
         [FromQuery] string name,
@@ -183,8 +186,16 @@ public class EventController : ControllerBase
            minBudget, maxBudget, categories, paymentMethods, currentUserId, minTicketPrice, maxTicketPrice, description, hashtags);
         return Ok(results);
     }
-    
-    
+    [LogAction]
+    [HttpGet("optimisticSearch")]
+    public async Task<ActionResult<List<EventDto>>> OptimisticSearch(
+        [FromQuery] string searchValue)
+    {
+        var results = await _eventServices.OptimisticSearchAsync(searchValue);
+        return Ok(results);
+    }
+
+    [LogAction]
     [HttpPost("uploadEventPhoto/{id}")]
     public async Task<IActionResult> UploadEventPhoto(Guid id, IFormFile photo)
     {
@@ -211,7 +222,7 @@ public class EventController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading photo.");
         }
     }
-
+    [LogAction]
     [HttpGet("getEventPhoto/{id}")]
     public async Task<IActionResult> GetEventPhoto(Guid id)
     {

@@ -17,5 +17,7 @@ namespace PlanningApplication.EventComponent.Services
         string? categories, string? paymentMethods, string? userId, float? minTicketPrice, float? maxTicketPrice,
         string? description, string? hashtags);
 
+        Task<IEnumerable<EventDto>> OptimisticSearchAsync(string searchValue);
+
     }
 }

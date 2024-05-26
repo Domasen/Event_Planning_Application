@@ -36,16 +36,12 @@ const AppRoutes = [
     path: '/eventCosts',
     element: <EventCosts />
     },
-    //{
-    //    path: 'category/:id',
-    //    element: <Category />
-    //},
     {
-        path: 'category',
+        path: 'category/:categoryName',
         element: <Category />
-    }, 
+    },
     {
-        path: 'searchResults',
+        path: '/searchResults',
         element: <SearchResults />
     },
     {

@@ -113,7 +113,7 @@ public class UserController : ControllerBase
 
         return userId;
     }
-    
+    [LogAction]
     [HttpPost("uploadUserPhoto/{id}")]
     public async Task<IActionResult> UploadUserPhoto(Guid id, IFormFile photo)
     {

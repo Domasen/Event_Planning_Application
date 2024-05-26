@@ -1,4 +1,4 @@
-﻿import React, {useContext, useEffect, useState} from 'react';
+﻿import React, { useContext, useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,9 +17,8 @@ import Footer from '../components/Footer';
 import MyBookings from './MyBookings';
 import MyEvents from './MyEvents';
 import CalendarComponent from './CalendarComponent';
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 import axios from "axios";
-import {Await} from "react-router-dom"; // Import the CalendarComponent
 
 const lightTheme = createTheme({
     palette: {
@@ -40,30 +39,57 @@ const darkTheme = createTheme({
 });
 
 const Profile = () => {
-
-    
-    
     const { user, setUser } = useContext(UserContext);
-    
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
-        name: user.name,
-       // dateOfBirth: user.dateOfBirth,
-        email: user.email,
-        contactNumber: user.phone,
+        name: "",
+        email: "",
+        contactNumber: "",
         description: 'Laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupęs daugiau nei 3 metų darbo patirtį šioje srityje. Mėgstu dalyvauti įvairiuose renginiuose.',
-        profilePicture: 'https://via.placeholder.com/120', // Placeholder for profile picture
+        profilePicture: 'https://via.placeholder.com/120',
     });
-    const [date, setDate] = useState(user.dateOfBirth == null ? null : user.dateOfBirth.split("T")[0]);
-    const [tabValue, setTabValue] = useState(0); // Set default tab to "About me"
+    const [date, setDate] = useState("");
+    const [tabValue, setTabValue] = useState(0);
     const [settings, setSettings] = useState({
         eventNotifications: true,
         offersNotifications: false,
         darkMode: false,
     });
+    const [photo, setPhoto] = useState(null);
+    const [uploadPhoto, setUploadPhoto] = useState(null);
 
-    const [photo, setPhoto] = React.useState(user.photo);
-    const [uploadPhoto, setUploadPhoto] = React.useState(null);
+    useEffect(() => {
+        if (user) {
+            setFormData({
+                name: user.name || "",
+                email: user.email || "",
+                contactNumber: user.phone || "",
+                description: formData.description,
+                profilePicture: formData.profilePicture,
+            });
+            setDate(user.dateOfBirth ? user.dateOfBirth.split("T")[0] : "");
+            setPhoto(user.photo);
+        }
+    }, [user]);
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get('/User/currentUser', {
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+            });
+            if (response.status === 200) {
+                setUser(response.data);
+            }
+        } catch (error) {
+            console.error('Failed to fetch user', error);
+        }
+    };
 
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
@@ -89,73 +115,51 @@ const Profile = () => {
             surname: user.surname,
             phone: formData.contactNumber,
             dateOfBirth: date
-                
-        }
+        };
 
         try {
-          var response = await axios.put(`User/user`, body);
-          
-          if(response.status === 200){
-              console.log("Success")
-          }else{
-              console.error(response)
-          }
+            const response = await axios.put(`User/user`, body);
+            if (response.status === 200) {
+                console.log("Success");
+            } else {
+                console.error(response);
+            }
         } catch (error) {
             console.error('Failed to update event', error);
         }
         setIsEditing(false);
     };
-    
-    
-    
+
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
         setUploadPhoto(file);
-        console.log(photo);
-        
-        
     };
-    
+
     const uploadImage = async () => {
-        if(uploadPhoto != null){
-            try{
+        if (uploadPhoto != null) {
+            try {
                 const formData = new FormData();
-                formData.append("photo", uploadPhoto)
-                const response1 = await axios.post('User/uploadUserPhoto/'+user.id, formData, {
+                formData.append("photo", uploadPhoto);
+                const response1 = await axios.post('User/uploadUserPhoto/' + user.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         'Accept': '*/*'
                     }
                 });
-                console.log(response1.status);
                 if (response1.status === 200) {
                     console.log("Success");
-                    try {
-                        const response = await axios.get('/User/currentUser', {
-                            headers: {
-                                'Content-Type': 'text/plain',
-                            },
-                        });
-                        if (response.status === 200) {
-                            setUser(response.data);
-                            setPhoto(response.data.photo);
-                        }
-                    } catch (error) {
-                        console.error('Failed to fetch user', error);
-                    }
+                    fetchUser();
                 }
-            }catch (error){
+            } catch (error) {
                 console.error('image failed', error);
             }
         }
-    }
-    
-    useEffect(() =>{
-        uploadImage();
-    }, [uploadPhoto])
+    };
 
-    
-    
+    useEffect(() => {
+        uploadImage();
+    }, [uploadPhoto]);
+
     const handleSettingChange = (e) => {
         const { name, checked } = e.target;
         setSettings((prevSettings) => ({
@@ -215,7 +219,7 @@ const Profile = () => {
                                             type="date"
                                             label="Date of Birth"
                                             value={date}
-                                            onChange={(e)=>setDate(e.target.value)}
+                                            onChange={(e) => setDate(e.target.value)}
                                             margin="normal"
                                             sx={{ mb: 2 }}
                                         />
@@ -387,7 +391,6 @@ const Profile = () => {
                                     </Grid>
                                 </Box>
                             )}
-                            {/* Add content for other tabs here */}
                         </Box>
                     </Paper>
                 </Container>

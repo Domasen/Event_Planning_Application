@@ -5,6 +5,8 @@ using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
 using PlanningApplication.ExpenseComponent.Models.Strategies;
 using PlanningApplication.ExpenseComponent.Services;
+using PlanningApplication.Interceptors;
+
 namespace PlanningApplication.ExpenseComponent.Controllers;
 [ApiController]
 [Route("[controller]")]
@@ -17,6 +19,7 @@ public class ExpenseController : ControllerBase
         _logger = logger;
         _expenseService = expenseService;
     }
+    [LogAction]
     [HttpGet("GetAll")]
     public async Task<ActionResult<List<Expense>>> GetAll(Strategy strategy)
     {
@@ -30,6 +33,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpDelete("Delete")]
     public async Task<ActionResult<Expense?>> Delete(Expense expense)
     {
@@ -43,6 +47,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPut("Update")]
     public async Task<ActionResult<Expense?>> Update(Expense expense)
     {
@@ -56,6 +61,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetById")]
     public async Task<ActionResult<Expense?>> GetById(Guid id)
     {
@@ -69,6 +75,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPost("Create")]
     public async Task<ActionResult<Expense?>> Create(CustomExpenseDto expenseDto)
     {
@@ -83,6 +90,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("CalculatePrice")]
     public async Task<ActionResult<decimal>> CalculatePrice(Guid eventId, Strategy strategy)
     {
@@ -96,6 +104,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetByEvent")]
     public async Task<ActionResult<List<Expense>>> GetByEvent(Guid eventId, Strategy strategy)
     {
@@ -109,6 +118,7 @@ public class ExpenseController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPut("UpdateCalculation")]
     public async Task<ActionResult<List<Expense>>> UpdateCalculation (Guid eventId, Strategy strategy)
     {

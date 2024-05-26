@@ -101,6 +101,7 @@ const EventCosts = () => {
                 // Reset form fields
                 setNewExpense({ jobName: '', assignedEmployee: '', hourlyRate: '', hoursWorked: '' });
                 fetchExpenses();
+                fetchCost();
                 handleClose();
             } else {
                 console.log(response.data.message || 'Expense addition failed. Please try again.');
@@ -130,7 +131,7 @@ const EventCosts = () => {
                     {eventName} - Event Costs
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Total Budget: ${totalBudget}
+                    Total Budget: ${totalBudget.toFixed(2)}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                     Current Calculation type: {strategy === "TaxedStrategy" ? "Taxes included" : "Taxes excluded"}
@@ -162,7 +163,7 @@ const EventCosts = () => {
                                 <TableCell align="right">{`${work.assignedEmployees.user.name} ${work.assignedEmployees.user.surname}`}</TableCell>
                                 <TableCell align="right">{work.hourlyRate}</TableCell>
                                 <TableCell align="right">{work.hoursPlanned}</TableCell>
-                                <TableCell align="right">{work.totalCost}</TableCell>
+                                <TableCell align="right">{work.totalCost.toFixed(2)}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -170,10 +171,10 @@ const EventCosts = () => {
             </TableContainer>
             <Box sx={{ width: '80%', display: 'flex', justifyContent: 'space-between', mb: 3 }}>
                 <Typography variant="h6" gutterBottom sx={{ color: '#7F1425' }}>
-                    Remaining Budget: ${remainingBudget >= 0 ? remainingBudget : 0}
+                    Remaining Budget: ${remainingBudget >= 0 ? remainingBudget.toFixed(2) : 0}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Total Cost: ${currentCost}
+                    Total Cost: ${currentCost.toFixed(2)}
                 </Typography>
             </Box>
             <Box sx={{ width: '80%', textAlign: 'center', mb: 3 }}>

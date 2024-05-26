@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.EventComponent.Repository;
+using PlanningApplication.UsersComponent.Models;
 using System.Data;
+using System.Xml.Linq;
 
 namespace PlanningApplication.EventComponent.Services
 {
@@ -121,6 +123,18 @@ namespace PlanningApplication.EventComponent.Services
             }
             return searchDtoResults;
         }
+
+        public async Task<IEnumerable<EventDto>> OptimisticSearchAsync(string searchValue)
+        {
+            var searchResult = await _eventRepository.OptimisticSearchAsync(searchValue);
+            var searchDtoResults = new List<EventDto>();
+            foreach (var e in searchResult)
+            {
+                searchDtoResults.Add(convertEventToDTO(e));
+            }
+            return searchDtoResults;
+        }
+
 
         private EventDto convertEventToDTO(Event eventToConvert)
         {

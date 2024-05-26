@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useContext, useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import jsPDF from 'jspdf';
@@ -7,17 +7,37 @@ import {
     Box, Button, Typography, Modal, Paper, IconButton
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios';
+import { format } from 'date-fns';
 
-const events = [
-    { date: new Date(2024, 0, 10), title: 'Event 1', description: 'Description for Event 1', location: 'Location 1' },
-    { date: new Date(2024, 1, 20), title: 'Event 2', description: 'Description for Event 2', location: 'Location 2' },
-    { date: new Date(2024, 2, 15), title: 'Event 3', description: 'Description for Event 3', location: 'Location 3' }
-];
+
+//const events = [
+//    { date: new Date(2024, 0, 10), title: 'Event 1', description: 'Description for Event 1', location: 'Location 1' },
+//    { date: new Date(2024, 1, 20), title: 'Event 2', description: 'Description for Event 2', location: 'Location 2' },
+//    { date: new Date(2024, 2, 15), title: 'Event 3', description: 'Description for Event 3', location: 'Location 3' }
+//];
 
 const CalendarComponent = () => {
-    const [date, setDate] = useState(new Date(2024, 0, 1));
+    const [date, setDate] = useState(new Date());
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [open, setOpen] = useState(false);
+    const [events, setEvents] = useState([])
+
+    useEffect(() => {
+        axios.get('Event/getAllUserEvents', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': '*/*'
+            }
+        }).then(response => {
+            if (response.status === 200) {
+                setEvents(response.data)
+            }
+            else {
+                console.error(response)
+            }
+        })
+    }, []);
 
     const handleDownloadPDF = () => {
         const input = document.getElementById('calendar');
@@ -35,10 +55,11 @@ const CalendarComponent = () => {
 
     const tileContent = ({ date, view }) => {
         if (view === 'month') {
-            const event = events.find(event => event.date.toDateString() === date.toDateString());
+            let localDate = format(date, 'yyyy-MM-dd') + "T00:00:00"
+            const event = events.find(event => event.date === localDate);
             return event ? (
                 <Typography sx={{ color: '#7F1425', cursor: 'pointer' }} onClick={() => handleOpen(event)}>
-                    {event.title}
+                    {event.name}
                 </Typography>
             ) : null;
         }
@@ -87,7 +108,7 @@ const CalendarComponent = () => {
                     {selectedEvent && (
                         <>
                             <Typography id="modal-title" variant="h6" component="h2">
-                                {selectedEvent.title}
+                                {selectedEvent.name}
                             </Typography>
                             <Typography id="modal-description" sx={{ mt: 2 }}>
                                 {selectedEvent.description}
@@ -96,7 +117,7 @@ const CalendarComponent = () => {
                                 Location: {selectedEvent.location}
                             </Typography>
                             <Typography sx={{ mt: 2 }}>
-                                Date: {selectedEvent.date.toDateString()}
+                                Date: {selectedEvent.date.split('T')[0]}
                             </Typography>
                         </>
                     )}
