@@ -83,7 +83,6 @@ export const WorkList = () => {
             });
             if (response.status === 200) {
                 // Reset form fields
-                setWorkList([...workList, newWork]);
                 setJobName('');
                 setAssignedEmployee('');
                 setHoursPlanned('');

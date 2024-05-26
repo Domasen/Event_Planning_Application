@@ -1,4 +1,5 @@
-﻿import React, { useContext, useState, useCallback, useMemo } from 'react';
+﻿// EventContext.js
+import React, { useContext, useState, useCallback } from 'react';
 import { useFetch } from '../hooks/useFetch.js';
 import axios from 'axios';
 
@@ -13,23 +14,19 @@ const EventProvider = ({ children }) => {
         const query = new URLSearchParams(params).toString();
         setUrl(`Event/search?${query}`);
         fetchEventByCategory();
-    }, [setUrl, fetchEventByCategory]);
+    }
 
-    const updateEvent = useCallback(async (updatedEvent) => {
+    const updateEvent = async (updatedEvent) => {
         try {
             await axios.put(`Event/updateEvent/${updatedEvent.id}`, updatedEvent);
             fetchEvents();
         } catch (error) {
             console.error('Failed to update event', error);
         }
-    }, [fetchEvents]);
-
-    const value = useMemo(() => ({
-        events, categoryEvents, fetchEventsByCategory, setSearchTerm, updateEvent
-    }), [events, categoryEvents, fetchEventsByCategory, setSearchTerm, updateEvent]);
+    };
 
     return (
-        <EventContext.Provider value={value}>
+        <EventContext.Provider value={{ events, categoryEvents, fetchEventsByCategory, setSearchTerm, updateEvent }}>
             {children}
         </EventContext.Provider>
     );
