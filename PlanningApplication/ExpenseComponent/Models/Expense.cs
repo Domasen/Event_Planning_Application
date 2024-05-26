@@ -28,7 +28,7 @@ namespace PlanningApplication.ExpenseComponent.Models
             }
         }
         public Guid Id { get; set; }
-        public List<Employee> assignedEmployees { get; set; }
+        public Employee assignedEmployees { get; set; }
         public string Name { get; set; }
         public int HoursPlanned { get; set; }
         public Event PlannedEvent { get; set; }

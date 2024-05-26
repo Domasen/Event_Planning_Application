@@ -11,7 +11,7 @@ export const CreateEvent = () => {
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
-    const [pricedEvent, setPricedEvent] = React.useState('');
+    const [budget, setBudget] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [date, setDate] = React.useState('');
     const [location, setLocation] = React.useState('');
@@ -23,153 +23,21 @@ export const CreateEvent = () => {
     const [categories, setCategories] = React.useState([])
 
     const handleEventSubmit = (e) => {
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
-    // Work registration states
-    const [workFormVisible, setWorkFormVisible] = React.useState(false);
-    const [jobName, setJobName] = React.useState('');
-    const [assignedEmployee, setAssignedEmployee] = React.useState('');
-    const [hoursPlanned, setHoursPlanned] = React.useState('');
-    const [workList, setWorkList] = React.useState([]);
-    
-    const handleEmployeeSubmit = (e) => {
-        e.preventDefault();
-        console.log('Employee Registered:', { name, email, position, hourlyRate });
-        // Reset form fields
-        setName('');
-        setEmail('');
-        setPosition('');
-        setHourlyRate('');
-        setEmployeeFormVisible(false); // Hide the form after submission
-    };
-
-    const handleEventSubmit = async (e) => {
-=========
-    const handleEventSubmit = (e) => {
->>>>>>>>> Temporary merge branch 2
         e.preventDefault();
 
         const eventInfo = {
             name: eventName,
-            type:eventType,
-            budget:budget,
+            type: eventType,
+            budget: budget,
             ticketPrice: price,
-            date:date,
-            location:location,
-            startTime:startTime,
-            endTime:endTime,
-            format:eventFormat,
+            date: date,
+            location: location,
+            startTime: startTime,
+            endTime: endTime,
+            format: eventFormat,
             description: description,
             categories: categories.map(category => category.name),
-            hashtags:hashtags
+            hashtags: hashtags
         }
 
         try {
@@ -181,9 +49,9 @@ export const CreateEvent = () => {
             });
 
             if (response.status === 200) {
-                console.log("Success")  
+                console.log("Success")
             } else {
-                console.error(response)  
+                console.error(response)
 
             }
         } catch (error) {
@@ -205,7 +73,6 @@ export const CreateEvent = () => {
         setHashtags('');
         setCategories([]);
     };
-
     return (
         <Box
             sx={{

@@ -2,6 +2,7 @@
 using PlanningApplication.Data;
 using PlanningApplication.EventComponent.Models;
 using PlanningApplication.ExpenseComponent.Models;
+using static PlanningApplication.ExpenseComponent.Models.Expense;
 
 namespace PlanningApplication.ExpenseComponent.Repository
 {
@@ -29,11 +30,11 @@ namespace PlanningApplication.ExpenseComponent.Repository
 
         public async Task<IEnumerable<Expense>> GetAll()
         {
-            var CustomExpenses = await _context.Expenses.Include(x => x.assignedEmployees).ToListAsync();
+            var CustomExpenses = await _context.Expenses.Include(x => x.assignedEmployees).Include(x => x.assignedEmployees.User).Include(x => x.PlannedEvent).ToListAsync();
             var FromJobs = new List<Expense>();
-            foreach (var job in _context.Jobs)
+            foreach (var job in _context.Jobs.Include(x => x.assignedEmployees.User).Include(x => x.assignedEmployees).Include(x => x.plannedEvent))
             {
-                var totalHourly = job.assignedEmployees.Select(x => x.HourlyPay).Sum();
+                var totalHourly = job.assignedEmployees.HourlyPay;
                 Expense expense = new Expense()
                 {
                     Id = job.Id,
@@ -42,7 +43,7 @@ namespace PlanningApplication.ExpenseComponent.Repository
                     HourlyRate = totalHourly != null ? (decimal)totalHourly : 0,
                     HoursPlanned = job.HoursPlanned,
                     PlannedEvent = job.plannedEvent,
-
+                    CalculationStrategy = new FlatStrategy()
                 };
                 FromJobs.Add(expense);
             }

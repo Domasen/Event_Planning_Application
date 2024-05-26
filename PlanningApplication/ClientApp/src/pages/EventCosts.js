@@ -14,29 +14,53 @@ import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import Footer from '../components/Footer.js'; // Ensure the correct path is used
 
-// Hardcoded data
-const eventData = {
-    eventName: 'Summer Festival',
-    totalBudget: 5000,
-};
-
 
 export const EventCosts = () => {
+    const id = "20E7CDFF-A0CC-4734-A033-092E398EF0CF"
+    const [eventName, setEventName] = useState([]);
+    const [totalBudget, setTotalBudget] = useState([]);
+    const [currentCost, setCost] = useState([]);
     const [workList, setWorkList] = useState([]);
     const [open, setOpen] = useState(false);
-    const [newExpense, setNewExpense] = useState({ jobName: '', assignedEmployee: '', hourlyRate: '', hoursWorked: '' });
+    const [newExpense, setNewExpense] = useState([]);
     useEffect(() => {
         // Function to fetch employees
-        const fetchEvents = async () => {
+        const fetchCost = async () => {
             try {
-                const response = await axios.get('/Expense/GetAll');
-                setWorkList(response.data);
+                const response = await axios.get("Expense/CalculatePrice?eventId="+id);
+                setCost(response.data);
             } catch (error) {
                 console.error('Error fetching events:', error);
             }
         };
 
-        fetchEvents(); // Call the fetch function
+        fetchCost(); // Call the fetch function
+    }, []); 
+    useEffect(() => {
+        // Function to fetch employees
+        const fetchEvent = async () => {
+            try {
+                const response = await axios.get("Event/getEvent/"+id);
+                setEventName(response.data.name);
+                setTotalBudget(response.data.budget)
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        };
+
+        fetchEvent(); // Call the fetch function
+    }, []); 
+    const fetchExpenses = async () => {
+        try {
+            const response = await axios.get('/Expense/GetByEvent?eventId='+id);
+            setWorkList(response.data);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        }
+    };
+    useEffect(() => {
+
+        fetchExpenses(); // Call the fetch function
     }, []); 
     const handleOpen = () => {
         setOpen(true);
@@ -53,7 +77,8 @@ export const EventCosts = () => {
 
     const handleAddExpense = async () => {
         try {
-            const response = await axios.post('/expense/Create', newExpense, {
+            newExpense.PlannedEvent = id
+            const response = await axios.post('/Expense/Create', newExpense, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
@@ -62,7 +87,7 @@ export const EventCosts = () => {
 
             if (response.status === 200) {
                 // Reset form fields
-                setWorkList([...workList, newExpense]);
+                fetchExpenses();
                 handleClose();
             } else {
                 console.log(response.data.message || 'Expense addition failed. Please try again.');
@@ -74,7 +99,7 @@ export const EventCosts = () => {
         }
     };
 
-    const remainingBudget = eventData.totalBudget;
+    const remainingBudget = totalBudget - currentCost;
 
     return (
         <Box
@@ -91,10 +116,10 @@ export const EventCosts = () => {
         >
             <Box sx={{ width: '80%', textAlign: 'center', mt: 3 }}>
                 <Typography variant="h4" gutterBottom>
-                    {eventData.eventName} - Event Costs
+                    {eventName} - Event Costs
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Total Budget: ${eventData.totalBudget}
+                    Total Budget: ${totalBudget}
                 </Typography>
             </Box>
             <TableContainer component={Paper} sx={{ width: '80%', mb: '20px' }}>
@@ -111,11 +136,11 @@ export const EventCosts = () => {
                     <TableBody>
                         {workList.map((work, index) => (
                             <TableRow key={index}>
-                                <TableCell component="th" scope="row">{work.jobName}</TableCell>
-                                <TableCell align="right">{work.assignedEmployee}</TableCell>
+                                <TableCell component="th" scope="row">{work.name}</TableCell>
+                                <TableCell align="right">{work.assignedEmployees.user.name + " " + work.assignedEmployees.user.surname}</TableCell>
                                 <TableCell align="right">{work.hourlyRate}</TableCell>
-                                <TableCell align="right">{work.hoursWorked}</TableCell>
-                                <TableCell align="right">{work.hourlyRate * work.hoursWorked}</TableCell>
+                                <TableCell align="right">{work.hoursPlanned}</TableCell>
+                                <TableCell align="right">{work.totalCost}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -126,7 +151,7 @@ export const EventCosts = () => {
                     Remaining Budget: ${remainingBudget >= 0 ? remainingBudget : 0}
                 </Typography>
                 <Typography variant="h6" gutterBottom>
-                    Total Cost: ${axios.get("Expense/CalculatePrice?eventId=606812f4-1973-4c11-9a1d-605b3bb2d120").data}
+                    Total Cost: {currentCost}
                 </Typography>
             </Box>
             <Box sx={{ width: '80%', textAlign: 'center', mb: 3 }}>

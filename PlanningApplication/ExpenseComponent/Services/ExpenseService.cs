@@ -36,7 +36,7 @@ namespace PlanningApplication.ExpenseComponent.Services
                 HoursPlanned = int.Parse(expense.HoursWorked),
                 HourlyRate = int.Parse(expense.HourlyRate),
                 Name = expense.JobName,
-                assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == expense.AssignedEmployee).ToList(),
+                assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == expense.AssignedEmployee).First(),
                 PlannedEvent = await _eventRepository.GetEvent(expense.PlannedEvent)
             };
             Expense? expenseObject = await _expenseRepository.Create(expenseModel);

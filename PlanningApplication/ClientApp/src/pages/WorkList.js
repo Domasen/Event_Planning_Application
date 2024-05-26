@@ -27,7 +27,7 @@ export const WorkList = () => {
         // Function to fetch employees
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('employee/GetAll');
+                const response = await axios.get('Employee/GetAll');
                 setEmployees(response.data);
             } catch (error) {
                 console.error('Error fetching employees:', error);
@@ -57,13 +57,25 @@ export const WorkList = () => {
     const [assignedEmployee, setAssignedEmployee] = React.useState('');
     const [hoursPlanned, setHoursPlanned] = React.useState('');
     const [workList, setWorkList] = React.useState([]);
+    const fetchJobs = async () => {
+        try {
+            const response = await axios.get('Job/GetAll');
+            setWorkList(response.data);
+        } catch (error) {
+            console.error('Error fetching employees:', error);
+        }
+    };
+    useEffect(() => {
+
+        fetchJobs(); // Call the fetch function
+    }, []); 
     const [currentEvent, setCurrentEvent] = React.useState('');
 
     const handleJobSubmit = async (e) => {
         e.preventDefault();
-        const newWork = { jobName, assignedEmployee, hoursPlanned };
+        const newWork = { jobName, assignedEmployee, hoursPlanned, currentEvent };
         try {
-            const response = await axios.post('/job/Create', newWork, {
+            const response = await axios.post('/Job/Create', newWork, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
@@ -76,6 +88,7 @@ export const WorkList = () => {
                 setAssignedEmployee('');
                 setHoursPlanned('');
                 setCurrentEvent('');
+                fetchJobs();
             } else {
                 console.log(response.data.message || 'Job addition failed. Please try again.');
             }
@@ -151,8 +164,8 @@ export const WorkList = () => {
                         }}
                     >
                         {employees.map((employee, index) => (
-                            <MenuItem key={employee.id} value={employee.user.name}>
-                                {employee.user.name}
+                            <MenuItem key={index} value={employee.id}>
+                                {employee.user.name + " " + employee.user.surname}
                             </MenuItem>
                         ))}
                     </Select>
@@ -188,8 +201,8 @@ export const WorkList = () => {
                         }}
                     >
                         {eventList.map((event, index) => (
-                            <MenuItem key={index} value={event.eventName}>
-                                {event.eventName}
+                            <MenuItem key={index} value={event.id}>
+                                {event.name}
                             </MenuItem>
                         ))}
                     </Select>
@@ -224,10 +237,10 @@ export const WorkList = () => {
                         {workList.length > 0 ? (
                             workList.map((work, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{work.jobName}</TableCell>
-                                    <TableCell>{work.assignedEmployee}</TableCell>
+                                    <TableCell>{work.name}</TableCell>
+                                    <TableCell>{work.assignedEmployees.user.name + " " + work.assignedEmployees.user.surname}</TableCell>
                                     <TableCell>{work.hoursPlanned}</TableCell>
-                                    <TableCell>{work.currentEvent}</TableCell>
+                                    <TableCell>{work.plannedEvent.name}</TableCell>
                                 </TableRow>
                             ))
                         ) : (

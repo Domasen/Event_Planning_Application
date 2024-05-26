@@ -29,9 +29,9 @@ public class JobService : IJobService
         {
             Id = Guid.NewGuid(),
             HoursPlanned = int.Parse(job.HoursPlanned),
-            assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == job.AssignedEmployee).ToList(),
+            assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Id == Guid.Parse(job.AssignedEmployee)).First(),
             Name = job.JobName,
-            plannedEvent = await _eventRepository.GetEvent(job.plannedEvent)
+            plannedEvent = await _eventRepository.GetEvent(job.currentEvent)
 
         };
         Job? jobObject = await _jobRepository.Create(jobModel);

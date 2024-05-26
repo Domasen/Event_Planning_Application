@@ -10,6 +10,6 @@ namespace PlanningApplication.JobComponent.Models
         public string AssignedEmployee { get; set; }
         public string JobName { get; set; }
         public string HoursPlanned { get; set; }
-        public Guid plannedEvent { get; set; }
+        public Guid currentEvent { get; set; }
     }
 }

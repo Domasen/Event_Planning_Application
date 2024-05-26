@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React, { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -20,7 +20,18 @@ export const RegisterEmployee = () => {
     const [position, setPosition] = React.useState('');
     const [hourlyRate, setHourlyRate] = React.useState('');
     const [employees, setEmployees] = React.useState([]);
-
+    // Function to fetch employees
+    const fetchEmployees = async () => {
+        try {
+            const response = await axios.get('Employee/GetAll');
+            setEmployees(response.data);
+        } catch (error) {
+            console.error('Error fetching events:', error);
+        }
+    };
+    useEffect(() => {
+        fetchEmployees();
+    }, []); 
     const handleEmployeeSubmit = async (e) => {
         e.preventDefault();
         console.log('Employee Registered:', { name, email, position, hourlyRate });
@@ -31,7 +42,7 @@ export const RegisterEmployee = () => {
             hourlyRate
         };
         try {
-            const response = await axios.post('/employee/Create', employeeData, {
+            const response = await axios.post('/Employee/Create', employeeData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
@@ -46,6 +57,8 @@ export const RegisterEmployee = () => {
             } else {
                 console.log(response.data.message || 'Employee addition failed. Please try again.');
             }
+            fetchEmployees();
+            console.log(employees)
         }
         catch (error) {
             console.error('Employee addition failed', error);
@@ -175,10 +188,10 @@ export const RegisterEmployee = () => {
                         {employees.length > 0 ? (
                             employees.map((employee, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{employee.name}</TableCell>
+                                    <TableCell>{employee.user.name + " " + employee.user.surname}</TableCell>
                                     <TableCell>{employee.email}</TableCell>
                                     <TableCell>{employee.position}</TableCell>
-                                    <TableCell>{employee.hourlyRate}</TableCell>
+                                    <TableCell>{employee.hourlyPay}</TableCell>
                                 </TableRow>
                             ))
                         ) : (

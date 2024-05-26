@@ -31,7 +31,7 @@ namespace PlanningApplication.JobComponent.Models
 
         public async Task<IEnumerable<Job>> GetAll()
         {
-            return await _context.Jobs.Include(x => x.assignedEmployees).Include(x => x.plannedEvent).ToListAsync();
+            return await _context.Jobs.Include(x => x.assignedEmployees).Include(x => x.assignedEmployees.User).Include(x => x.plannedEvent).ToListAsync();
         }
 
         public async Task<IEnumerable<Job>> GetAllByEvent(Guid eventId)
