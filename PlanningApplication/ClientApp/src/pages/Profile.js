@@ -54,7 +54,7 @@ const Profile = () => {
         description: 'Laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupęs daugiau nei 3 metų darbo patirtį šioje srityje. Mėgstu dalyvauti įvairiuose renginiuose.',
         profilePicture: 'https://via.placeholder.com/120', // Placeholder for profile picture
     });
-    const [date, setDate] = useState(user.dateOfBirth.split("T")[0]);
+    const [date, setDate] = useState(user.dateOfBirth == null ? null : user.dateOfBirth.split("T")[0]);
     const [tabValue, setTabValue] = useState(0); // Set default tab to "About me"
     const [settings, setSettings] = useState({
         eventNotifications: true,
