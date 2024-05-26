@@ -68,8 +68,8 @@ public class UserServices : IUserServices
         return await _userRepository.GetUsers();
     }
 
-    public Task<User?> UpdateUser(User user)
+    public async Task<User?> UpdateUser(UserDto user)
     {
-        throw new NotImplementedException();
+        return await _userRepository.UpdateUser(user);
     }
 }

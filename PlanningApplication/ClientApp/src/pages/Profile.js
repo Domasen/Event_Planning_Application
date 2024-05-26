@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, {useContext, useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,7 +16,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Footer from '../components/Footer';
 import MyBookings from './MyBookings';
 import MyEvents from './MyEvents';
-import CalendarComponent from './CalendarComponent'; // Import the CalendarComponent
+import CalendarComponent from './CalendarComponent';
+import {UserContext} from "../context/UserContext";
+import axios from "axios"; // Import the CalendarComponent
 
 const lightTheme = createTheme({
     palette: {
@@ -37,15 +39,18 @@ const darkTheme = createTheme({
 });
 
 const Profile = () => {
+    const { user, setUser } = useContext(UserContext);
+    
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
-        name: 'Kamile Samusiovaite',
-        dateOfBirth: '2002-02-12',
-        email: 'kamilesamusiovaite@gmail.com',
-        contactNumber: '860569***',
-        description: 'Esu Kamile, laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupusi daugiau nei 3 metų darbo patirtį šioje srityje. Pati mėgstu dalyvauti įvairiuose renginiuose.',
+        name: user.name,
+       // dateOfBirth: user.dateOfBirth,
+        email: user.email,
+        contactNumber: user.phone,
+        description: 'Laisvalaikiu organizuoju nedideles apimties renginius, esu sukaupęs daugiau nei 3 metų darbo patirtį šioje srityje. Mėgstu dalyvauti įvairiuose renginiuose.',
         profilePicture: 'https://via.placeholder.com/120', // Placeholder for profile picture
     });
+    const [date, setDate] = useState(user.dateOfBirth.split("T")[0]);
     const [tabValue, setTabValue] = useState(0); // Set default tab to "About me"
     const [settings, setSettings] = useState({
         eventNotifications: true,
@@ -69,9 +74,29 @@ const Profile = () => {
         setIsEditing(true);
     };
 
-    const handleSaveClick = () => {
+    const handleSaveClick = async () => {
+        const body = {
+            id: user.id,
+            email: formData.email,
+            name: formData.name,
+            surname: user.surname,
+            phone: formData.contactNumber,
+            dateOfBirth: date
+                
+        }
+
+        try {
+          var response = await axios.put(`User/user`, body);
+          
+          if(response.status === 200){
+              console.log("Success")
+          }else{
+              console.error(response)
+          }
+        } catch (error) {
+            console.error('Failed to update event', error);
+        }
         setIsEditing(false);
-        // Add your save logic here
     };
 
     const handleProfilePictureChange = (e) => {
@@ -144,9 +169,11 @@ const Profile = () => {
                                         <TextField
                                             fullWidth
                                             name="dateOfBirth"
+                                            type="date"
                                             label="Date of Birth"
-                                            value={formData.dateOfBirth}
-                                            onChange={handleChange}
+                                            value={date}
+                                            onChange={(e)=>setDate(e.target.value)}
+                                            margin="normal"
                                             sx={{ mb: 2 }}
                                         />
                                         <TextField
@@ -172,7 +199,7 @@ const Profile = () => {
                                             {formData.name}
                                         </Typography>
                                         <Typography variant="body1">
-                                            Date of Birth: {formData.dateOfBirth}
+                                            Date of Birth: {date}
                                         </Typography>
                                         <Typography variant="body1">
                                             Email: {formData.email}

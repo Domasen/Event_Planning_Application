@@ -9,7 +9,7 @@ public interface IUserServices
     Task<User?> DeleteUser(Guid userId);
     Task<User?> GetUser(Guid userId);
     Task<IEnumerable<User>> GetUsers();
-    Task<User?> UpdateUser(User user);
+    Task<User?> UpdateUser(UserDto user);
     Task<IdentityResult> RegisterUser(RegisterDto registerDto);
     Task<SignInResult> LoginUser(LoginDto loginDto);
     Task LogoutUser();

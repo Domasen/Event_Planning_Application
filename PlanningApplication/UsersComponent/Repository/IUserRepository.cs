@@ -8,6 +8,6 @@ public interface IUserRepository
     Task<User?> DeleteUser(Guid userId);
     Task<User?> GetCustomer(Guid userId);
     Task<IEnumerable<User>> GetUsers();
-    Task<User?> UpdateUser(User user);
+    Task<User?> UpdateUser(UserDto user);
 
 }

@@ -35,8 +35,21 @@ public class UserRepository : IUserRepository
         return await _context.Users.ToListAsync();
     }
 
-    public Task<User?> UpdateUser(User user)
+    public async Task<User?> UpdateUser(UserDto user)
     {
-        throw new NotImplementedException();
+        var userToUpdate = await _context.Users.FindAsync(user.Id.ToString());
+
+        if (userToUpdate != null)
+        {
+            userToUpdate.Email = user.Email;
+            userToUpdate.Name = user.Name;
+            userToUpdate.Surname = user.Surname;
+            userToUpdate.PhoneNumber = user.Phone;
+            userToUpdate.DateOfBirth = user.DateOfBirth;
+        }
+
+        await _context.SaveChangesAsync();
+
+        return userToUpdate;
     }
 }

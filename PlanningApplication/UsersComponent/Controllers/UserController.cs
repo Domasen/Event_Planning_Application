@@ -61,6 +61,14 @@ public class UserController : ControllerBase
         return Unauthorized("Invalid login attempt");
     }
     
+    [HttpPut("user")]
+    [LogAction]
+    public async Task<ActionResult> Update(UserDto userDto)
+    {
+
+        var result = await _userServices.UpdateUser(userDto);
+        return Ok(result);
+    }
 
     [HttpPost("logout")]
     [LogAction]
@@ -87,7 +95,9 @@ public class UserController : ControllerBase
             Id = Guid.Parse(userId),
             Email = user.Email,
             Name = user.Name,
-            Surname = user.Surname
+            Surname = user.Surname,
+            DateOfBirth = user.DateOfBirth,
+            Phone = user.PhoneNumber
         };
 
         return Ok(userDto);
