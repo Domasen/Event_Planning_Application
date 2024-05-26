@@ -8,15 +8,26 @@ import { Link } from "react-router-dom";
 
 /// category turi tureti id
 const categoryImages = [
-    { title: 'Music', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT5DGdAzPf4lu-oYWicLMXD4-C3z4Atwylzgdw_9UGw&s.jpg' },
-    { title: 'Business', image: 'https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630.jpg' },
-    { title: 'Nightlife', image: 'https://file.visittallinn.ee/5zkas9/clubstudio.jpg' },
-    { title: 'Holidays', image: 'https://www.socialtalent.com/wp-content/uploads/2017/04/shutterstock_302683349.jpg' },
-    { title: 'Food & Drink', image: 'https://www.dunsgolfclub.com/wp-content/uploads/2024/01/Food-.jpg' },
-    { title: 'Education', image: 'https://www.euroschoolindia.com/wp-content/uploads/2023/08/role-of-education.jpg' },
-    { title: 'Gaming', image: 'https://media.wired.com/photos/61f48f02d0e55ccbebd52d15/3:2/w_2400,h_1600,c_limit/Gear-Rant-Game-Family-Plans-1334436001.jpg.jpg' },
-    { title: 'Politics', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMnaE197wLEsJWTlVwuAq2VbEgO_8YuGnamSNMAIH3pQ&s.jpg' },
-    { title: 'Health', image: 'https://cms-api-in.myhealthcare.co/image/20220910103120.jpeg' }
+    { title: 'Conference', image: 'https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630.jpg' },
+    { title: 'Celebration', image: 'https://file.visittallinn.ee/5zkas9/clubstudio.jpg' },
+    { title: 'Holiday', image: 'https://www.socialtalent.com/wp-content/uploads/2017/04/shutterstock_302683349.jpg' },
+    { title: 'Webinar', image: 'https://www.euroschoolindia.com/wp-content/uploads/2023/08/role-of-education.jpg' },
+    { title: 'Networking', image: 'https://media.wired.com/photos/61f48f02d0e55ccbebd52d15/3:2/w_2400,h_1600,c_limit/Gear-Rant-Game-Family-Plans-1334436001.jpg.jpg' },
+    { title: 'Health', image: 'https://cms-api-in.myhealthcare.co/image/20220910103120.jpeg' },
+    { title: 'Birthday', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNjuyqLp63ncsZ99cWM_mGSWs31jM29QxLSSrhTyxJHw&s.jpg' },
+    { title: 'Business', image: 'https://ibu.ca/wp-content/uploads/2024/01/m29.webp' },
+    { title: 'Meeting', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDWkojWYuYXrmiO0R5chJDMwK-Rkt30You3P6rAU4F_g&s.jpg' },
+    { title: 'Workshop', image: 'https://www.encompass-innovate.co.uk/blog/wp-content/uploads/2021/07/people-discussion-5069845_1920-4-1-1024x683.jpg' },
+    { title: 'Social', image: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/Importance_of_Social_Media_in_Todays_World.jpg' },
+    { title: 'Sports', image: 'https://wearecardinals.com/wp-content/uploads/2020/04/u1Re9qgMfM8d6kumlW85PS6s55jQh5fbdmppgQsP.jpeg' },
+    { title: 'Education', image: 'https://imageio.forbes.com/specials-images/imageserve/61d5b5f9529aee8feb22c68a/Rear-view-of-schoolgirl-raising-her-arm-to-answer-the-question-in-the-classroom-/960x0.jpg?format=jpg&width=960.jpg' },
+    { title: 'Entertainment', image: 'https://static1.gensler.com/uploads/image/88070/entertainment-video-1600x900_1695774897.jpg' },
+    { title: 'Community', image: 'https://twofacesofms.com/wp-content/uploads/2020/06/community.jpg' },
+    { title: 'Fundraising', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKjnYiPUcd3t_virUlTasRIYjV0IhP1dzNAPz-3NpEE5Hced3iuxxW5C-yaYuhmLjFlfs&usqp=CAU.jpg' },
+    { title: 'Religious', image: 'https://www.catholicnewsagency.com/storage/image/religions.png?jpg' },
+    { title: 'Family', image: 'https://apicms.thestar.com.my/uploads/images/2020/05/14/681788.jpg' },
+    { title: 'Travel', image: 'https://maxima-travel.com/wp-content/uploads/2022/02/141_20201013185512_Consumer-Survey-Finds-70-Percent-of-Travelers-Plan-to-Holiday-in-2021.jpg' },
+
 ];
 
 const events = [
