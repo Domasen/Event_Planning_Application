@@ -25,7 +25,7 @@ const CustomRadio = styled(Radio)(({ theme }) => ({
     },
 }));
 
-export const FilterSidebar = () => {
+export const FilterSidebar = ({ onDateFilterChange, onPriceFilterChange, onCategoryChange, onLocationChange }) => {
 
     const [categories, setCategories] = useState({
         all: true,
@@ -45,44 +45,44 @@ export const FilterSidebar = () => {
         panevezys: false,
     });
 
+    const handleDateChange = (event) => {
+        onDateFilterChange(event.target.value);
+    };
+
+    const handlePriceChange = (event) => {
+        onPriceFilterChange(event.target.value);
+    };
+
     const handleCategoryChange = (event) => {
         const { name, checked } = event.target;
+        const newCategories = { ...categories, [name]: checked };
         if (name === 'all') {
-            setCategories({
-                all: checked,
-                concert: false,
-                exhibition: false,
-                opening: false,
-                course: false,
-                jam: false,
-            });
+            newCategories.concert = false;
+            newCategories.exhibition = false;
+            newCategories.opening = false;
+            newCategories.course = false;
+            newCategories.jam = false;
         } else {
-            setCategories({
-                ...categories,
-                [name]: checked,
-                all: false,
-            });
+            newCategories.all = false;
         }
+        setCategories(newCategories);
+        onCategoryChange(Object.keys(newCategories).filter(key => newCategories[key]));
     };
 
     const handleLocationChange = (event) => {
         const { name, checked } = event.target;
+        const newLocations = { ...locations, [name]: checked };
         if (name === 'all') {
-            setLocations({
-                all: checked,
-                vilnius: false,
-                kaunas: false,
-                klaipeda: false,
-                siauliai: false,
-                panevezys: false,
-            });
+            newLocations.vilnius = false;
+            newLocations.kaunas = false;
+            newLocations.klaipeda = false;
+            newLocations.siauliai = false;
+            newLocations.panevezys = false;
         } else {
-            setLocations({
-                ...locations,
-                [name]: checked,
-                all: false,
-            });
+            newLocations.all = false;
         }
+        setLocations(newLocations);
+        onLocationChange(Object.keys(newLocations).filter(key => newLocations[key]));
     };
 
 
@@ -95,19 +95,19 @@ export const FilterSidebar = () => {
             {/* Date Filter */}
             <FormControl component="fieldset">
                 <CustomFormLabel component="legend">Date</CustomFormLabel>
-                <RadioGroup name="date" defaultValue="all">
+                <RadioGroup name="date" defaultValue="all" onChange = {handleDateChange}>
                     <FormControlLabel value="all" control={<CustomRadio />} label="All" />
                     <FormControlLabel value="today" control={<CustomRadio />} label="Today" />
                     <FormControlLabel value="tomorrow" control={<CustomRadio />} label="Tomorrow" />
                     <FormControlLabel value="this_week" control={<CustomRadio />} label="This week" />
-                    <FormControlLabel value="custom" control={<CustomRadio />} label="Custom" />
+                {/*    <FormControlLabel value="custom" control={<CustomRadio />} label="Custom" />*/}
                 </RadioGroup>
             </FormControl>
 
             {/* Price Filter */}
             <FormControl component="fieldset">
                 <CustomFormLabel component="legend">Price</CustomFormLabel>
-                <RadioGroup name="price" defaultValue="all">
+                <RadioGroup name="price" defaultValue="all" onChange={handlePriceChange}>
                     <FormControlLabel value="all" control={<CustomRadio />} label="All" />
                     <FormControlLabel value="paid" control={<CustomRadio />} label="Paid" />
                     <FormControlLabel value="free" control={<CustomRadio />} label="Free" />
@@ -115,45 +115,45 @@ export const FilterSidebar = () => {
             </FormControl>
 
             {/* Discounts Filter */}
-            <FormControl component="fieldset">
-                <CustomFormLabel component="legend">Discounts</CustomFormLabel>
-                <FormGroup>
-                    <FormControlLabel control={<CustomCheckbox name="none" />} label="None" />
-                    <FormControlLabel control={<CustomCheckbox name="students" />} label="Students" />
-                    <FormControlLabel control={<CustomCheckbox name="seniors" />} label="Seniors" />
-                </FormGroup>
-            </FormControl>
+            {/*<FormControl component="fieldset">*/}
+            {/*    <CustomFormLabel component="legend">Discounts</CustomFormLabel>*/}
+            {/*    <FormGroup>*/}
+            {/*        <FormControlLabel control={<CustomCheckbox name="none" />} label="None" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox name="students" />} label="Students" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox name="seniors" />} label="Seniors" />*/}
+            {/*    </FormGroup>*/}
+            {/*</FormControl>*/}
 
             {/* Categories Filter */}
-            <FormControl component="fieldset">
-                <CustomFormLabel component="legend">Categories</CustomFormLabel>
-                <FormGroup>
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.all} onChange={handleCategoryChange} name="all" />}
-                        label="All"
-                    />
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.concert} onChange={handleCategoryChange} name="concert" />}
-                        label="Concert"
-                    />
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.exhibition} onChange={handleCategoryChange} name="exhibition" />}
-                        label="Exhibition"
-                    />
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.opening} onChange={handleCategoryChange} name="opening" />}
-                        label="Opening"
-                    />
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.course} onChange={handleCategoryChange} name="course" />}
-                        label="Course"
-                    />
-                    <FormControlLabel
-                        control={<CustomCheckbox checked={categories.jam} onChange={handleCategoryChange} name="jam" />}
-                        label="Jam"
-                    />
-                </FormGroup>
-            </FormControl>
+            {/*<FormControl component="fieldset">*/}
+            {/*    <CustomFormLabel component="legend">Categories</CustomFormLabel>*/}
+            {/*    <FormGroup>*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.all} onChange={handleCategoryChange} name="all" />}*/}
+            {/*            label="All"*/}
+            {/*        />*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.concert} onChange={handleCategoryChange} name="concert" />}*/}
+            {/*            label="Concert"*/}
+            {/*        />*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.exhibition} onChange={handleCategoryChange} name="exhibition" />}*/}
+            {/*            label="Exhibition"*/}
+            {/*        />*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.opening} onChange={handleCategoryChange} name="opening" />}*/}
+            {/*            label="Opening"*/}
+            {/*        />*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.course} onChange={handleCategoryChange} name="course" />}*/}
+            {/*            label="Course"*/}
+            {/*        />*/}
+            {/*        <FormControlLabel*/}
+            {/*            control={<CustomCheckbox checked={categories.jam} onChange={handleCategoryChange} name="jam" />}*/}
+            {/*            label="Jam"*/}
+            {/*        />*/}
+            {/*    </FormGroup>*/}
+            {/*</FormControl>*/}
 
             {/* Organizers Filter */}
             {/*<FormControl component="fieldset">*/}
@@ -169,17 +169,17 @@ export const FilterSidebar = () => {
             {/*</FormControl>*/}
 
             {/* Location Filter */}
-            <FormControl component="fieldset">
-                <CustomFormLabel component="legend">Location</CustomFormLabel>
-                <FormGroup>
-                    <FormControlLabel control={<CustomCheckbox checked={locations.all} onChange={handleLocationChange} name="all" defaultChecked />} label="All" />
-                    <FormControlLabel control={<CustomCheckbox checked={locations.vilnius} onChange={handleLocationChange} name="vilnius" />} label="Vilnius" />
-                    <FormControlLabel control={<CustomCheckbox checked={locations.kaunas} onChange={handleLocationChange} name="kaunas" />} label="Kaunas" />
-                    <FormControlLabel control={<CustomCheckbox checked={locations.klaipeda} onChange={handleLocationChange} name="klaipeda" />} label="Klaipėda" />
-                    <FormControlLabel control={<CustomCheckbox checked={locations.siauliai} onChange={handleLocationChange} name="siauliai" />} label="Šiauliai" />
-                    <FormControlLabel control={<CustomCheckbox checked={locations.panevezys} onChange={handleLocationChange} name="panevezys" />} label="Panevėžys" />
-                </FormGroup>
-            </FormControl>
+            {/*<FormControl component="fieldset">*/}
+            {/*    <CustomFormLabel component="legend">Location</CustomFormLabel>*/}
+            {/*    <FormGroup>*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.all} onChange={handleLocationChange} name="all" defaultChecked />} label="All" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.vilnius} onChange={handleLocationChange} name="vilnius" />} label="Vilnius" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.kaunas} onChange={handleLocationChange} name="kaunas" />} label="Kaunas" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.klaipeda} onChange={handleLocationChange} name="klaipeda" />} label="Klaipėda" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.siauliai} onChange={handleLocationChange} name="siauliai" />} label="Šiauliai" />*/}
+            {/*        <FormControlLabel control={<CustomCheckbox checked={locations.panevezys} onChange={handleLocationChange} name="panevezys" />} label="Panevėžys" />*/}
+            {/*    </FormGroup>*/}
+            {/*</FormControl>*/}
         </Box>
     );
 };

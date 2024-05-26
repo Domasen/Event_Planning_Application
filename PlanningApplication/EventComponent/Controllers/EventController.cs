@@ -183,8 +183,16 @@ public class EventController : ControllerBase
            minBudget, maxBudget, categories, paymentMethods, currentUserId, minTicketPrice, maxTicketPrice, description, hashtags);
         return Ok(results);
     }
-    
-    
+
+    [HttpGet("optimisticSearch")]
+    public async Task<ActionResult<List<EventDto>>> OptimisticSearch(
+        [FromQuery] string searchValue)
+    {
+        var results = await _eventServices.OptimisticSearchAsync(searchValue);
+        return Ok(results);
+    }
+
+
     [HttpPost("uploadEventPhoto/{id}")]
     public async Task<IActionResult> UploadEventPhoto(Guid id, IFormFile photo)
     {

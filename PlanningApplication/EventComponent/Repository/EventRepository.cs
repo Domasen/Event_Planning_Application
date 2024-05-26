@@ -171,5 +171,29 @@ namespace PlanningApplication.EventComponent.Repository
             return events;
         
         }
+
+        public async Task<IEnumerable<Event>> OptimisticSearchAsync(string searchValue)
+        {
+            if (string.IsNullOrEmpty(searchValue))
+            {
+                return await _context.Events.ToListAsync();
+            }
+
+            var searchLower = searchValue.ToLower();
+            var query = _context.Events.AsQueryable();
+
+            // Build the query dynamically
+            query = query.Where(e =>
+                e.Name.ToLower().Contains(searchLower) ||
+                e.Location.ToLower().Contains(searchLower) ||
+                e.Description.ToLower().Contains(searchLower) ||
+                e.Hashtags.ToLower().Contains(searchLower) ||
+                EF.Functions.Like(e.TicketPrice.ToString(), $"%{searchLower}%") ||
+                EF.Functions.Like(e.Budget.ToString(), $"%{searchLower}%"));
+
+            var events = await query.ToListAsync();
+
+            return events;
+        }
     }
 }

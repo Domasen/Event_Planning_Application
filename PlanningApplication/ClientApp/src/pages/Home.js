@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Box, Grid, Card, CardMedia, CardContent, Typography, Button, Chip, Avatar  } from '@mui/material';
 import Footer from '../components/Footer';
 import axios from "axios";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 /// category turi tureti id
-const categories = [
+const categoryImages = [
     { title: 'Music', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT5DGdAzPf4lu-oYWicLMXD4-C3z4Atwylzgdw_9UGw&s.jpg' },
     { title: 'Business', image: 'https://online.hbs.edu/Style%20Library/api/resize.aspx?imgpath=/PublishingImages/overhead-view-of-business-strategy-meeting.jpg&w=1200&h=630.jpg' },
     { title: 'Nightlife', image: 'https://file.visittallinn.ee/5zkas9/clubstudio.jpg' },
@@ -75,6 +75,7 @@ const popularInterests = [
 export const Home = () => {
 
     const { setUser } = useContext(UserContext); // Use UserContext
+    const [categories, setCategories] =useState([])
 
 
     useEffect(() => {
@@ -92,9 +93,36 @@ export const Home = () => {
                 console.error('Failed to fetch user', error);
             }
         };
+        const getEventCategories = async () => {
+            try {
+                const response = await axios.get('EventCategory/getEventCategories', {
+                    headers: {
+                        'Content-Type': 'text/plain',
+                    },
+                });
+                if (response.status === 200) {
+                    setCategories(response.data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch user', error);
+            }
+        };
 
         fetchUser();
+        getEventCategories();
     }, [setUser]);
+
+    const getImage = (category) => {
+        console.log(category)
+        let categoryImage = categoryImages.find((e) => e.title === category.name)
+        console.log(categoryImage)
+        if (categoryImage) {
+            return categoryImage.image
+        }
+        else {
+            return null
+        }
+    }
     
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
@@ -122,9 +150,9 @@ export const Home = () => {
                 <Typography variant="h4" gutterBottom>Categories</Typography>
                 <Grid container spacing={2}>
                     {categories.map((category) => (
-                        <Grid item xs={12} sm={6} md={4} lg={3} key={category.title}>
+                        <Grid item xs={12} sm={6} md={4} lg={3} key={category.name}>
                             {/*<Link to={`/category/${category.id}`}>*/}
-                            <Card component={Link} to='/category' sx={{
+                            <Card component={Link} to={ '/category/' + category.name} sx={{
                                 textDecoration: 'none',
                                 color: 'inherit',
                                 '&:hover': {
@@ -134,11 +162,11 @@ export const Home = () => {
                                     <CardMedia
                                         component="img"
                                         height="140"
-                                        image={category.image}
-                                        alt={category.title}
+                                        image={getImage(category)}
+                                        alt={category.name}
                                     />
                                     <CardContent>
-                                        <Typography variant="h6">{category.title}</Typography>
+                                        <Typography variant="h6">{category.name}</Typography>
                                     </CardContent>
                                 </Card>
                         </Grid>
