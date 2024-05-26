@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlanningApplication.EventComponent.Models;
+using PlanningApplication.Interceptors;
 
 namespace PlanningApplication.EventComponent.Controllers
 {
@@ -7,6 +8,7 @@ namespace PlanningApplication.EventComponent.Controllers
     [Route("[controller]")]
     public class EventCategoryController : ControllerBase
     {
+        [LogAction]
         [HttpGet("getEventCategories")]
         public IActionResult GetEventTypes()
         {

@@ -4,6 +4,7 @@ using PlanningApplication.EmployeeComponent.Controllers;
 using PlanningApplication.EmployeeComponent.Models;
 using PlanningApplication.EmployeeComponent.Services;
 using PlanningApplication.EventComponent.Models;
+using PlanningApplication.Interceptors;
 using PlanningApplication.JobComponent.Models;
 
 namespace PlanningApplication.JobComponent.Controllers;
@@ -18,6 +19,7 @@ public class JobController : ControllerBase
         _logger = logger;
         _jobServices = jobServices;
     }
+    [LogAction]
     [HttpGet("GetAll")]
     public async Task<ActionResult<List<Job>>> GetAll()
     {
@@ -31,6 +33,7 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpDelete("Delete")]
     public async Task<ActionResult<Job?>> Delete(Job job)
     {
@@ -44,6 +47,7 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPut("Update")]
     public async Task<ActionResult<Job?>> Update(Job job)
     {
@@ -57,6 +61,7 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetById")]
     public async Task<ActionResult<Job?>> GetById(Guid id)
     {
@@ -70,6 +75,7 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpPost("Create")]
     public async Task<ActionResult<Job?>> Create(JobDto jobDto)
     {
@@ -83,6 +89,7 @@ public class JobController : ControllerBase
                 "Error retrieving data from the database");
         }
     }
+    [LogAction]
     [HttpGet("GetByEvent")]
     public async Task<ActionResult<Job>> GetByEvent(Guid eventId)
     {

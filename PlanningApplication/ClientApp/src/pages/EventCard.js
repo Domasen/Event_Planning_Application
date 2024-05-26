@@ -21,17 +21,17 @@ const EventCard = ({ event }) => {
                 component="img"
                 sx={{ width: 160, height: 120, borderRadius: 2 }}
                 image={`data:image/jpeg;base64,${event.photo}`}
-                alt={event.title}
+                alt={event.name}
             />
             <CardContent sx={{ flex: '1 0 auto' }}>
                 <Typography component="h5" variant="h5">
-                    {event.title}
+                    {event.name}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                     {event.startTime}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
-                    {event.date}
+                    {event.date.split("T")[0]}
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
                     {event.location}

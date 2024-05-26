@@ -35,7 +35,7 @@ namespace PlanningApplication.ExpenseComponent.Services
             {
                 Id = Guid.NewGuid(),
                 HoursPlanned = int.Parse(expense.HoursWorked),
-                HourlyRate = int.Parse(expense.HourlyRate),
+                HourlyRate = decimal.Parse(expense.HourlyRate),
                 Name = expense.JobName,
                 assignedEmployees = (await _employeeRepository.GetAll()).Where(x => x.Email == expense.AssignedEmployee).First(),
                 PlannedEvent = await _eventRepository.GetEvent(expense.PlannedEvent),
