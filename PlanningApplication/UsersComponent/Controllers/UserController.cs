@@ -61,6 +61,14 @@ public class UserController : ControllerBase
         return Unauthorized("Invalid login attempt");
     }
     
+    [HttpPut("user")]
+    [LogAction]
+    public async Task<ActionResult> Update(UserDto userDto)
+    {
+
+        var result = await _userServices.UpdateUser(userDto);
+        return Ok(result);
+    }
 
     [HttpPost("logout")]
     [LogAction]
@@ -87,7 +95,10 @@ public class UserController : ControllerBase
             Id = Guid.Parse(userId),
             Email = user.Email,
             Name = user.Name,
-            Surname = user.Surname
+            Surname = user.Surname,
+            DateOfBirth = user.DateOfBirth,
+            Phone = user.PhoneNumber,
+            Photo = user.Photo
         };
 
         return Ok(userDto);
@@ -101,6 +112,33 @@ public class UserController : ControllerBase
         //var userName = user.Identity.Name;
 
         return userId;
+    }
+    
+    [HttpPost("uploadUserPhoto/{id}")]
+    public async Task<IActionResult> UploadUserPhoto(Guid id, IFormFile photo)
+    {
+        if (photo == null || photo.Length == 0)
+        {
+            return BadRequest("Photo is null or empty.");
+        }
+
+        try
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await photo.CopyToAsync(memoryStream);
+                var photoBytes = memoryStream.ToArray();
+
+                var Event = await _userServices.UploadUserPhoto(id, photoBytes);
+
+                return Ok(Event);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error uploading photo.");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error uploading photo.");
+        }
     }
 
 }

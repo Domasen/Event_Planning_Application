@@ -35,8 +35,36 @@ public class UserRepository : IUserRepository
         return await _context.Users.ToListAsync();
     }
 
-    public Task<User?> UpdateUser(User user)
+    public async Task<User?> UpdateUser(UserDto user)
     {
-        throw new NotImplementedException();
+        var userToUpdate = await _context.Users.FindAsync(user.Id.ToString());
+
+        if (userToUpdate != null)
+        {
+            userToUpdate.Email = user.Email;
+            userToUpdate.Name = user.Name;
+            userToUpdate.Surname = user.Surname;
+            userToUpdate.PhoneNumber = user.Phone;
+            userToUpdate.DateOfBirth = user.DateOfBirth;
+        }
+
+        await _context.SaveChangesAsync();
+
+        return userToUpdate;
+    }
+    
+    public async Task<User?> UploadUserPhoto(Guid Id, byte[] image)
+    {
+        var userToAddPhoto = await _context.Users.FindAsync(Id.ToString());
+        if (userToAddPhoto == null)
+        {
+            throw new KeyNotFoundException("Event not found.");
+        }
+
+        userToAddPhoto.Photo = image;
+            
+        await _context.SaveChangesAsync();
+             
+        return await _context.Users.FindAsync(Id.ToString());
     }
 }

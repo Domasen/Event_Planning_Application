@@ -18,18 +18,18 @@ public class ApplicationDbContext : IdentityDbContext<User>
     public DbSet<Event> Events { get; set; }
 
     // Seed method
-    public static void SeedData(ApplicationDbContext context)
-    {
-        if (!context.Users.Any())  // Checking if the database is empty
-        {
-            context.Users.AddRange(
-                new User { Id = Guid.NewGuid(), Name = "John", Surname = "Doe" },
-                new User { Id = Guid.NewGuid(), Name = "Jane", Surname = "Smith" }
-            );
-
-            context.SaveChanges();  // Saves the seeded data into the database
-        }
-    }
+    // public static void SeedData(ApplicationDbContext context)
+    // {
+    //     if (!context.Users.Any())  // Checking if the database is empty
+    //     {
+    //         context.Users.AddRange(
+    //             new User { Id = Guid.NewGuid(), Name = "John", Surname = "Doe" },
+    //             new User { Id = Guid.NewGuid(), Name = "Jane", Surname = "Smith" }
+    //         );
+    //
+    //         context.SaveChanges();  // Saves the seeded data into the database
+    //     }
+    // }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
