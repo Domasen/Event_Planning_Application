@@ -7,10 +7,11 @@ const EventContext = React.createContext();
 const EventProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('a');
     const { data: events, refetch: fetchEvents } = useFetch('Event/getAllEvents');
-    const { data: categoryEvents, refetch: fetchEventByCategory, setUrl } = useFetch('Event/getEventsByCategory');
+    const { data: categoryEvents, refetch: fetchEventByCategory, setUrl } = useFetch('Event/search');
 
-    const fetchEventsByCategory = useCallback((id) => {
-        setUrl(`Event/getEventsByCategory/${id}`);
+    const fetchEventsByCategory = (params) => {
+        const query = new URLSearchParams(params).toString();
+        setUrl(`Event/search?${query}`);
         fetchEventByCategory();
     }, [setUrl, fetchEventByCategory]);
 

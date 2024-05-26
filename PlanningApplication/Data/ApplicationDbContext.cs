@@ -65,6 +65,12 @@ public class ApplicationDbContext : IdentityDbContext<User>
         modelBuilder.Entity<Event>().Property(e => e.Categories)
             .HasConversion(categoryConverter).Metadata.SetValueComparer(categoryComparer);
 
+        modelBuilder.Entity<Event>()
+            .HasOne(s => s.User)
+            .WithMany(c => c.Events)
+            .HasForeignKey(s => s.UserId);
+
+
         base.OnModelCreating(modelBuilder);
     }
 

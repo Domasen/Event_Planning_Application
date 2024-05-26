@@ -6,8 +6,11 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import EventTypeSelect from "../components/EventTypesSelect.js"
 import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
+import { UserContext } from '../context/UserContext.js';
+import {Await} from "react-router-dom";
 
 export const CreateEvent = () => {
+    const { user } = React.useContext(UserContext); 
     // Event registration states
     const [eventName, setEventName] = React.useState('');
     const [eventType, setEventType] = React.useState('');
@@ -21,10 +24,22 @@ export const CreateEvent = () => {
     const [description, setDescription] = React.useState('');
     const [hashtags, setHashtags] = React.useState('');
     const [categories, setCategories] = React.useState([])
+    const [photo, setPhoto] = React.useState(null)
 
-    const handleEventSubmit = (e) => {
+
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0];
+        setPhoto(file);
+    };
+    
+    
+    const handleEventSubmit = async (e) => {
         e.preventDefault();
-
+        if (!user || !user.id) {
+            throw new Error("User object is not defined, is null or has no id.");
+        }
+        
+        
         const eventInfo = {
             name: eventName,
             type: eventType,
@@ -37,25 +52,46 @@ export const CreateEvent = () => {
             format: eventFormat,
             description: description,
             categories: categories.map(category => category.name),
-            hashtags: hashtags
+            hashtags: hashtags,
+            userId: user.id
         }
 
         try {
-            const response = axios.post('Event/createEvent', eventInfo, {
+            const response = await axios.post('Event/createEvent', eventInfo, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': '*/*'
                 }
             });
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 console.log("Success")
+                
+                
+            } else {
+                console.error(response)  
+
+            }
+
+            const formData = new FormData();
+            formData.append("photo", photo)
+            const response1 = await axios.post('Event/uploadEventPhoto/'+response.data.id, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': '*/*'
+                }
+            });
+
+            if (response1.status === 200) {
+                console.log("Success")
+
+
             } else {
                 console.error(response)
 
             }
         } catch (error) {
-            console.error('Login failed', error);
+            console.error('image failed', error);
         }
 
         console.log('Event Created:', { eventName, eventType, budget, price, date, location, startTime, endTime, eventFormat, description, hashtags });
@@ -72,6 +108,7 @@ export const CreateEvent = () => {
         setDescription('');
         setHashtags('');
         setCategories([]);
+        setPhoto(null);
     };
     return (
         <Box
@@ -254,6 +291,13 @@ export const CreateEvent = () => {
                         style: { color: 'white', borderRadius: '4px' },
                         sx: { '& fieldset': { borderColor: 'white' } }
                     }}
+                />
+                <input
+                    type="file"
+                    accept="image/*"
+                    // value={photo}
+                    onChange={handlePhotoChange}
+                    style={{ margin: '20px 0', color: 'white' }}
                 />
                 <Button
                     variant="contained"

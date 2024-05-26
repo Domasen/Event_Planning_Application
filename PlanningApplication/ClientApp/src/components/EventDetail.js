@@ -1,11 +1,11 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, TextField, Button, Box } from '@mui/material';
-import { useEventContext } from '../context/EventContext';
+import { EventContext } from '../context/EventContext';
 
 const EventDetail = () => {
     const { id } = useParams();
-    const { events, updateEvent } = useEventContext();
+    const { events, updateEvent } = useContext(EventContext);
 
     // Define state variables
     const [title, setTitle] = useState('');
@@ -14,23 +14,25 @@ const EventDetail = () => {
     const [location, setLocation] = useState('');
     const [price, setPrice] = useState('');
     const [event, setEvent] = useState(null);
+    const [photo, setPhoto] = useState(null);
 
     // Fetch event data from context using useEffect
     useEffect(() => {
-        const foundEvent = events?.find(event => event.id === parseInt(id));
+        const foundEvent = events?.find(event => event.id === id);
         if (foundEvent) {
             setEvent(foundEvent);
-            setTitle(foundEvent.title);
-            setTime(foundEvent.time);
+            setTitle(foundEvent.name);
+            setTime(foundEvent.startTime);
             setDate(foundEvent.date);
             setLocation(foundEvent.location);
-            setPrice(foundEvent.price);
+            setPrice(foundEvent.ticketPrice);
+            setPhoto(foundEvent.photo);
         }
     }, [events, id]);
 
     // Handle save event
     const handleSave = () => {
-        updateEvent({ ...event, title, time, date, location, price });
+        updateEvent({ ...event, name:title, startTime:time, date:date, location:location, ticketPrice:price });
     };
 
     // If event is not found, display message
@@ -44,7 +46,7 @@ const EventDetail = () => {
             <CardMedia
                 component="img"
                 height="200"
-                image={event.image}
+                image={`data:image/jpeg;base64,${event.photo}`}
                 alt={title}
             />
             <CardContent>

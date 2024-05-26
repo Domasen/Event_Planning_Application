@@ -34,6 +34,10 @@ namespace PlanningApplication.EventComponent.Models
 
         public List<PaymentMethod> AllowedPaymentMethods { get; set; } = new List<PaymentMethod>();
 
+        public string UserId { get; set; }
+        
+        public byte[]? Photo { get; set; }
+
         public Guid Version {  get; set; }
     }
 }
