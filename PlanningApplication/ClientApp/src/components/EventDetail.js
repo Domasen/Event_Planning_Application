@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, TextField, Button, Box } from '@mui/material';
 import { EventContext } from '../context/EventContext';
 
+
 const EventDetail = () => {
     const { id } = useParams();
     const { events, updateEvent } = useContext(EventContext);

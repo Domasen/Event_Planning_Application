@@ -3,13 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Footer from '../components/Footer.js'; // Ensure the correct path is used
 import axios from 'axios';
 import EventTypeSelect from "../components/EventTypesSelect.js"
 import EventCategoriesMultiSelect from '../components/EventCategoriesMultiSelect.js';
 import { UserContext } from '../context/UserContext.js';
 import {Await} from "react-router-dom";
-
 
 export const CreateEvent = () => {
     const { user } = React.useContext(UserContext); 
@@ -44,14 +42,14 @@ export const CreateEvent = () => {
         
         const eventInfo = {
             name: eventName,
-            type:eventType,
-            budget:budget,
+            type: eventType,
+            budget: budget,
             ticketPrice: price,
-            date:date,
-            location:location,
-            startTime:startTime,
-            endTime:endTime,
-            format:eventFormat,
+            date: date,
+            location: location,
+            startTime: startTime,
+            endTime: endTime,
+            format: eventFormat,
             description: description,
             categories: categories.map(category => category.name),
             hashtags: hashtags,
@@ -112,7 +110,6 @@ export const CreateEvent = () => {
         setCategories([]);
         setPhoto(null);
     };
-
     return (
         <Box
             sx={{

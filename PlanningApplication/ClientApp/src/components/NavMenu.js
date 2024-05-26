@@ -86,7 +86,6 @@ export const NavMenu = () => {
                                         <DropdownItem tag={Link} to="/createEvent">Create New Event</DropdownItem>
                                         <DropdownItem tag={Link} to="/registerEmployee">Register Employee</DropdownItem>
                                         <DropdownItem tag={Link} to="/workList">Work list</DropdownItem>
-                                        <DropdownItem tag={Link} to="/eventCosts">Event Costs</DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                                 <NavItem>
